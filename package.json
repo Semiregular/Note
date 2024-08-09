@@ -1,0 +1,22 @@
+{
+  "name": "markdown",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./scripts/file.js",
+  "scripts": {
+    "build": "node ./scripts/file.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@node-rs/jieba": "^1.10.3",
+    "cli-progress": "^3.12.0",
+    "lunr": "^2.3.9",
+    "lunr-languages": "^1.14.0",
+    "nodejieba": "^3.4.0",
+    "prismjs": "^1.29.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}

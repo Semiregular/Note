@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/pixi.min.js"></script>
+    <script src="./js/lunr.min.js"></script>
+    <title>我的笔记</title>
+  </head>
+  <body class="theme-light">
+    <div class="site-body published-container">
+      <div class="site-body-left">
+        <div class="site-body-left-column">
+          <div class="site-body-left-title">我的笔记</div>
+          <div class="change-theme-btn">切换主题</div>
+          <div class="site-body-left-search">
+            <div class="input-bg">
+              <input
+                type="text"
+                id="search-input"
+                class="site-body-left-search-input"
+                placeholder="搜索笔记"
+              />
+            </div>
+
+            <div class="search-results"></div>
+          </div>
+          <div class="nav-list"></div>
+        </div>
+      </div>
+
+      <div class="site-body-center"></div>
+
+      <div class="site-body-right">
+        <div class="graph-view">
+          <div class="graph-view-title">INTERACTIVE GRAPH</div>
+          <div class="graph-view-container">
+            <div class="graph-stage" id="graph"></div>
+            <div class="graph-icon">
+              <div class="icon-global">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="svg-icon lucide-git-fork"
+                >
+                  <circle cx="12" cy="18" r="3"></circle>
+                  <circle cx="6" cy="6" r="3"></circle>
+                  <circle cx="18" cy="6" r="3"></circle>
+                  <path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path>
+                  <path d="M12 12v3"></path>
+                </svg>
+              </div>
+              <div class="icon-expand">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="svg-icon lucide-arrow-up-right"
+                >
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="local-nav">
+          <div class="local-nav-title">ON THIS PAGE</div>
+          <div class="local-nav-list"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let isNavLocal = false;
+    $(function () {
+      $(".site-body-center").load("./html/框架/Vue3.html");
+      $(".local-nav-list").load("./data/框架/Vue3.html");
+      $(".nav-list").load("./data/nav.html");
+
+      $(".change-theme-btn").click(function () {
+        $(".theme-light").toggleClass("theme-dark");
+      });
+
+      $(".nav-list").on("click", ".child-list-item", function () {
+        $(".child-list-item").removeClass("child-list-item-active");
+        $(this).addClass("child-list-item-active");
+        let url = $(this).data("url");
+        $(".site-body-center").load(`./html/${url}`);
+        $(".local-nav-list").load(`./data/${url}`);
+      });
+      $(".nav-list").on("click", ".child-parent", function () {
+        $(this).siblings(".child-list").slideToggle("fast");
+        $(this).children(".child-arrow").toggleClass("child-arrow-active");
+      });
+
+      $(".local-nav-list").on("click", ".local-child-list-item", function () {
+        if ($(this).hasClass("local-child-list-item-active")) return;
+        isNavLocal = true;
+        $(".local-child-parent").removeClass("local-child-parent-active");
+        $(".local-child-list-item").removeClass("local-child-list-item-active");
+        $(this).addClass("local-child-list-item-active");
+        setTimeout(function () {
+          isNavLocal = false;
+        }, 500);
+      });
+      $(".local-nav-list").on("click", ".local-child-parent", function () {
+        if ($(this).hasClass("local-child-parent-active")) return;
+        isNavLocal = true;
+        $(".local-child-parent").removeClass("local-child-parent-active");
+        $(".local-child-list-item").removeClass("local-child-list-item-active");
+        $(this).addClass("local-child-parent-active");
+        setTimeout(function () {
+          isNavLocal = false;
+        }, 500);
+      });
+
+      $(".site-body-center").on("click", ".code-header", function () {
+        let codeText = $(this).siblings("pre").text().trim();
+        let $dom = $(this);
+        navigator.clipboard
+          .writeText(codeText)
+          .then(function () {
+            let text = $dom.text();
+            $dom.text("success");
+            setTimeout(function () {
+              $dom.text(text);
+            }, 1000);
+          })
+          .catch(function (err) {
+            console.error("复制失败:", err);
+          });
+      });
+
+      $(window).on("resize", function () {
+        checkWindowWidth();
+      });
+      checkWindowWidth();
+
+      $(".site-body-center").on("scroll", function () {
+        if (isNavLocal) return;
+        let currentId = 0;
+        $("h1, h2, h3, h4, h5, h6").each(function () {
+          let $this = $(this);
+          let topOffset = $this.offset().top;
+          let bottomOffset = topOffset + $this.outerHeight();
+
+          if (
+            topOffset <= $(window).scrollTop() + $(window).height() &&
+            bottomOffset >= $(window).scrollTop()
+          ) {
+            currentId = $this.attr("id");
+            return false;
+          }
+        });
+
+        $(".local-child-list-item").each(function () {
+          if ($(this).data("id") == currentId) {
+            $(".local-child-list-item").removeClass(
+              "local-child-list-item-active"
+            );
+            $(".local-child-parent").removeClass("local-child-parent-active");
+            $(this).addClass("local-child-list-item-active");
+            return false;
+          }
+        });
+        $(".local-child-parent").each(function () {
+          if ($(this).data("id") == currentId) {
+            $(".local-child-list-item").removeClass(
+              "local-child-list-item-active"
+            );
+            $(".local-child-parent").removeClass("local-child-parent-active");
+            $(this).addClass("local-child-parent-active");
+            return false;
+          }
+        });
+      });
+    });
+
+    function checkWindowWidth() {
+      var windowWidth = $(window).width();
+      if (windowWidth > 1000) {
+        $(".site-body-right").css("display", "");
+      } else {
+        $(".site-body-right").css("display", "none");
+      }
+      if (windowWidth > 750) {
+        $(".site-body-left").css("display", "");
+      } else {
+        $(".site-body-left").css("display", "none");
+      }
+    }
+
+    let searchIndex;
+
+    fetch("./data/search.json")
+      .then((response) => response.text())
+      .then((data) => {
+        searchIndex = lunr.Index.load(JSON.parse(data));
+      })
+      .catch((error) => console.error("Error:", error));
+
+    $(".site-body-left-search-input").on("input", function () {
+      $(".search-results").empty();
+      let tokens = $(this).val();
+      let tokenList = [];
+      if (tokens.length > 0) {
+        tokenList.push(tokens);
+        tokenList.push(`${tokens}*`);
+        tokenList.push(`*${tokens}`);
+        tokenList.push(`*${tokens}*`);
+        tokenList = tokenList.join(" ");
+        let results = searchIndex.search(tokenList);
+        results.forEach(function (result) {
+          let resultMatch = result.matchData.metadata;
+          resultMatch = Array.from(Object.keys(resultMatch));
+          let resultRef = result.ref;
+          resultMatch.forEach(function (value) {
+            let option = `
+            <div class="search-result-option" data-ref="./html/${resultRef}.html">
+              <div class="match-text">${value}</div>
+              <div class="match-ref">${resultRef}</div>
+            </div>`;
+            $(".search-result-option").mousedown(function () {
+              let url = $(this).data("ref");
+              $(".site-body-center").load(url);
+            });
+            $(".search-results").append(option);
+          });
+        });
+        if (results.length > 0) {
+          $(".search-results").show();
+        } else {
+          $(".search-results").hide();
+        }
+      } else {
+        $(".search-results").hide();
+      }
+    });
+    $(".site-body-left-search-input").on("blur", function (event) {
+      $(".search-results").hide();
+    });
+    $(".site-body-left-search-input").on("focus", function () {
+      let text = $(".search-results").text();
+      if ($.trim(text) === "") {
+        return;
+      }
+      $(".search-results").show();
+    });
+    const Application = PIXI.Application;
+    const Graphics = PIXI.Graphics;
+    const Container = PIXI.Container;
+
+    const app = new Application({
+      width: 270,
+      height: 260,
+      backgroundColor: 0xffffff,
+      antialias: true,
+    });
+    document.getElementById("graph").appendChild(app.view);
+    let circleContainer = new Container();
+    app.stage.addChild(circleContainer);
+
+    const circle = new Graphics();
+    circle.beginFill(0xffffff);
+    circle.drawCircle(35, 30, 60);
+    circle.endFill();
+    circle.tint = 0x5c5c5c;
+    circle.interactive = true;
+    circle.buttonMode = true;
+
+    circle.x = 135;
+    circle.y = 130;
+
+    circle
+      // events for drag start
+      .on("mousedown", onDragStart)
+      .on("touchstart", onDragStart)
+      // events for drag end
+      .on("mouseup", onDragEnd)
+      .on("mouseupoutside", onDragEnd)
+      .on("touchend", onDragEnd)
+      .on("touchendoutside", onDragEnd)
+      // events for drag move
+      .on("mousemove", onDragMove)
+      .on("touchmove", onDragMove)
+      // events for hover
+      .on("mouseover", onHoverStart)
+      .on("mouseout", onHoverEnd);
+
+    // Functions for dragging
+    function onDragStart(event) {
+      // Store reference to the data
+      this.data = event.data;
+      this.dragging = true;
+    }
+
+    function onDragEnd() {
+      this.dragging = false;
+      // Clear the data reference
+      this.data = null;
+    }
+
+    function onDragMove() {
+      if (this.dragging) {
+        let newPosition = this.data.getLocalPosition(this.parent);
+        this.x = newPosition.x;
+        this.y = newPosition.y;
+      }
+    }
+
+    function onHoverStart() {
+      this.tint = 0x7852ee;
+    }
+
+    function onHoverEnd() {
+      this.tint = 0x5c5c5c;
+    }
+    circleContainer.addChild(circle);
+    document.getElementById("graph").appendChild(app.view);
+  </script>
+</html>

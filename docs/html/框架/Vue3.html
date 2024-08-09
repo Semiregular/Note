@@ -1,0 +1,58 @@
+<h2 id="1000"><span class="bold">概述</span></h2><span class="inline-code">Vue3</span><p>是JavaScript框架<span class="inline-code">Vue.js</span>的第三个主要版本</p><div class="code" language="">
+              <div class="code-header"></div>
+              <pre></pre></div><p>以下是Vue3的主要更新点：</p><span class="bold">性能提升</span><p>打包大小显著减少（41%），这有助于提高应用加载速度。</p><span class="bold">新架构与API变化</span><ul><li>Composition API：</li></ul><p>引入了全新的Composition API</p><ul><li>响应式系统改进：</li></ul><p>使用ES6的<span class="inline-code">Proxy</span>代替<span class="inline-code">Object.defineProperty</span>实现更完整的响应式代理，增强了对对象属性添加/删除等操作的监听能力。</p><ul><li>Tree-Shaking支持：</li></ul><p>通过更好的模块化设计，Vue3能够更好地支持treeshaking，从而减小生产环境下的打包体积。</p><p> </p><ul><li>组件生命周期调整:</li></ul><p>Vue3移除了部分生命周期钩子如<span class="inline-code">beforeCreate</span>和<span class="inline-code">created</span></p><ul><li>其他新特性与优化:</li></ul><span class="inline-code">ref</span><p>和<span class="inline-code">reactive</span>等核心API用于管理组件状态。</p><p>支持<span class="inline-code">TypeScript</span>编写，官方提供了丰富的类型定义文件。</p><ul><li>工具链支持:</li></ul><span class="inline-code">Vue CLI</span><p> 和 <span class="inline-code">Vite</span> 的更新，Vite 提供了更快的开发体验，利用原生ES模块实现快速热更新。</p><div class="divider"></div><h2 id="1001"><span class="bold">安装</span></h2><div class="code" language="powershell">
+              <div class="code-header">powershell</div>
+              <pre><span class="token comment">#全局安装</span>
+npm install <span class="token operator">-</span>g @vue/<span class="token function">cli</span> 
+
+<span class="token comment">#查看版本，验证是否全局安装成功</span>
+vue <span class="token operator">--</span>version 
+</pre></div><div class="divider"></div><h2 id="1002"><span class="bold">创建项目</span></h2><div class="code" language="powershell">
+              <div class="code-header">powershell</div>
+              <pre><span class="token comment"># 项目名称</span>
+vue create my-project
+</pre></div><div class="code" language="powershell">
+              <div class="code-header">powershell</div>
+              <pre> vue ui
+</pre></div><div class="divider"></div><h2 id="1003"><span class="bold">路由</span></h2><span class="inline-code">npm</span><p> 安装 <span class="inline-code">vue-router</span> 管理路由</p><div class="code" language="powershell">
+              <div class="code-header">powershell</div>
+              <pre>npm install vue-router
+</pre></div><p>修改 <span class="inline-code">main.js</span> 如下：</p><div class="code" language="javascript">
+              <div class="code-header">javascript</div>
+              <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> createApp <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App.vue'</span>
+<span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">'./router/index'</span> <span class="token comment">//导入路由表</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>router<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//使用路由导航</span>
+</pre></div><p>之后在 <span class="inline-code">src</span> 文件夹下新增 <span class="inline-code">router</span> 目录，在其下创建 <span class="inline-code">index.js</span> 配置路由:</p><div class="code" language="javascript">
+              <div class="code-header">javascript</div>
+              <pre><span class="token comment">//引入组件，@代表根目录指向 src</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createRouter<span class="token punctuation">,</span> createWebHistory <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue-router'</span>
+
+<span class="token comment">//配置路由表</span>
+<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">createRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">history</span><span class="token operator">:</span> <span class="token function">createWebHistory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+  <span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">createRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">history</span><span class="token operator">:</span> <span class="token function">createWebHistory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">routes</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"home"</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"@/views/Home.vue"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">meta</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"网页 | 首页"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/login"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"login"</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"@/views/Login.vue"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">meta</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"网页 | 登录"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</pre></div><div class="divider"></div><h2 id="1004"><span class="bold">UI库</span></h2><h3 id="1005"><span class="bold">Element-Plus</span></h3><h2 id="1006"><span class="bold">网络请求</span></h2><h3 id="1007"><span class="bold">axios</span></h3><h2 id="1008"><span class="bold">Cookie</span></h2><h3 id="1009"><span class="bold">js-cookie</span></h3><h2 id="1010"><span class="bold">举例</span></h2><h3 id="1011"><span class="bold">富文本编辑器</span></h3><h3 id="1012"><span class="bold">Markdown编辑器</span></h3><h3 id="1013"><span class="bold">图片上传</span></h3><h3 id="1014"><span class="bold">音乐播放器</span></h3><h3 id="1015"><span class="bold">视频播放器</span></h3>

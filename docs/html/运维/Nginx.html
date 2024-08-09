@@ -1,0 +1,142 @@
+<h2 id="1000"><span class="bold">概述</span></h2><h2 id="1001"><span class="bold">安装</span></h2><h2 id="1002"><span class="bold">配置</span></h2><h3 id="1003"><span class="bold">静态服务器</span></h3><div class="code" language="nginx">
+              <div class="code-header">nginx</div>
+              <pre><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">8080</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server_name</span>  localhost</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">root</span> /home/pro/tour/</span><span class="token punctuation">;</span>
+
+    <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">index</span>  index.html</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token directive"><span class="token keyword">location</span> /api</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">alias</span> /home/pro/tour/api/</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">index</span>  index.html</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre></div><h3 id="1004"><span class="bold">文件下载</span></h3><div class="code" language="nginx">
+              <div class="code-header">nginx</div>
+              <pre><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">8080</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server_name</span>  localhost</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">charset</span> utf-8</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">root</span> /home/pro/tour/libs</span><span class="token punctuation">;</span>
+
+    <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">autoindex</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">autoindex_exact_size</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">autoindex_localtime</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">tcp_nopush</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">sendfile</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+
+        <span class="token directive"><span class="token keyword">if</span> (<span class="token variable">$request_uri</span> ~* \.(zip|html|rar|gz|bz2|tar|7z|mp3|mp4|png|jpg|js|css)$)</span> <span class="token punctuation">{</span>
+            <span class="token directive"><span class="token keyword">add_header</span> Content-Disposition <span class="token string">'attachment;'</span></span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre></div><p>可以安装 <span class="inline-code">ngx_http_xslt_module</span> 模块美化文件列表</p><div class="code" language="ini">
+              <div class="code-header">ini</div>
+              <pre>server {
+    listen       8080;
+    server_name  localhost;
+    charset utf-8;
+    root /home/pro/tour/libs;
+
+    location / {
+        autoindex on;
+        autoindex_exact_size on;
+        autoindex_localtime on;
+        autoindex_format xml;
+        autoindex_xslt /home/pro/tour/libs/style.xsl;
+        tcp_nopush on;
+        sendfile on;
+
+        if ($request_uri ~* \.(zip|html|rar|gz|bz2|tar|7z|mp3|mp4|png|jpg|js|css)$) {
+            add_header Content-Disposition 'attachment;';
+        }
+
+    }
+}
+
+</pre></div><h3 id="1005"><span class="bold">HTTPS</span></h3><div class="code" language="ini">
+              <div class="code-header">ini</div>
+              <pre>server {
+    listen       443 ssl;
+    server_name  localhost;
+    root /home/pro/tour/;
+
+    ssl_certificate      /home/pro/full_chain.pem;
+    ssl_certificate_key  /home/pro/private.key;
+
+    ssl_session_cache    shared:SSL:1m;
+    ssl_session_timeout  5m;
+
+    ssl_protocols SSLv3 SSLv2 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers  HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers  on; 
+
+    location / {
+        index  index.html;
+    }
+}
+</pre></div><h3 id="1006"><span class="bold">PHP</span></h3><p>安装 <span class="inline-code">php-fpm</span></p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> php-fpm php-mysql php-common php-gd php-mbstring php-curl php-xml php-zip php-cli <span class="token parameter variable">-y</span>
+</pre></div><p>启动 <span class="inline-code">php-fpm</span></p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token comment"># 注意版本号，在 /lib/systemd/system 目录下查看</span>
+<span class="token function">sudo</span> systemctl start php8.1-fpm.service
+
+<span class="token comment"># 自动启动</span>
+<span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> php8.1-fpm.service
+
+<span class="token comment"># 重启</span>
+<span class="token function">sudo</span> systemctl restart php8.1-fpm
+</pre></div><p>查看 <span class="inline-code">php-fpm</span> 配置 <span class="inline-code">/etc/php/8.1/fpm/pool.d/www.conf</span></p><div class="code" language="ini">
+              <div class="code-header">ini</div>
+              <pre><span class="token key attr-name">user</span> <span class="token punctuation">=</span> <span class="token value attr-value">www-data</span>
+<span class="token key attr-name">group</span> <span class="token punctuation">=</span> <span class="token value attr-value">www-data</span>
+<span class="token key attr-name">listen</span> <span class="token punctuation">=</span> <span class="token value attr-value">/run/php/php8.1-fpm.sock</span>
+<span class="token key attr-name">listen.owner</span> <span class="token punctuation">=</span> <span class="token value attr-value">www-data</span>
+<span class="token key attr-name">listen.group</span> <span class="token punctuation">=</span> <span class="token value attr-value">www-data</span>
+</pre></div><span class="inline-code">nginx</span><p> 配置</p><div class="code" language="ini">
+              <div class="code-header">ini</div>
+              <pre>worker_processes  1;
+<span class="token comment"># 注意此处需要修改为php-fpm的实际用户</span>
+user www-data;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    keepalive_timeout  65;
+
+    server {
+        listen       8080;
+        server_name  localhost;
+        root /home/pro/tour/;
+        include fastcgi.conf;
+
+        location / {
+            index index.php;
+        }
+
+        location ~ \.php$ {
+            <span class="token comment"># fastcgi监听端口</span>
+            fastcgi_pass  unix:/run/php/php8.1-fpm.sock;
+            <span class="token comment"># fastcgi_pass 127.0.0.1:9000;</span>
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include fastcgi.conf;
+            include fastcgi_params;
+        }
+    }
+}
+
+</pre></div><p>查看是否为同一用户</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token function">ps</span> -ef<span class="token operator">|</span><span class="token function">grep</span> nginx
+<span class="token function">ps</span> -ef<span class="token operator">|</span><span class="token function">grep</span> php-fpm
+
+</pre></div>
