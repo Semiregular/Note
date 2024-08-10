@@ -15,24 +15,49 @@
       <div class="site-body-left">
         <div class="site-body-left-column">
           <div class="site-body-left-title">我的笔记</div>
-          <div class="change-theme-btn">切换主题</div>
-          <div class="site-body-left-search">
-            <div class="input-bg">
-              <input
-                type="text"
-                id="search-input"
-                class="site-body-left-search-input"
-                placeholder="搜索笔记"
-              />
-            </div>
+          <div class="site-body-left-change">
+            <div class="change-theme-btn">切换主题</div>
+            <div class="site-body-left-search">
+              <div class="input-bg">
+                <input
+                  type="text"
+                  id="search-input"
+                  class="site-body-left-search-input"
+                  placeholder="搜索笔记"
+                />
+              </div>
 
-            <div class="search-results"></div>
+              <div class="search-results"></div>
+            </div>
+            <div class="nav-list"></div>
           </div>
-          <div class="nav-list"></div>
         </div>
       </div>
 
-      <div class="site-body-center"></div>
+      <div class="site-body-center">
+        <div class="site-header">
+          <div class="site-header-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="svg-icon lucide-menu"
+            >
+              <line x1="4" y1="12" x2="20" y2="12"></line>
+              <line x1="4" y1="6" x2="20" y2="6"></line>
+              <line x1="4" y1="18" x2="20" y2="18"></line>
+            </svg>
+          </div>
+          <div class="site-header-title"></div>
+        </div>
+        <div class="site-body-center-content"></div>
+      </div>
 
       <div class="site-body-right">
         <div class="graph-view">
@@ -90,7 +115,7 @@
   <script>
     let isNavLocal = false;
     $(function () {
-      $(".site-body-center").load("./html/框架/Vue3.html");
+      $(".site-body-center-content").load("./html/框架/Vue3.html");
       $(".local-nav-list").load("./data/框架/Vue3.html");
       $(".nav-list").load("./data/nav.html");
 
@@ -98,11 +123,40 @@
         $(".theme-light").toggleClass("theme-dark");
       });
 
+      $(".site-header-icon").click(function () {
+        $(".site-body-left-change").toggleClass("site-body-left-change-active");
+      });
+
+      $(".site-body-center").on("mouseenter", ".title", function () {
+        $(this).children(".title-hide").css("display", "inline-block");
+      });
+
+      $(".site-body-center").on("mouseleave", ".title", function () {
+        $(this).children(".title-hide").css("display", "none");
+        $(this).children(".title-hide-active").css("display", "inline-block");
+      });
+
+      $(".site-body-center").on("click", ".title-hide", function () {
+        $(this).toggleClass("title-hide-active");
+        if ($(this).hasClass("title-hide-active")) {
+          let nextH = $(this).parent().nextUntil(".title");
+          nextH.hide();
+        } else {
+          let nextH = $(this).parent().nextUntil(".title");
+          nextH.show();
+        }
+      });
+
+      $(".site-body-center").on("click", ".title-lock", function (e) {
+        let id = $(this).parent().attr("id");
+        window.location.hash = id;
+      });
+
       $(".nav-list").on("click", ".child-list-item", function () {
         $(".child-list-item").removeClass("child-list-item-active");
         $(this).addClass("child-list-item-active");
         let url = $(this).data("url");
-        $(".site-body-center").load(`./html/${url}`);
+        $(".site-body-center-content").load(`./html/${url}`);
         $(".local-nav-list").load(`./data/${url}`);
       });
       $(".nav-list").on("click", ".child-parent", function () {
@@ -201,9 +255,14 @@
         $(".site-body-right").css("display", "none");
       }
       if (windowWidth > 750) {
-        $(".site-body-left").css("display", "");
+        $(".site-body-left").removeClass("site-body-left-collapse");
+        $(".site-body-left-change").removeClass("site-body-left-change-active");
+        $(".site-body-left-change").removeClass("site-body-left-change-collapse")
+        $(".site-header").hide();
       } else {
-        $(".site-body-left").css("display", "none");
+        $(".site-body-left").addClass("site-body-left-collapse");
+        $(".site-body-left-change").addClass("site-body-left-change-collapse")
+        $(".site-header").show();
       }
     }
 

@@ -120,8 +120,7 @@ body {
   /* Callouts */
   --callout-border-width: 0px;
   --callout-border-opacity: 0.25;
-  --callout-padding: var(--size-4-3) var(--size-4-3) var(--size-4-3)
-    var(--size-4-6);
+  --callout-padding: var(--size-4-3);
   --callout-radius: var(--radius-s);
   --callout-blend-mode: var(--highlight-mix-blend-mode);
   --callout-title-color: inherit;
@@ -909,6 +908,104 @@ body {
   --font-mermaid: var(--font-text);
 }
 
+.callout {
+  --callout-color: var(--callout-default);
+  --callout-icon: lucide-pencil;
+}
+.callout[data-callout="abstract"],
+.callout[data-callout="summary"],
+.callout[data-callout="tldr"] {
+  --callout-color: var(--callout-summary);
+  --callout-icon: lucide-clipboard-list;
+}
+.callout[data-callout="info"] {
+  --callout-color: var(--callout-info);
+  --callout-icon: lucide-info;
+}
+.callout[data-callout="todo"] {
+  --callout-color: var(--callout-todo);
+  --callout-icon: lucide-check-circle-2;
+}
+.callout[data-callout="important"] {
+  --callout-color: var(--callout-important);
+  --callout-icon: lucide-flame;
+}
+.callout[data-callout="tip"],
+.callout[data-callout="hint"] {
+  --callout-color: var(--callout-tip);
+  --callout-icon: lucide-flame;
+}
+.callout[data-callout="success"],
+.callout[data-callout="check"],
+.callout[data-callout="done"] {
+  --callout-color: var(--callout-success);
+  --callout-icon: lucide-check;
+}
+.callout[data-callout="question"],
+.callout[data-callout="help"],
+.callout[data-callout="faq"] {
+  --callout-color: var(--callout-question);
+  --callout-icon: help-circle;
+}
+.callout[data-callout="warning"],
+.callout[data-callout="caution"],
+.callout[data-callout="attention"] {
+  --callout-color: var(--callout-warning);
+  --callout-icon: lucide-alert-triangle;
+}
+.callout[data-callout="failure"],
+.callout[data-callout="fail"],
+.callout[data-callout="missing"] {
+  --callout-color: var(--callout-fail);
+  --callout-icon: lucide-x;
+}
+.callout[data-callout="danger"],
+.callout[data-callout="error"] {
+  --callout-color: var(--callout-error);
+  --callout-icon: lucide-zap;
+}
+.callout[data-callout="bug"] {
+  --callout-color: var(--callout-bug);
+  --callout-icon: lucide-bug;
+}
+.callout[data-callout="example"] {
+  --callout-color: var(--callout-example);
+  --callout-icon: lucide-list;
+}
+.callout[data-callout="quote"],
+.callout[data-callout="cite"] {
+  --callout-color: var(--callout-quote);
+  --callout-icon: quote-glyph;
+}
+.callout {
+  overflow: hidden;
+  border-style: solid;
+  border-color: rgba(var(--callout-color), var(--callout-border-opacity));
+  border-width: var(--callout-border-width);
+  border-radius: var(--callout-radius);
+  margin: 1em 0;
+  mix-blend-mode: var(--callout-blend-mode);
+  background-color: rgba(var(--callout-color), 0.1);
+  padding: var(--callout-padding);
+}
+.callout.is-collapsible .callout-title {
+  cursor: var(--cursor);
+}
+.callout-title {
+  padding: var(--callout-title-padding);
+  display: flex;
+  gap: var(--size-4-1);
+  font-size: var(--callout-title-size);
+  color: rgb(var(--callout-color));
+  line-height: var(--line-height-tight);
+  align-items: flex-start;
+}
+.callout-content {
+  overflow-x: auto;
+  padding: var(--callout-content-padding);
+  background-color: var(--callout-content-background);
+}
+
 .token.important,
 .token.bold {
   font-weight: bold;
@@ -1032,6 +1129,7 @@ body {
 /* Heading */
 h1 {
   font-size: var(--h1-size);
+  font-style: var(--h1-style);
   font-weight: var(--h1-weight);
   line-height: var(--h1-line-height);
   margin-block-start: var(--p-spacing);
@@ -1041,6 +1139,7 @@ h1 {
 h2 {
   font-size: var(--h2-size);
   font-weight: var(--h2-weight);
+  font-style: var(--h2-style);
   line-height: var(--h2-line-height);
   margin-block-start: var(--p-spacing);
   margin-block-end: var(--p-spacing);
@@ -1049,6 +1148,7 @@ h2 {
 h3 {
   font-size: var(--h3-size);
   font-weight: var(--h3-weight);
+  font-style: var(--h3-style);
   line-height: var(--h3-line-height);
   margin-block-start: var(--p-spacing);
   margin-block-end: var(--p-spacing);
@@ -1057,6 +1157,7 @@ h3 {
 h4 {
   font-size: var(--h4-size);
   font-weight: var(--h4-weight);
+  font-style: var(--h4-style);
   line-height: var(--h4-line-height);
   margin-block-start: var(--p-spacing);
   margin-block-end: var(--p-spacing);
@@ -1065,6 +1166,7 @@ h4 {
 h5 {
   font-size: var(--h5-size);
   font-weight: var(--h5-weight);
+  font-style: var(--h5-style);
   line-height: var(--h5-line-height);
   margin-block-start: var(--p-spacing);
   margin-block-end: var(--p-spacing);
@@ -1072,10 +1174,47 @@ h5 {
 
 h6 {
   font-size: var(--h6-size);
+  font-style: var(--h6-style);
   font-weight: var(--h6-weight);
   line-height: var(--h6-line-height);
   margin-block-start: var(--p-spacing);
   margin-block-end: var(--p-spacing);
+}
+
+.title {
+  border-bottom: 0.8px solid var(--color-base-30);
+  padding-bottom: 0.5em;
+}
+
+.title-hide {
+  display: none;
+  color: var(--text-faint);
+  cursor: pointer;
+  transform: rotate(90deg);
+  margin-left: -22px;
+  padding-right: 8px;
+  transition: all 0.2s ease;
+}
+
+.title-hide-active {
+  transform: rotate(0deg);
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.title-lock {
+  color: var(--text-faint);
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.title-lock svg {
+  max-width: 18px;
+  max-height: 18px;
+}
+
+.title-lock:hover {
+  color: var(--color-purple);
 }
 
 /* List */
@@ -1186,12 +1325,46 @@ ol > li {
   background-color: var(--color-base-00);
 }
 
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  margin-left: -24px;
+  margin-top: -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  border-bottom: 0.8px solid var(--color-base-30);
+}
+
 .site-body-left,
 .site-body-right {
   min-width: var(--sidebar-left-width);
+  max-width: var(--sidebar-left-width);
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  transition: all 0.2s ease;
+}
+.site-body-left-collapse {
+  margin-left: -280px;
+  transition: all 0.2s ease;
+}
+.site-body-left-change-collapse {
+  position: fixed;
+  top: 52px;
+  min-width: calc(100% - 36px);
+  height: calc(100% - 52px);
+  padding-left: 18px;
+  padding-right: 18px;
+  margin-left: calc(36px - 100%);
+  background-color: var(--color-base-00);
+  transition: all 0.2s ease;
+}
+.site-body-left-change-active {
+  margin-left: 260px;
+  transition: all 0.2s ease;
+  z-index: 100;
 }
 
 .site-body-right {
@@ -1242,7 +1415,7 @@ ol > li {
   font-size: var(--sidebar-font-size);
   line-height: var(--line-height-tight);
 }
-.input-bg{
+.input-bg {
   border-radius: 22px;
   height: 44px;
   background: conic-gradient(
@@ -1255,7 +1428,7 @@ ol > li {
     #fa7819,
     #fd9833,
     #ffb44e
-	);
+  );
 }
 .site-body-left-search-input {
   width: calc(100% - 30px);
@@ -1409,7 +1582,7 @@ p {
 }
 
 .local-child-list-item-active a,
-.local-child-parent-active a{
+.local-child-parent-active a {
   color: var(--nav-item-color-active);
   font-weight: var(--outline-heading-weight-active);
 }
