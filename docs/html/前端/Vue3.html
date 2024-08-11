@@ -1,0 +1,561 @@
+<h2 id="1000" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">概述</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><p><span class="inline-code">Vue3</span>是JavaScript框架<span class="inline-code">Vue.js</span>的第三个主要版本，由尤雨溪领导的Vue团队于2020年9月15日发布。相较于Vue 2.x，Vue3进行了深度重构和优化，并引入了一系列新的特性以提升性能、易用性和灵活性。</p><div class="callout" data-callout="abstract">
+                <div class="callout-title"><div class="callout-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" 
+      width="24" height="24" viewBox="0 0 24 24" fill="none" 
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+      stroke-linejoin="round" class="svg-icon lucide-clipboard-list">
+      <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+      <path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path>
+      <path d="M8 16h.01"></path>
+      </svg></div>
+      <div class="callout-title-inner">Summary</div></div><div>title:摘要发布时间：2020年9月15日官方文档：<https://cn.vuejs.org/guide/introduction.html>仓库地址：<https://github.com/vuejs/vue-next></div></div><p>以下是Vue3的主要更新点：</p><span class="bold">性能提升</span><p>打包大小显著减少（41%），这有助于提高应用加载速度。</p><p>初次渲染速度加快了约55%，更新渲染速度提高了大约133%。</p><p>内存占用减少了54%，意味着更高效的内存管理和资源利用。</p><span class="bold">新架构与API变化</span><ul><li>Composition API：</li></ul><p>引入了全新的Composition API，它允许开发者在一个集中式的逻辑函数setup()中组织组件的状态和行为，相比Options API提供了一种更加灵活且易于重用代码的方式。</p><ul><li>响应式系统改进：</li></ul><p>使用ES6的<span class="inline-code">Proxy</span>代替<span class="inline-code">Object.defineProperty</span>实现更完整的响应式代理，增强了对对象属性添加/删除等操作的监听能力。</p><ul><li>Tree-Shaking支持：</li></ul><p>通过更好的模块化设计，Vue3能够更好地支持treeshaking，从而减小生产环境下的打包体积。</p><p> </p><ul><li>组件生命周期调整:</li></ul><p>Vue3移除了部分生命周期钩子如<span class="inline-code">beforeCreate</span>和<span class="inline-code">created</span>，并推荐在<span class="inline-code">setup()</span>中处理相关逻辑。</p><p>引入了一些新的生命周期钩子，例如<span class="inline-code">onMounted</span>、<span class="inline-code">onUpdated</span>、<span class="inline-code">onBeforeUnmount</span>等。</p><ul><li>其他新特性与优化:</li></ul><p><span class="inline-code">ref</span>和<span class="inline-code">reactive</span>等核心API用于管理组件状态。</p><p><span class="inline-code">Suspense</span>组件用于异步内容的延迟加载。</p><p><span class="inline-code">Teleport</span>组件用来将DOM节点“传送”到页面的其他位置。</p><p>支持<span class="inline-code">TypeScript</span>编写，官方提供了丰富的类型定义文件。</p><ul><li>工具链支持:</li></ul><p><span class="inline-code">Vue CLI</span> 和 <span class="inline-code">Vite</span> 的更新，Vite 提供了更快的开发体验，利用原生ES模块实现快速热更新。</p><div class="divider"></div><h2 id="1001" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">安装</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><div class="code" language="powershell">
+              <div class="code-header">powershell</div>
+              <pre><span class="token comment">#全局安装</span>
+npm install <span class="token operator">-</span>g @vue/<span class="token function">cli</span> 
+
+<span class="token comment">#查看版本，验证是否全局安装成功</span>
+vue <span class="token operator">--</span>version 
+</pre></div><div class="divider"></div><h2 id="1002" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">创建项目</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><p> "命令行"</p><div class="code" language="powershell">
+              <div class="code-header">powershell</div>
+              <pre><span class="token comment"># 项目名称</span>
+ vue create my-project
+ </pre></div><p>"图形化"</p><div class="code" language="powershell">
+              <div class="code-header">powershell</div>
+              <pre> vue ui
+  </pre></div><div class="divider"></div><h2 id="1003" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">目录结构</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><p><span class="inline-code">public</span> 文件夹中包括 <span class="inline-code">ico</span> 和 <span class="inline-code">index.html</span> 入口文件</p><p><span class="inline-code">vue.config.js</span> 为项目配置文件，可配置项目打包、运行等参数</p><p><span class="inline-code">src</span> 文件夹下为 <span class="inline-code">Vue</span> 核心工程</p><div class="callout" data-callout="note">
+                <div class="callout-title"><div class="callout-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" 
+      width="24" height="24" viewBox="0 0 24 24" fill="none" 
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+      stroke-linejoin="round" class="svg-icon lucide-pencil">
+      <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path>
+      <path d="m15 5 4 4"></path>
+      </svg></div>
+      <div class="callout-title-inner">Note</div></div><div>    <ul><li><span class="inline-code">App.vue</span> 为根组件，其余组件由此引入</li></ul>    <ul><li><span class="inline-code">main.js</span> 为全局 js 文件</li></ul>    <ul><li><span class="inline-code">assets</span> 存放图片等静态资源</li></ul>    <ul><li><span class="inline-code">router</span> 存放路由配置文件</li></ul>    <ul><li><span class="inline-code">components</span> 存放复用的 Vue 组件</li></ul>    <ul><li><span class="inline-code">store</span> 存放 <span class="inline-code">Vuex</span> 或 <span class="inline-code">Pinia</span> 状态管理</li></ul>    <ul><li><span class="inline-code">views</span> 存放视图页面组件</li></ul></div></div><div class="divider"></div><h2 id="1004" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">语法</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><p>组件基本结构有三部分 <span class="inline-code">template</span>, <span class="inline-code">script</span>, <span class="inline-code">style</span></p><div class="code" language="html">
+              <div class="code-header">html</div>
+              <pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token comment">&lt;!--注册组件可以直接作为标签使用--></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Header</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Header</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+<span class="token comment">//注册子组件</span>
+<span class="token keyword">import</span> Header <span class="token keyword">from</span> <span class="token string">'./Header.vue'</span><span class="token punctuation">;</span> 
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ref <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span>
+    
+<span class="token comment">//变量    </span>
+<span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+<span class="token comment">//函数</span>
+<span class="token keyword">const</span> <span class="token function-variable function">login</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>  
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+//只对本组件生效的css样式
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+</pre></div><div class="divider"></div><h2 id="1005" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">路由</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><p><span class="inline-code">npm</span> 安装 <span class="inline-code">vue-router</span> 管理路由</p><div class="code" language="powershell">
+              <div class="code-header">powershell</div>
+              <pre>npm install vue-router
+</pre></div><p>修改 <span class="inline-code">main.js</span> 如下：</p><div class="code" language="javascript">
+              <div class="code-header">javascript</div>
+              <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> createApp <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App.vue'</span>
+<span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">'./router/index'</span> <span class="token comment">//导入路由表</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>router<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//使用路由导航</span>
+</pre></div><p>之后在 <span class="inline-code">src</span> 文件夹下新增 <span class="inline-code">router</span> 目录，在其下创建 <span class="inline-code">index.js</span> 配置路由:</p><div class="code" language="javascript">
+              <div class="code-header">javascript</div>
+              <pre><span class="token comment">//引入组件，@代表根目录指向 src</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createRouter<span class="token punctuation">,</span> createWebHistory <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue-router'</span>
+
+<span class="token comment">//配置路由表</span>
+<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">createRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">history</span><span class="token operator">:</span> <span class="token function">createWebHistory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+  <span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">createRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">history</span><span class="token operator">:</span> <span class="token function">createWebHistory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">routes</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"home"</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"@/views/Home.vue"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">meta</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"网页 | 首页"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/login"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"login"</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"@/views/Login.vue"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">meta</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"网页 | 登录"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">//每次路由跳转前验证信息</span>
+router<span class="token punctuation">.</span><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>to<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>isAuth<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//全局变量保存登录状态</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>sessionStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">"login"</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  
+    <span class="token punctuation">}</span> 
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'抱歉，您无权限查看！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">//跳转登录页面</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'/login'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> 
+  <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">//每次路由跳转后更新标题</span>
+router<span class="token punctuation">.</span><span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> <span class="token keyword">from</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  document<span class="token punctuation">.</span>title <span class="token operator">=</span> to<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>title <span class="token operator">||</span> <span class="token string">"网页 | 欢迎"</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> router<span class="token punctuation">;</span> 
+</pre></div><p>页面的跳转：</p><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token comment">// 跳转页面</span>
+proxy<span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"login"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 打开新页面</span>
+<span class="token keyword">let</span> newRoute <span class="token operator">=</span> proxy<span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token comment">// 跳转页面的路由名称</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"newRouteName"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">query</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 传递的路径参数</span>
+    <span class="token literal-property property">key</span><span class="token operator">:</span> <span class="token function">encodeURIComponent</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+window<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>newRoute<span class="token punctuation">.</span>href<span class="token punctuation">,</span> <span class="token string">"_blank"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><div class="divider"></div><h2 id="1006" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">组件传值</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><h3 id="1007" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">Mitt</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>npm 安装 <span class="inline-code">mitt</span> 事件总线</p><div class="code" language="powershell">
+              <div class="code-header">powershell</div>
+              <pre>npm install mitt
+</pre></div><p>修改 <span class="inline-code">main.js</span> 如下：</p><div class="code" language="javascript">
+              <div class="code-header">javascript</div>
+              <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> createApp <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App.vue'</span>
+<span class="token keyword">import</span> mitt <span class="token keyword">from</span> <span class="token string">'mitt'</span> <span class="token comment">//导入mitt</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//设置$bus代替mitt</span>
+app<span class="token punctuation">.</span>config<span class="token punctuation">.</span>globalProperties<span class="token punctuation">.</span>$bus <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">mitt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+app<span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+</pre></div><p>发送数据组件:</p><div class="code" language="javascript">
+              <div class="code-header">javascript</div>
+              <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> getCurrentInstance <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"vue"</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> proxy <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">getCurrentInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> param <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+proxy<span class="token punctuation">.</span>$bus<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">"busname"</span><span class="token punctuation">,</span> param<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><p>接受数据组件:</p><div class="code" language="javascript">
+              <div class="code-header">javascript</div>
+              <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> getCurrentInstance <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"vue"</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> proxy <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">getCurrentInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//必须在加载之前传值</span>
+<span class="token keyword">let</span> curParam <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">onMounted</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  proxy<span class="token punctuation">.</span>$bus<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"busname"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">param</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    curParam<span class="token punctuation">.</span>value <span class="token operator">=</span> param<span class="token punctuation">;</span> 
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><h3 id="1008" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">父子传参</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>父组件：</p><div class="code" language="html">
+              <div class="code-header">html</div>
+              <pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>CommentSub</span>
+  <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item in subcomment<span class="token punctuation">"</span></span>
+  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>subcomment-list-item<span class="token punctuation">"</span></span>
+  <span class="token attr-name">:id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item.id<span class="token punctuation">"</span></span>
+  <span class="token attr-name">:content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item.content<span class="token punctuation">"</span></span>
+  <span class="token attr-name">:gmtCreate</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item.gmtCreate<span class="token punctuation">"</span></span>
+<span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>CommentSub</span><span class="token punctuation">></span></span>
+</pre></div><p>子组件：</p><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token keyword">const</span> props <span class="token operator">=</span> <span class="token function">defineProps</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token string">"id"</span><span class="token punctuation">,</span>
+  <span class="token string">"content"</span><span class="token punctuation">,</span>
+  <span class="token string">"gmtCreate"</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</pre></div><div class="divider"></div><h2 id="1009" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">状态管理</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><h3 id="1010" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">Vuex</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><h3 id="1011" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">Pinia</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><ul><li>定义</li></ul><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> defineStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"pinia"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> useUserStore <span class="token operator">=</span> <span class="token function">defineStore</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">state</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">userInfo</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">getters</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">actions</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">persist</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">enabled</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><ul><li>使用</li></ul><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> useUserStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@/stores/user"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> storeToRefs <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"pinia"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> userStore <span class="token operator">=</span> <span class="token function">useUserStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> userInfo <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">storeToRefs</span><span class="token punctuation">(</span>userStore<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><h2 id="1012" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">打包</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><p><span class="inline-code">vue.config.js</span> 配置 <span class="inline-code">webpack</span> 打包压缩：</p><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token keyword">const</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"@vue/cli-service"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 安装压缩</span>
+<span class="token keyword">const</span> CompressionPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'compression-webpack-plugin'</span><span class="token punctuation">)</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">lintOnSave</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">transpileDependencies</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">configureWebpack</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DefinePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">__VUE_OPTIONS_API__</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">__VUE_PROD_DEVTOOLS__</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">__VUE_PROD_HYDRATION_MISMATCH_DETAILS__</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token keyword">new</span> <span class="token class-name">CompressionPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'[path].gz'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">algorithm</span><span class="token operator">:</span> <span class="token string">'gzip'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.js$|\.css$|\.html$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">threshold</span><span class="token operator">:</span> <span class="token number">10240</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">minRatio</span><span class="token operator">:</span> <span class="token number">0.8</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">deleteOriginalAssets</span><span class="token operator">:</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</pre></div><h2 id="1013" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">UI库</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><h3 id="1014" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">Element-Plus</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><h2 id="1015" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">网络请求</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><h3 id="1016" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">axios</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><h2 id="1017" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">Cookie</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><h3 id="1018" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">js-cookie</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><h2 id="1019" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">举例</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><h3 id="1020" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">富文本编辑器</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><h3 id="1021" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">Markdown编辑器</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><h3 id="1022" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">图片上传</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><h3 id="1023" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">音乐播放器</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><h3 id="1024" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">视频播放器</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3>
