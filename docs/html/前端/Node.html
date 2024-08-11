@@ -1,0 +1,45 @@
+<h2 id="1000" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>npm<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><div class="code" language="sh">
+              <div class="code-header">sh</div>
+              <pre><span class="token comment"># 生产环境</span>
+<span class="token function">npm</span> <span class="token function">install</span> express <span class="token parameter variable">--save</span>
+
+<span class="token comment"># 开发环境</span>
+<span class="token function">npm</span> <span class="token function">install</span> express --save-dev
+<span class="token function">npm</span> <span class="token function">install</span> express <span class="token parameter variable">-D</span>
+
+<span class="token comment"># 全局安装</span>
+<span class="token function">npm</span> <span class="token function">install</span> express <span class="token parameter variable">-g</span>
+
+<span class="token comment"># 临时安装，不添加到package.json</span>
+<span class="token function">npm</span> <span class="token function">install</span> express
+
+<span class="token comment"># 卸载</span>
+<span class="token function">npm</span> uninstall express
+
+<span class="token comment"># 版本</span>
+<span class="token function">npm</span> <span class="token function">install</span> express@1.0.0
+
+<span class="token comment"># 安装所有依赖</span>
+<span class="token function">npm</span> <span class="token function">install</span>
+
+<span class="token comment"># 生产环境安装</span>
+<span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">--production</span>
+<span class="token function">npm</span> ci
+
+<span class="token comment"># 可以直接使用 npx 命令而无需在系统中全局安装相应的包</span>
+npx eslint <span class="token builtin class-name">.</span> <span class="token parameter variable">--ext</span> .ts
+
+</pre></div>

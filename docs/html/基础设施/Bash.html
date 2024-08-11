@@ -1,0 +1,911 @@
+<h2 id="1000" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">概述</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><p><span class="inline-code">Bash</span> 是一个开源的 <span class="inline-code">Unix shell</span>，由 <span class="inline-code">Brian Fox</span> 开发，目前由 <span class="inline-code">Free Software Foundation</span> 维护。</p><p><span class="inline-code">Bash</span> 是<span class="inline-code">Unix shell</span>的一种，1989年发布第一个正式版本，原先是计划用在 <span class="inline-code">GNU</span> 操作系统上，但能运行于大多数类<span class="inline-code">Unix</span> 系统的操作系统之上，包括 <span class="inline-code">Linux</span> 与 <span class="inline-code">Mac OS X v10.4</span> 都将它作为默认 <span class="inline-code">shell</span>。</p><p><span class="inline-code">Bash</span> 是 <span class="inline-code">Bourne shell</span> 的后继兼容版本与开放源代码版本，它的名称来自 <span class="inline-code">Bourne shell（sh）</span> 的一个双关语<span class="inline-code">（Bourne again / born again）：Bourne-Again SHell</span></p><p>!!! abstract "简介"</p><p>	发布时间：1989年</p><p>    官网地址：<https://www.gnu.org/software/bash/></p><p>	官方文档：<https://www.gnu.org/software/bash/manual/bash.html></p><p>	仓库地址：<https://github.com/bminor/bash></p><h2 id="1001" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">安装</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><h3 id="1002" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">Git Bash</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>安装 <span class="inline-code">Git</span>后可以直接在<span class="inline-code">Git Bash</span>中执行 <span class="inline-code">bash</span>命令</p><h3 id="1003" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">Cygwin</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>安装 <span class="inline-code">Cygwin</span>后，在<span class="inline-code">Cygwin</span>的终端中执行 <span class="inline-code">bash</span>命令</p><h3 id="1004" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">WSL</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>安装 <span class="inline-code">Windows Subsystem for Linux</span>后，在 <span class="inline-code">Windows Subsystem for Linux</span>的终端中执行 <span class="inline-code">bash</span>命令。</p><p>此外，也可以在 <span class="inline-code">powershell</span>中直接执行<span class="inline-code">bash</span>命令。</p><p>!!! example "例子"</p><p>    === "wsl"</p><p>        <div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>        <span class="token function">ls</span> <span class="token parameter variable">-l</span>
+        </pre></div></p><p>    === "powershell"</p><p>        <div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>        <span class="token function">bash</span> <span class="token parameter variable">-c</span> <span class="token string">"ls -l"</span>
+        </pre></div></p><h2 id="1005" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">语法</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><p><span class="inline-code">Bash</span> 语法与 <span class="inline-code">Unix shell</span> 语法类似，但比 <span class="inline-code">Unix shell</span> 更加强大。</p><h3 id="1006" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">命令分类</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>可以运行的命令包括文件，内建指令和关键字。</p><p>使用 <span class="inline-code">type</span> 命令可以查看命令的类型。</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token comment"># 文件</span>
+<span class="token builtin class-name">type</span> <span class="token parameter variable">-t</span> <span class="token function">ls</span>
+
+<span class="token comment"># 内建指令</span>
+<span class="token builtin class-name">type</span> <span class="token parameter variable">-t</span> <span class="token builtin class-name">pwd</span>
+
+<span class="token comment"># 关键字</span>
+<span class="token builtin class-name">type</span> <span class="token parameter variable">-t</span> <span class="token keyword">if</span>  
+</pre></div><h3 id="1007" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">文件描述符与重定向</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>每个进程的标准输入 <span class="inline-code">stdin</span> 描述符为 <span class="inline-code">0</span>，标准输出 <span class="inline-code">stdout</span> 描述符为 <span class="inline-code">1</span>，标准错误 <span class="inline-code">stderr</span> 描述符为 <span class="inline-code">2</span>。</p><p>如果有一个程序为 <span class="inline-code">mybash</span> , 我们对其重定向输入输出，可以执行以下命令：</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token comment"># 重定向输入输出</span>
+./mybash <span class="token operator">&lt;</span> data.in <span class="token operator">></span> data.out 
+
+<span class="token comment"># 重定向错误输出</span>
+./mybash <span class="token operator">&lt;</span> data.in <span class="token operator">></span> data.out <span class="token operator"><span class="token file-descriptor important">2</span>></span> data.err
+
+<span class="token comment"># 重定向错误输出到标准输出</span>
+./mybash <span class="token operator">&lt;</span> data.in <span class="token operator">></span> data.out <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span>
+./mybash <span class="token operator">&lt;</span> data.in <span class="token operator">&amp;></span> data.out 
+
+<span class="token comment"># 同时在命令行输出并保存到文件</span>
+./mybash <span class="token operator">&lt;</span> data.in <span class="token operator">|</span> <span class="token function">tee</span> data.out 
+
+<span class="token comment"># 丢弃输出</span>
+./mybash <span class="token operator">&lt;</span> data.in <span class="token operator">></span> /dev/null 
+
+<span class="token comment"># 在文件末尾追加输出信息，不会覆盖原有内容</span>
+./mybash <span class="token operator">&lt;</span> data.in <span class="token operator">>></span> data.out 
+
+<span class="token comment"># 重定向输出到文件描述符3，在原有内容后追加，这与普通文件不同</span>
+./mybash <span class="token operator">&lt;</span> data.in <span class="token operator">></span><span class="token file-descriptor important">&amp;3</span>
+
+<span class="token comment"># 后台执行</span>
+./mybash <span class="token operator">&lt;</span> data.in <span class="token operator">></span> data.out <span class="token operator">&amp;</span>
+
+</pre></div><p>!!! example "例子"</p><p>    <div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>    <span class="token function">nohup</span> ./mybash <span class="token operator">&lt;</span> data.in <span class="token operator">&amp;>></span> out.log <span class="token operator">&amp;</span>
+    ``
+
+文件描述符操作：
+
+</pre></div>shell</p><h1 id="1008" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>查看文件描述符<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>ls -l /proc/$$/fd</p><h1 id="1009" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>创建文件描述符3，可以读写<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>exec 3> data.out</p><h1 id="1010" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>创建文件描述符4，只能读<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>exec 4< data.in</p><p>cat <&4</p><h1 id="1011" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>关闭文件描述符3<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>exec 3>&-</p><div class="code" language="">
+              <div class="code-header"></div>
+              <pre></pre></div><p>shell</p><p>    #!/bin/bash</p><p>    echo "Hello World!"</p><p>    <div class="code" language="">
+              <div class="code-header"></div>
+              <pre></pre></div>shell</p><p>    #!/usr/bin/env bash</p><p>    echo "Hello World!"</p><p>    <div class="code" language="">
+              <div class="code-header"></div>
+              <pre></pre></div>python</p><p>    #!/usr/bin/env python</p><p>    <h1 id="1012" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>这是一个使用Python编译器执行的脚本<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1></p><p>    print("Hello, World!")</p><p>    <div class="code" language="">
+              <div class="code-header"></div>
+              <pre></pre></div>shell</p><p>MYVAR=myvalue</p><p>PHONE="123-456-789"</p><p>echo $MYVAR</p><p>echo "$MYVAR"</p><p>echo ${MYVAR}</p><h1 id="1013" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>输出变量长度<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>echo ${#MYVAR}</p><h1 id="1014" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>输出变量前3个字符<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>echo ${MYVAR:0:3}</p><h1 id="1015" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>输出变量第3个字符之后的所有字符<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>echo ${MYVAR:3}</p><h1 id="1016" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>输出变量最后3个字符，注意空格<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>echo ${MYVAR: -3}</p><h1 id="1017" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>从字符串头部删除第一个匹配的字符<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>echo ${PHONE#<span class="italic">-} </span></p><h1 id="1018" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>从字符串头部删除所有匹配的字符<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>echo ${PHONE##</p>-<p>} </p><h1 id="1019" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>从字符串尾部删除第一个匹配的字符<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>echo ${PHONE%-<span class="italic">} </span></p><h1 id="1020" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>从字符串尾部删除所有匹配的字符<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>echo ${PHONE%%-</p><p>} </p><h1 id="1021" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>替换-为空字符，只替换第一个匹配的字符<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>echo ${PHONE/-/}</p><h1 id="1022" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>替换-为空字符，替换所有匹配的字符<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>echo ${PHONE//-/}</p><h1 id="1023" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>替换头部出现的字符<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>echo ${PHONE/#123/456}</p><h1 id="1024" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>替换模式匹配的字符<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h1><p>echo ${PHONE/1<span class="italic">3/456}</span><div class="code" language="">
+              <div class="code-header"></div>
+              <pre></pre></div>(反引号)<span class="inline-code"></span></p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token assign-left variable">MYVAR</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$MYVAR</span>
+
+<span class="token assign-left variable">MYVAR</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token builtin class-name">pwd</span><span class="token variable">`</span></span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$MYVAR</span>
+</pre></div><p>特殊变量|含义</p>-<p>|-</p><p>$PATH|环境变量</p><p>$$|进程ID</p><p>$!|最近一次执行的后台命令的进程ID</p><p>$(hostname)|主机名</p><p>$(uname -n)|主机名</p><p>$(uname -m)|系统架构</p><p>$(uname -r)|内核版本</p><p>$(uname -s)|系统OS名称</p><p>$(whoami)|用户名</p><p>$(date)|当前日期</p><p>$(pwd)|当前目录</p><p>$IFS|字段分隔符，</p><p>read<span class="inline-code"> 命令使用</span>$PS1|命令提示符</p><p>$PS2|第二级命令提示符</p><p>$PS3|第三级命令提示符，选择提示符</p><p>$PS4|调试命令提示符</p><p>!!! tip "注意"</p><p>    <ul><li>单引号可以保留空格</li></ul>    <div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>    <span class="token assign-left variable">MYVAR</span><span class="token operator">=</span><span class="token string">'myvalue has space'</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$MYVAR</span>
+    </pre></div></p><p>    <ul><li>双引号会进行变量替换</li></ul>    <div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>    <span class="token assign-left variable">VAR</span><span class="token operator">=</span>space
+    <span class="token assign-left variable">MYVAR</span><span class="token operator">=</span><span class="token string">"myvalue has <span class="token variable">$VAR</span>"</span>
+
+    <span class="token builtin class-name">echo</span> <span class="token variable">$MYVAR</span>
+    </pre></div></p><p>    <ul><li>等号前后都不能有空格</li></ul>    <div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>    <span class="token comment"># 认为MYVAR为函数名，其后为参数</span>
+    MYVAR <span class="token operator">=</span> myvalue
+    MYVAR <span class="token operator">=</span>myvalue
+
+    <span class="token comment"># 认为执行myvalue指令的同时设置MYVAR变量为空</span>
+    <span class="token assign-left variable">MYVAR</span><span class="token operator">=</span> myvalue    
+    </pre></div></p><h3 id="1025" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">位置参数</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3>empty<p>$0<span class="inline-code"> 表示脚本文件名，</span>$1<span class="inline-code"> 表示第一个参数，</span>$2<span class="inline-code"> 表示第二个参数，以此类推。</span></p><p>如果参数超过 </p><p>$9<span class="inline-code">，可以使用 </span>shift<span class="inline-code"> 进行参数移位，每次舍弃一个参数。</span></p>empty<p>$#<span class="inline-code"> 表示参数个数，</span>$@<span class="inline-code"> 或 </span>$</p><p><span class="inline-code"> 表示所有参数，</span>$?<span class="inline-code">表示上次命令的退出状态码。</span></p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token comment"># 获取第一个参数的前两位</span>
+<span class="token comment"># 0 表示从第一个字符开始，2 表示长度为2</span>
+<span class="token assign-left variable">input</span><span class="token operator">=</span><span class="token variable">${1<span class="token operator">:</span>0<span class="token operator">:</span>2}</span>
+
+<span class="token comment"># 如果第一个参数不存在，则使用默认值，$1 的值不变</span>
+<span class="token assign-left variable">DIR</span><span class="token operator">=</span><span class="token variable">${1<span class="token operator">:-</span><span class="token operator">/</span>tmp<span class="token operator">/</span>logs}</span>
+
+<span class="token comment"># 如果第一个参数不存在，则使用默认值，$1 的值会被置为默认值</span>
+<span class="token assign-left variable">DIR</span><span class="token operator">=</span><span class="token variable">${1<span class="token operator">:=</span><span class="token operator">/</span>tmp<span class="token operator">/</span>logs}</span>
+
+<span class="token comment"># 如果第一个参数不存在，则输出错误信息并退出</span>
+<span class="token assign-left variable">DIR</span><span class="token operator">=</span><span class="token variable">${1<span class="token operator">:?</span>"Error<span class="token operator">:</span> Missing required parameter"}</span>
+</pre></div><p>!!! tip "注意"</p><p>    当$@在双引号("）中使用时，它会保持参数的独立性，即每个参数都被视为单独的一个元素。换句话说，当你遍历或操作参数列表时，每个参数都会被当作单独的字符串，即使参数中包含空格也不受影响。</p><p>    当$<span class="italic">在双引号("）中使用时，它会把所有参数连接成一个单一的字符串，各个参数之间用第一个字符的IFS（Internal Field Separator，默认为空格、制表符和换行符）分隔。</span></p><h3 id="1026" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">输入</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3>empty<p>read<span class="inline-code"> 命令用于读取输入，-p 选项表示提示符，-r 选项表示不转义，-s 选项表示不显示输入。</span></p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"Enter your name: "</span> name
+<span class="token builtin class-name">echo</span> <span class="token string">"Hello <span class="token variable">$name</span>!"</span>
+</pre></div><h3 id="1027" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">输出</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3>empty<p>echo<span class="inline-code"> 命令用于输出内容，-n 选项表示不换行。</span></p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token builtin class-name">echo</span> <span class="token string">"Hello World!"</span>
+<span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"Hello World!"</span>
+</pre></div>empty<p>printf<span class="inline-code"> 命令用于格式化输出。</span></p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token builtin class-name">printf</span> <span class="token string">"%s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"Hello World!"</span>
+
+</pre></div><h3 id="1028" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">条件语句</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3>empty<p>if<span class="inline-code"> 语句用于判断条件，</span>then<span class="inline-code"> 语句用于执行条件为真时执行的命令，</span>else<span class="inline-code"> 语句用于执行条件为假时执行的命令，</span>fi<span class="inline-code"> 语句用于结束 </span>if<span class="inline-code"> 语句。</span></p><p>注意，</p><p>if<span class="inline-code"> 语句认为函数返回值为0为真，其他为假。</span></p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token keyword">if</span> 条件<span class="token punctuation">;</span> <span class="token keyword">then</span>
+   <span class="token comment"># 执行命令</span>
+<span class="token keyword">fi</span>
+</pre></div><ul><li><span class="bold"></span>[[ ]]<span class="inline-code"></span></li></ul><p>=== "文件"</p><p>    文件操作符|描述</p><p>    -|-</p><p>    -e|文件存在</p><p>    -d|文件存在且是目录</p><p>    -r|文件存在且可读</p><p>    -w|文件存在且可写</p><p>    -x|文件存在且可执行</p><p>    -z|文件存在且大小为0</p><p>    <div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-e</span> <span class="token variable">$FILENAME</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">"File exists."</span>
+    <span class="token keyword">fi</span>
+    </pre></div></p><p>=== "数值"</p><p>    数值操作符|描述</p><p>    -|-</p><p>    -eq|等于</p><p>    -ne|不等于</p><p>    -gt|大于</p><p>    -ge|大于等于</p><p>    -lt|小于</p><p>    -le|小于等于</p><p>    <div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$A</span> <span class="token parameter variable">-gt</span> <span class="token variable">$B</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">"A is greater than B"</span>
+    <span class="token keyword">fi</span>
+    </pre></div></p><p>!!! note "注意"</p><p>    <span class="bold"></span>[ ]<span class="inline-code"> 单中括号</span></p><p>    <ul><li>严格语法要求：括号两边必须有空格，条件表达式内的各个元素之间也需要适当空格。例如，正确的写法是 </li></ul>[ $a -eq $b ]<span class="inline-code">，而不是 </span>[$a -eq $b]<span class="inline-code"> 或 </span>[ $a-$b ]<span class="inline-code"></span></p><p>    <ul><li>通配符扩展：使用的是 </li></ul>shell<span class="inline-code"> 的通配符扩展规则，比如 </span></p><p><span class="inline-code"></span>、<span class="inline-code">?</span> 等。这可能会导致意想不到的结果，特别是在未双引号包围字符串的情况下。</p><p>    <ul><li>字符串比较：使用 <span class="inline-code">=</span> 或 <span class="inline-code">!=</span> 进行字符串比较，注意这里不支持 <span class="inline-code">==</span> 。例如，<span class="inline-code">[ "$str1" = "$str2" ]</span></li></ul></p><p>    <ul><li>逻辑运算符：支持逻辑与 <span class="inline-code">&&</span> 和逻辑或 <span class="inline-code">||</span>，但需要作为单独的测试表达式。</li></ul>    例如：<span class="inline-code">if [ test1 ] && [ test2 ]</span></p><p>    <span class="bold"><span class="inline-code">[[ ]]</span> 双中括号</span></p><p>    <ul><li>宽松语法要求：括号两边不需要空格，条件表达式内的元素也不强制要求空格，使得书写更为方便。例如，<span class="inline-code">[[ $a -eq $b ]]</span> 是允许的</li></ul></p><p>    <ul><li>无通配符扩展：在 <span class="inline-code">[[ ]]</span> 内部，通配符不再进行扩展，减少了意外匹配的风险。字符串应直接比较，无需担心特殊字符的处理</li></ul></p><p>    <ul><li>字符串比较：支持 <span class="inline-code">==</span> 和 <span class="inline-code">!=</span> 进行字符串比较，更符合其他编程语言的习惯。例如，<span class="inline-code">[[ "$str1" == "$str2" ]]</span></li></ul></p><p>    <ul><li>内置逻辑运算符：可以直接在 <span class="inline-code">[[ ]]</span> 内使用逻辑与 <span class="inline-code">&&</span> 和逻辑或 <span class="inline-code">||</span>，无需分成多个测试表达式。例如：<span class="inline-code">if [[ test1 && test2 ]]</span></li></ul></p><p>sh</p><ul><li><span class="bold"><span class="inline-code">(( ))</span></span></li></ul><p>默认为数值操作符，可以进行数值运算，变量前无需<span class="inline-code">$</span>。</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token keyword">if</span> <span class="token variable"><span class="token punctuation">((</span> VAL <span class="token operator">></span> <span class="token number">6</span> <span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"VAL is greater than 6"</span>
+<span class="token keyword">fi</span>
+</pre></div><ul><li><span class="bold"><span class="inline-code">&& 与 ||</span></span></li></ul><p><span class="inline-code">&&</span> 表示当前条件为真时执行下一个条件，<span class="inline-code">||</span> 表示当前条件为假时执行下一个条件。</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-e</span> <span class="token variable">$FILENAME</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"File exists."</span>
+<span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-e</span> <span class="token variable">$FILENAME</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">{</span>echo <span class="token string">"File exists."</span><span class="token punctuation">;</span> <span class="token builtin class-name">exit</span> <span class="token number">1</span><span class="token punctuation">;</span><span class="token punctuation">}</span>  
+</pre></div><p><span class="inline-code">case</span> 语句用于匹配字符串，<span class="inline-code">)</span> 表示结束匹配条件，<span class="inline-code">;;</span> 表示结束匹配分支所有语句。</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"What is your favorite fruit?: "</span> fruit
+<span class="token keyword">case</span> <span class="token variable">$fruit</span> <span class="token keyword">in</span>
+  orange<span class="token punctuation">)</span> 
+  <span class="token builtin class-name">echo</span> <span class="token string">"The <span class="token variable">$fruit</span> is orange"</span> <span class="token punctuation">;</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"The <span class="token variable">$fruit</span> is sweet"</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+  banana<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"The <span class="token variable">$fruit</span> is yellow"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+  pear<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"The <span class="token variable">$fruit</span> is green"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+  *<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"I don't know what colour a <span class="token variable">$fruit</span> is"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+<span class="token keyword">esac</span>
+</pre></div><h3 id="1029" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">循环语句</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p><span class="inline-code">while</span> 与 <span class="inline-code">for</span> 语句用于循环执行命令，<span class="inline-code">do</span> 语句用于执行循环体，<span class="inline-code">done</span> 语句用于结束循环。</p><p><span class="inline-code">break</span> 与 <span class="inline-code">continue</span> 可以指定跳过循环次数。<span class="inline-code">break 2</span> 表示跳过2次循环，<span class="inline-code">continue 2</span> 表示跳过2次循环并继续下一次循环。</p><p>=== "while"</p><p>    <div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>    <span class="token keyword">while</span> <span class="token variable"><span class="token punctuation">((</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">))</span></span>
+    <span class="token keyword">do</span> 
+        <span class="token builtin class-name">echo</span> <span class="token variable">$i</span>
+        <span class="token builtin class-name">let</span> i++ <span class="token comment"># 数值运算</span>
+    <span class="token keyword">done</span>
+    </pre></div></p><p>=== "for"</p><p>    <div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>    <span class="token comment"># for i in {1..100}</span>
+    <span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">))</span></span>
+    <span class="token keyword">do</span> 
+        <span class="token builtin class-name">echo</span> <span class="token variable">$i</span>
+    <span class="token keyword">done</span>
+    </pre></div></p><h3 id="1030" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">模式匹配</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>只匹配文件名。</p><p><span class="inline-code"><span class="italic"></span> 表示匹配任意字符，<span class="inline-code">?</span> 表示匹配一个字符，<span class="inline-code">[ ]</span> 表示匹配单个字符的范围，<span class="inline-code">[^ ](或[! ])</span> 表示匹配不含该单个字符的范围。</span></p><p>模式|举例</p>-<p>|-</p><p><span class="inline-code"></span>.txt</p><p>|<span class="inline-code">a.txt</span>, <span class="inline-code">bc.txt</span>, <span class="inline-code">.txt</span>, ...</p><p><span class="inline-code">?.txt</span>|<span class="inline-code">c.txt</span>, <span class="inline-code">d.txt</span>, ...</p><p><span class="inline-code">[abc].txt</span>|<span class="inline-code">a.txt</span>, <span class="inline-code">b.txt</span>, <span class="inline-code">c.txt</span></p><p><span class="inline-code"><span class="italic"></span>、<span class="inline-code">?</span>、<span class="inline-code">[ ]</span>等字符在 <span class="inline-code">[]</span> 中使用时，需要转义，否则会被当作范围匹配符。</span></p><h3 id="1031" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">正则匹配</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p><span class="inline-code">grep</span> 命令用于匹配字符串，<span class="inline-code">-E</span> 选项表示使用正则表达式，或者使用 <span class="inline-code">egrep</span> 命令。</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token function">grep</span> <span class="token parameter variable">-E</span> <span class="token string">'&lt;([A-Za-z]*)>.*&lt;/\1>'</span> file.txt
+<span class="token function">egrep</span> <span class="token string">'&lt;([A-Za-z]*)>.*&lt;/\1>'</span> file.txt
+
+<span class="token function">grep</span> <span class="token parameter variable">-E</span> <span class="token string">"^[0-9]+$"</span> file.txt <span class="token operator">></span> newfile.txt
+<span class="token function">grep</span> <span class="token parameter variable">-E</span> <span class="token string">"^[0-9]+$"</span> file.txt <span class="token operator">|</span> <span class="token function">wc</span> <span class="token parameter variable">-l</span> <span class="token comment"># 统计行数</span>
+
+</pre></div><p>正则表达式字符|描述</p>-<p>|-</p><p><span class="inline-code">^</span>|匹配字符串开头</p><p><span class="inline-code">$</span>|匹配字符串结尾</p><p><span class="inline-code">.</span>|匹配任意单个字符，除了换行符</p><p><span class="inline-code"></span></p><p>|匹配0或多个前面的字符</p><p><span class="inline-code">+</span>|匹配1或多个前面的字符</p><p><span class="inline-code">?</span>|匹配0或1个前面的字符</p><p><span class="inline-code">[ ]</span>|匹配一个单字符的范围</p><p><span class="inline-code">[^ ]</span>|匹配一个不含该单字符的范围</p><p><span class="inline-code">()</span>|匹配括号内的字符，可用于回调 <span class="inline-code">\1</span> 表示第一个回调括号内的字符</p><p><span class="inline-code">{ }</span>|匹配指定次数的字符，如 <span class="inline-code">{3,5}</span> 表示匹配3到5个前面的字符</p><h3 id="1032" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">函数</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>函数格式：<span class="inline-code">funcname() { 函数体 }</span></p><p>函数变量默认全局变量，添加 <span class="inline-code">local</span> 修饰符可限定函数变量为局部变量。</p><p>函数返回值不超过255</p><p>函数递归</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token shebang important">#!/bin/bash</span>
+<span class="token function-name function">factorial</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token parameter variable">-gt</span> <span class="token string">"1"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token assign-left variable">previous</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">expr</span> $1 - <span class="token number">1</span><span class="token variable">`</span></span>
+    <span class="token assign-left variable">parent</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span>factorial $previous<span class="token variable">`</span></span>
+    <span class="token assign-left variable">result</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">expr</span> $1 <span class="token punctuation">\</span>* $parent<span class="token variable">`</span></span> <span class="token comment"># 转义*</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$result</span>
+  <span class="token keyword">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token number">1</span>
+  <span class="token keyword">fi</span>
+<span class="token punctuation">}</span>
+
+factorial <span class="token variable">$1</span>
+</pre></div><h3 id="1033" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">数组</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><ul><li>初始化</li></ul><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token comment"># 一次全部，但必须连续</span>
+<span class="token assign-left variable">arr</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 一次一个，可以不连续</span>
+arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span>
+arr<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">6</span>
+arr<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">101</span>
+
+<span class="token assign-left variable">arr</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">6</span> <span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">101</span><span class="token punctuation">)</span>
+<span class="token assign-left variable">arr</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token operator">=</span>A <span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token operator">=</span>B <span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token operator">=</span>C<span class="token punctuation">)</span>
+
+<span class="token assign-left variable">arr</span><span class="token operator">=</span><span class="token punctuation">(</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">cat</span> file.txt <span class="token variable">)</span></span><span class="token punctuation">)</span>
+
+<span class="token assign-left variable">arr</span><span class="token operator">=</span><span class="token punctuation">(</span> *.txt <span class="token punctuation">)</span>
+
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-a</span> arr
+
+<span class="token comment"># 修改IFS可以改变分隔符</span>
+<span class="token keyword">while</span> <span class="token assign-left variable"><span class="token environment constant">IFS</span></span><span class="token operator">=</span>: <span class="token builtin class-name">read</span> <span class="token parameter variable">-a</span> arr
+<span class="token keyword">do</span>
+    <span class="token comment"># 必须用{}</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">${arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span>
+<span class="token keyword">done</span> <span class="token operator">&lt;</span> file.txt
+
+<span class="token comment"># 一共读取5行，跳过前2行</span>
+<span class="token builtin class-name">readarray</span> arr <span class="token parameter variable">-n</span> <span class="token number">5</span> <span class="token parameter variable">-s</span> <span class="token number">2</span>
+</pre></div><ul><li>修改</li></ul><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token comment"># 添加一个元素</span>
+arr<span class="token punctuation">[</span><span class="token variable">${<span class="token operator">#</span>arr<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">6</span>
+
+<span class="token comment"># 添加多个元素</span>
+<span class="token assign-left variable">newarr</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token assign-left variable">arr</span><span class="token operator">+=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">${newarr<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 删除单个元素</span>
+<span class="token builtin class-name">unset</span> arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+<span class="token comment"># 删除所有元素</span>
+<span class="token builtin class-name">unset</span> arr
+</pre></div><ul><li>遍历</li></ul><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token comment"># 数组长度</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">${<span class="token operator">#</span>arr<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>
+
+<span class="token comment"># 遍历</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">${arr<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">${arr<span class="token punctuation">[</span>@<span class="token punctuation">]</span><span class="token operator">:</span>0<span class="token operator">:</span>5}</span>
+
+<span class="token comment"># for i in seq 0 $((${#arr[@]}-1)); do</span>
+<span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${arr<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$i</span>
+    <span class="token comment"># 字符长度</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">${<span class="token operator">#</span>i}</span>
+<span class="token keyword">done</span>
+</pre></div><p>!!! note "注意"</p><p>    <span class="inline-code">for i in "${arr[@]}"</span> 可以保证数组元素保留空格</p><p>    <span class="inline-code">for i in ${arr[@]}</span> 不保留空格</p><p>    <span class="inline-code">for i in ${arr[<span class="italic">]}</span> 不保留空格</span></p><p>    <span class="inline-code">for i in "${arr[</span>]}"</p><p> 所有元素作为一个元素</p><h3 id="1034" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">颜色</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>转义序列以 <span class="inline-code">\e[</span>（或 <span class="inline-code">\033[</span>，代表 <span class="inline-code">ASCII</span> 控制字符 <span class="inline-code">ESC</span>，即 <span class="inline-code">Escape</span>）开始，接着是一个或多个参数（数字或字母），最后以 <span class="inline-code">m</span> 结束。背景色为字体色 <span class="inline-code">+10</span>。</p><p><span class="inline-code">echo -e</span> 输出转义序列</p><p>格式：<span class="inline-code">\e[字体格式:字体颜色:背景色m</span></p><p>=== "颜色"</p><p>    颜色|转义序列</p><p>    -|-</p><p>    黑色| <span class="inline-code">30</span></p><p>    红色| <span class="inline-code">31</span></p><p>    绿色| <span class="inline-code">32</span></p><p>    黄色| <span class="inline-code">33</span></p><p>    蓝色| <span class="inline-code">34</span></p><p>    洋红| <span class="inline-code">35</span></p><p>    粉色| <span class="inline-code">36</span></p><p>    白色| <span class="inline-code">37</span></p><p>    默认| <span class="inline-code">39</span></p><p>=== "字体样式"</p><p>    样式|转义序列</p><p>    -|-</p><p>    默认| <span class="inline-code">0</span></p><p>    粗体| <span class="inline-code">1</span></p><p>    斜体| <span class="inline-code">3</span></p><p>    下划线| <span class="inline-code">4</span></p><p>    删除线| <span class="inline-code">9</span></p><p>    颜色反转| <span class="inline-code">7</span></p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token keyword">function</span> <span class="token function-name function">print_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">MESSAGE</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
+    <span class="token comment"># \033[0m 清除所有样式，恢复到默认颜色和样式。</span>
+    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\033">\033</span>[7;31;47m[ERROR] <span class="token variable">${MESSAGE}</span><span class="token entity" title="\033">\033</span>[0m Normal info"</span>
+<span class="token punctuation">}</span>
+
+print_error <span class="token string">"Something went wrong."</span>
+</pre></div><h2 id="1035" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">举例</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><h3 id="1036" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">Vim 编辑文件</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token assign-left variable">FILENAME</span><span class="token operator">=</span><span class="token string">"file.txt"</span>
+
+<span class="token function">touch</span> <span class="token variable">$FILENAME</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-e</span> <span class="token variable">$FILENAME</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"Now You can edit <span class="token variable">$FILENAME</span>"</span>
+    <span class="token function">sleep</span> <span class="token number">3</span>
+    <span class="token variable">${EDITOR<span class="token operator">:=</span>`which vim`}</span> <span class="token string">"<span class="token variable">${FILENAME}</span>"</span>
+<span class="token keyword">fi</span>
+</pre></div><h3 id="1037" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">Select 选择列表</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p><span class="inline-code">Select</span> 选择本质为循环，每次循环都会执行一次 <span class="inline-code">do</span> 语句，直到 <span class="inline-code">done</span> 语句。</p><p>对于不合法的输入，结果会保存在 <span class="inline-code">$REPLY</span> 中。</p><p>通过修改 <span class="inline-code">PS3</span> 变量，可以修改选择列表的提示符。</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"Please select a Star Wars movie; enter <span class="token entity" title="\&quot;">\"</span>quit<span class="token entity" title="\&quot;">\"</span> to quit,"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"or type <span class="token entity" title="\&quot;">\"</span>help<span class="token entity" title="\&quot;">\"</span> for help. Press ENTER to list the options."</span>
+<span class="token builtin class-name">echo</span>
+
+<span class="token comment"># 修改PS3</span>
+<span class="token assign-left variable">oPS3</span><span class="token operator">=</span><span class="token environment constant">$PS3</span>
+<span class="token assign-left variable"><span class="token environment constant">PS3</span></span><span class="token operator">=</span><span class="token string">"Choose a Star Wars movie: "</span>
+<span class="token keyword">select</span> <span class="token for-or-select variable">movie</span> <span class="token keyword">in</span> <span class="token string">"A New Hope"</span>    <span class="token punctuation">\</span>
+    <span class="token string">"The Empire Strikes Back"</span>  <span class="token punctuation">\</span>
+    <span class="token string">"Return of the Jedi"</span>       <span class="token punctuation">\</span>
+    <span class="token string">"The Phantom Menace"</span>       <span class="token punctuation">\</span>
+    <span class="token string">"Attack of the Clones"</span>     <span class="token punctuation">\</span>
+    <span class="token string">"Revenge of the Sith"</span>      <span class="token punctuation">\</span>
+    <span class="token string">"The Clone Wars"</span>
+<span class="token keyword">do</span>
+  <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token environment constant">$REPLY</span>"</span> <span class="token operator">==</span> <span class="token string">"quit"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token comment"># This break must come before other things are run in this loop.</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"Okay, quitting. Hope you found it informative."</span>
+    <span class="token builtin class-name">break</span>
+  <span class="token keyword">fi</span>
+  <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token environment constant">$REPLY</span>"</span> <span class="token operator">==</span> <span class="token string">"help"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"Please select a Star Wars movie; enter <span class="token entity" title="\&quot;">\"</span>quit<span class="token entity" title="\&quot;">\"</span> to quit,"</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"or type <span class="token entity" title="\&quot;">\"</span>help<span class="token entity" title="\&quot;">\"</span> for help. Press ENTER to list the options."</span>
+    <span class="token builtin class-name">echo</span>
+    <span class="token comment"># continue 用于避免输出 "help is not a valid option."</span>
+    <span class="token builtin class-name">continue</span>
+  <span class="token keyword">fi</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$movie</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-en</span> <span class="token string">"You chose option number <span class="token environment constant">$REPLY</span>, which is <span class="token entity" title="\&quot;">\"</span><span class="token variable">$movie</span>,<span class="token entity" title="\&quot;">\"</span> released in "</span>
+    <span class="token keyword">case</span> <span class="token environment constant">$REPLY</span> <span class="token keyword">in</span>
+      <span class="token number">1</span><span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"1977"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+      <span class="token number">2</span><span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"1980"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+      <span class="token number">3</span><span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"1983"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+      <span class="token number">4</span><span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"1999"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+      <span class="token number">5</span><span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"2002"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+      <span class="token number">6</span><span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"2005"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+      <span class="token number">7</span><span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"2008"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token keyword">esac</span>
+  <span class="token keyword">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token environment constant">$REPLY</span> is not a valid option."</span>
+  <span class="token keyword">fi</span>
+<span class="token keyword">done</span>
+
+<span class="token comment"># 恢复PS3</span>
+<span class="token assign-left variable"><span class="token environment constant">PS3</span></span><span class="token operator">=</span><span class="token variable">$oPS3</span>
+
+</pre></div><h3 id="1038" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">Source 引入库</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>有两个文件，<span class="inline-code">config.sh</span> 和 <span class="inline-code">main.sh</span>。</p><p><span class="inline-code">config.sh</span> 文件用于定义环境配置，<span class="inline-code">main.sh</span> 文件用于主函数逻辑。</p><p><span class="inline-code">.</span> 和 <span class="inline-code">source</span> 的区别在于，<span class="inline-code">.</span> 会在当前进程内执行，而 <span class="inline-code">source</span> 会在子进程中执行.</p><p>=== "main.sh"</p><p>    <div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>    <span class="token comment">#!/bin/bash</span>
+    <span class="token comment"># main.sh</span>
+
+    <span class="token comment"># 引入配置文件，避免重复引入</span>
+    <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$__CONFIG__</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">source</span> ./config.sh
+    <span class="token comment"># . config.sh</span>
+
+    <span class="token builtin class-name">echo</span> <span class="token string">"The value of MYVAR is: <span class="token variable">$MYVAR</span>"</span>
+    </pre></div></p><p>=== "config.sh"</p><p>    <div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>    <span class="token comment">#!/bin/bash</span>
+    <span class="token comment"># config.sh</span>
+
+    <span class="token assign-left variable">__CONFIG__</span><span class="token operator">=</span><span class="token number">1</span>
+    <span class="token assign-left variable">MYVAR</span><span class="token operator">=</span><span class="token string">"Hello, World!"</span>
+    </pre></div></p><p>!!! note "注意"</p><p>    <span class="inline-code">source ./config.sh</span> 这种形式明确指定了 <span class="inline-code">config.sh</span>文件位于当前工作目录，使用这种方式，<span class="inline-code">Shell</span> 不需要在 <span class="inline-code">PATH</span> 中搜索。</p><p>    <span class="inline-code">source config.sh</span> 这种形式假设 <span class="inline-code">config.sh</span> 位于当前 <span class="inline-code">Shell</span> 的搜索路径 (<span class="inline-code">$PATH</span>) 中。当 <span class="inline-code">Shell</span> 遇到这样的命令时，它会在 <span class="inline-code">PATH</span> 中列出的目录列表里查找名为 <span class="inline-code">config.sh</span> 的文件，并执行找到的第一个匹配项。</p><h3 id="1039" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">Trap 函数陷阱</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>函数 <span class="inline-code">trap</span> 用于捕获 <span class="inline-code">Shell</span> 命令执行过程中的异常情况，包括 <span class="inline-code">SIGINT</span>、<span class="inline-code">SIGTERM</span>、<span class="inline-code">SIGKILL</span> 等。</p><p><span class="inline-code">trap</span> 命令的语法如下：<span class="inline-code">trap [action] [signal]</span></p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>
+<span class="token builtin class-name">trap</span> <span class="token string">'echo "Interrupted! Cleaning up..."; rm -f /tmp/tempfile; exit 1'</span> INT
+
+<span class="token builtin class-name">trap</span> <span class="token string">'echo "Script finished."; echo "Bye!"'</span> EXIT
+
+<span class="token builtin class-name">trap</span> <span class="token string">'echo "Signal  received."'</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">6</span> <span class="token number">9</span>
+</pre></div><p>!!! tip "陷阱信号"</p><p>    1: <span class="bold">SIGHUP (Hangup)</span>，通常发生在终端挂起或者网络连接断开时。</p><p>    2: <span class="bold">SIGINT (Interrupt)</span>，最常见的是通过按下键盘组合键 Ctrl+C 触发。</p><p>    3: <span class="bold">SIGQUIT (Quit)</span>，通常通过按下键盘组合键 Ctrl+\ 触发，与 SIGINT 类似，但会产生一个核心转储（core dump）。</p><p>    6: <span class="bold">SIGABRT (Abort)</span>，由程序调用 abort() 函数或某些严重的内部错误引发，也会产生一个核心转储。</p><p>    9: <span class="bold">SIGKILL (Kill)</span>，强制结束进程的信号，不能被捕获、阻塞或忽略，只能由超级用户（root）或进程本身发送给自身。</p><h3 id="1040" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span><span class="bold">Getopts 命令行参数解析</span><span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p><span class="inline-code">getopts</span> 命令用于解析命令行参数。</p><p><span class="inline-code">getopts</span> 命令的语法如下：<span class="inline-code">getopts optstring name [arg]</span></p><p><span class="inline-code">optstring</span> 是一个字符串，用于指定要解析的选项。每个选项由一个字符表示，字符可以是小写或大写字母、数字、下划线、连字符、冒号、等号、空格、换行符、制表符等。</p><p><span class="inline-code">optstring</span> 中的每个字符都表示一个选项，加上冒号表示该选项需要参数。</p><p><span class="inline-code">name</span> 是一个变量，用于接收解析后的选项。</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token comment"># a、b、c 分别表示三个选项，其中 c 选项不需要参数。</span>
+<span class="token keyword">while</span> <span class="token builtin class-name">getopts</span> <span class="token string">':a:b:c?'</span> argv
+<span class="token keyword">do</span>
+  <span class="token keyword">case</span> <span class="token variable">$argv</span> <span class="token keyword">in</span>
+	a<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"Option -<span class="token variable">$argv</span> with parameter <span class="token variable">$OPTARG</span>"</span>	<span class="token punctuation">;</span><span class="token punctuation">;</span>
+	b<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"Option -<span class="token variable">$argv</span> with parameter <span class="token variable">$OPTARG</span>"</span>	<span class="token punctuation">;</span><span class="token punctuation">;</span>
+	c<span class="token punctuation">)</span> <span class="token assign-left variable">input</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+     <span class="token builtin class-name">echo</span> <span class="token string">"Option -<span class="token variable">$argv</span>"</span>	<span class="token punctuation">;</span><span class="token punctuation">;</span>
+  <span class="token comment"># 选项错误</span>
+	<span class="token punctuation">\</span>?<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"Options don't exist."</span> <span class="token punctuation">;</span>
+      <span class="token builtin class-name">exit</span> <span class="token number">1</span>		<span class="token punctuation">;</span><span class="token punctuation">;</span>
+  <span class="token comment"># 选项缺少参数    </span>
+  <span class="token string">":"</span><span class="token punctuation">)</span> 
+    <span class="token keyword">case</span> <span class="token variable">$OPTARG</span> <span class="token keyword">in</span>
+      a<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"Please specify the input when using the -a option."</span>
+         <span class="token builtin class-name">echo</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+      b<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"Please specify the input when using the -b option."</span>
+         <span class="token builtin class-name">echo</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+      *<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"An unexpected parsing error occurred."</span>
+         <span class="token builtin class-name">echo</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token keyword">esac</span> 
+    <span class="token builtin class-name">exit</span> <span class="token number">2</span>
+  <span class="token keyword">esac</span>
+<span class="token keyword">done</span>
+
+<span class="token comment"># 未输入任何选项</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token environment constant">$OPTIND</span>"</span> <span class="token parameter variable">-eq</span> <span class="token number">1</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"No options provided."</span>
+<span class="token keyword">fi</span>
+</pre></div>
