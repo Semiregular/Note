@@ -16,7 +16,7 @@
         <div class="site-body-left-column">
           <div class="site-body-left-title">我的笔记</div>
           <div class="site-body-left-change">
-            <div class="change-theme-btn">切换主题</div>
+            <div class="change-theme-btn">Theme</div>
             <div class="site-body-left-search">
               <div class="input-bg">
                 <input
@@ -63,6 +63,7 @@
         <div class="graph-view">
           <div class="graph-view-title">INTERACTIVE GRAPH</div>
           <div class="graph-view-container">
+            <div class="graph-bg"></div>
             <div class="graph-stage" id="graph"></div>
             <div class="graph-icon">
               <div class="icon-global">
@@ -121,6 +122,13 @@
 
       $(".change-theme-btn").click(function () {
         $(".theme-light").toggleClass("theme-dark");
+        if ($(".theme-light").hasClass("theme-dark")) {
+          app.renderer.backgroundColor = "0x1e1e1e";
+          circle.tint = "0xb3b3b3";
+        } else {
+          app.renderer.backgroundColor = "0xffffff";
+          circle.tint = "0x5c5c5c";
+        }
       });
 
       $(".site-header-icon").click(function () {
@@ -257,11 +265,13 @@
       if (windowWidth > 750) {
         $(".site-body-left").removeClass("site-body-left-collapse");
         $(".site-body-left-change").removeClass("site-body-left-change-active");
-        $(".site-body-left-change").removeClass("site-body-left-change-collapse")
+        $(".site-body-left-change").removeClass(
+          "site-body-left-change-collapse"
+        );
         $(".site-header").hide();
       } else {
         $(".site-body-left").addClass("site-body-left-collapse");
-        $(".site-body-left-change").addClass("site-body-left-change-collapse")
+        $(".site-body-left-change").addClass("site-body-left-change-collapse");
         $(".site-header").show();
       }
     }
@@ -329,69 +339,126 @@
     const app = new Application({
       width: 270,
       height: 260,
-      backgroundColor: 0xffffff,
+      backgroundColor: "0xffffff",
       antialias: true,
     });
     document.getElementById("graph").appendChild(app.view);
-    let circleContainer = new Container();
-    app.stage.addChild(circleContainer);
+    app.stage.interactive = true;
 
     const circle = new Graphics();
     circle.beginFill(0xffffff);
-    circle.drawCircle(35, 30, 60);
+    circle.drawCircle(35, 30, 20);
     circle.endFill();
     circle.tint = 0x5c5c5c;
     circle.interactive = true;
     circle.buttonMode = true;
+    circle.x = 35;
+    circle.y = 30;
 
-    circle.x = 135;
-    circle.y = 130;
+    let dragging = false;
+    let canvasDragging = false;
+    let offsetX, offsetY;
+    let canvasStartX, canvasStartY;
 
-    circle
-      // events for drag start
-      .on("mousedown", onDragStart)
-      .on("touchstart", onDragStart)
-      // events for drag end
-      .on("mouseup", onDragEnd)
-      .on("mouseupoutside", onDragEnd)
-      .on("touchend", onDragEnd)
-      .on("touchendoutside", onDragEnd)
-      // events for drag move
-      .on("mousemove", onDragMove)
-      .on("touchmove", onDragMove)
-      // events for hover
-      .on("mouseover", onHoverStart)
-      .on("mouseout", onHoverEnd);
+    // 当鼠标按下时，开始拖动
+    circle.on("pointerdown", (event) => {
+      dragging = true;
+      circle.data = event.data;
+      const position = circle.data.getLocalPosition(circle.parent);
+      offsetX = position.x - circle.x;
+      offsetY = position.y - circle.y;
+    });
 
-    // Functions for dragging
-    function onDragStart(event) {
-      // Store reference to the data
-      this.data = event.data;
-      this.dragging = true;
-    }
+    // 鼠标悬停时改变颜色
+    circle.on("pointerover", () => {
+      circle.tint = 0x7852ee; // 悬停时颜色
+    });
 
-    function onDragEnd() {
-      this.dragging = false;
-      // Clear the data reference
-      this.data = null;
-    }
-
-    function onDragMove() {
-      if (this.dragging) {
-        let newPosition = this.data.getLocalPosition(this.parent);
-        this.x = newPosition.x;
-        this.y = newPosition.y;
+    // 鼠标离开圆形时恢复颜色
+    circle.on("pointerout", () => {
+      if ($(".theme-light").hasClass("theme-dark")) {
+        circle.tint = "0xb3b3b3";
+      } else {
+        circle.tint = "0x5c5c5c";
       }
-    }
+    });
 
-    function onHoverStart() {
-      this.tint = 0x7852ee;
-    }
+    // 在整个画布上监听鼠标移动事件，以便即使鼠标离开圆形也能拖动
+    // 鼠标移动时拖动圆形
+    app.view.addEventListener("mousemove", (event) => {
+      if (dragging) {
+        const rect = app.view.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        circle.x = x - offsetX - app.stage.x;
+        circle.y = y - offsetY - app.stage.y;
+      } else if (canvasDragging) {
+        const rect = app.view.getBoundingClientRect();
+        app.stage.x += event.clientX - canvasStartX;
+        app.stage.y += event.clientY - canvasStartY;
+        canvasStartX = event.clientX;
+        canvasStartY = event.clientY;
+      }
+    });
 
-    function onHoverEnd() {
-      this.tint = 0x5c5c5c;
-    }
-    circleContainer.addChild(circle);
-    document.getElementById("graph").appendChild(app.view);
+    // 当鼠标释放时，停止拖动
+    document.addEventListener("mouseup", () => {
+      dragging = false;
+      circle.data = null;
+    });
+
+    // 当鼠标释放在圆形外部时，也停止拖动
+    document.addEventListener("mouseleave", () => {
+      if (dragging) {
+        dragging = false;
+        circle.data = null;
+      }
+    });
+
+    // 鼠标按下画布时，开始拖动画布
+    app.view.addEventListener("mousedown", (event) => {
+      if (event.target === app.view && !dragging) {
+        canvasDragging = true;
+        canvasStartX = event.clientX;
+        canvasStartY = event.clientY;
+        document.body.style.cursor = "move"; // 改变光标样式以指示拖动
+      }
+    });
+
+    // 当鼠标离开画布区域时，停止拖动画布
+    app.view.addEventListener("mouseup", () => {
+      if (canvasDragging) {
+        canvasDragging = false;
+        document.body.style.cursor = "default"; // 恢复光标样式
+      }
+    });
+
+    app.view.addEventListener("mouseleave", () => {
+      if (canvasDragging) {
+        canvasDragging = false;
+        document.body.style.cursor = "default"; // 恢复光标样式
+      }
+    });
+
+    app.stage.addChild(circle);
+
+    $(".icon-expand").click(function () {
+      $("#graph").addClass("graph-expand");
+      let newWidth = $(".graph-expand").width();
+      let newHeight = $(".graph-expand").height();
+      app.view.style.width = newWidth + "px";
+      app.view.style.height = newHeight + "px";
+      app.renderer.resize(newWidth, newHeight);
+      $(".graph-bg").show();
+      $(".graph-bg").click(function () {
+        $("#graph").removeClass("graph-expand");
+        $(".graph-bg").hide();
+        let oldWidth = 270;
+        let oldHeight = 260;
+        app.view.style.width = oldWidth + "px";
+        app.view.style.height = oldHeight + "px";
+        app.renderer.resize(oldWidth, oldHeight);
+      });
+    });
   </script>
 </html>
