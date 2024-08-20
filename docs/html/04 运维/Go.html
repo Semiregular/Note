@@ -1,0 +1,558 @@
+<h2 id="1000" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>简介<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><p>一个语言的语法并不能决定一个语言的类型。在现代语言的范围下，语法应该吸收前人的优秀之处，尽可能将编译器的功能完善，简化语法且已读。下面列举几个可以学习的地方：</p><ul><li>行末无需分号</li></ul><ul><li>变量类型可以自动推断</li></ul><ul><li>类型后置</li></ul><div class="divider"></div><h2 id="1001" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>基本语法<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><h3 id="1002" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>变量声明<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>在函数体内部，一般采用<span class="inline-code">:=</span> 声明局部变量，可以根据赋值自动推断类型。注意，局部变量声明后必须使用。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">func</span> <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+	a <span class="token operator">:=</span> <span class="token number">1</span>
+	b<span class="token punctuation">,</span> c <span class="token operator">:=</span> <span class="token number">2</span>
+<span class="token punctuation">}</span>
+</pre></div><p>全局变量的声明必须显式的表示，使用<span class="inline-code">var</span>关键字，且声明后可以不使用。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">var</span> a<span class="token punctuation">,</span> b <span class="token builtin">int</span>
+a <span class="token operator">=</span> <span class="token number">1</span>
+b <span class="token operator">=</span> <span class="token number">2</span>
+<span class="token keyword">var</span> c <span class="token operator">=</span> <span class="token number">1</span>
+
+<span class="token comment">// 交换a,b的值</span>
+a<span class="token punctuation">,</span> b <span class="token operator">=</span> b<span class="token punctuation">,</span> a
+</pre></div><p>此外，<span class="inline-code">_</span>可用于表示忽略值的变量，只可以写入，不可以读取。例如忽略函数的部分返回值。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token boolean">_</span><span class="token punctuation">,</span> a <span class="token operator">:=</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</pre></div><div class="divider"></div><h3 id="1003" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>常量声明<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>常量可以集中声明，且可以自动递增。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">(</span>
+            a <span class="token operator">=</span> <span class="token boolean">iota</span>   <span class="token comment">//0</span>
+            b          <span class="token comment">//1</span>
+            c          <span class="token comment">//2</span>
+            d <span class="token operator">=</span> <span class="token string">"ha"</span>   <span class="token comment">//"ha" iota += 1</span>
+            e          <span class="token comment">//"ha" iota += 1</span>
+            f <span class="token operator">=</span> <span class="token number">100</span>    <span class="token comment">//100  iota += 1</span>
+            g          <span class="token comment">//100  iota += 1</span>
+            h <span class="token operator">=</span> <span class="token boolean">iota</span>   <span class="token comment">//7</span>
+            i          <span class="token comment">//8</span>
+    <span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">,</span>d<span class="token punctuation">,</span>e<span class="token punctuation">,</span>f<span class="token punctuation">,</span>g<span class="token punctuation">,</span>h<span class="token punctuation">,</span>i<span class="token punctuation">)</span>
+    <span class="token comment">// 0 1 2 ha ha 100 100 7 8</span>
+<span class="token punctuation">}</span>
+</pre></div><div class="divider"></div><h3 id="1004" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>函数声明<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>函数声明包括参数和返回值，返回值写在最后，且可以有多个。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">func</span> <span class="token function">swap</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+   <span class="token keyword">return</span> y<span class="token punctuation">,</span> x  
+<span class="token punctuation">}</span>
+</pre></div><p>函数也可以在函数内部声明，此时为匿名函数。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+    add <span class="token operator">:=</span> <span class="token keyword">func</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>  
+       <span class="token keyword">return</span> a <span class="token operator">+</span> b  
+    <span class="token punctuation">}</span>  
+    c <span class="token operator">:=</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>  
+<span class="token punctuation">}</span>
+</pre></div><p>函数名前可以添加其所属的类，此时为类的方法。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token comment">/* 定义结构体 */</span>  
+<span class="token keyword">type</span> Circle <span class="token keyword">struct</span> <span class="token punctuation">{</span>  
+  radius <span class="token builtin">float64</span>  
+<span class="token punctuation">}</span>  
+  
+<span class="token comment">// 该 method 属于 Circle 类型对象中的方法  </span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>c Circle<span class="token punctuation">)</span> <span class="token function">getArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">float64</span> <span class="token punctuation">{</span>  
+  <span class="token keyword">return</span> <span class="token number">3.14</span> <span class="token operator">*</span> c<span class="token punctuation">.</span>radius <span class="token operator">*</span> c<span class="token punctuation">.</span>radius  
+<span class="token punctuation">}</span>
+</pre></div><div class="divider"></div><h3 id="1005" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>数组<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>数组声明时长度。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">var</span> numbers <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token builtin">int</span>
+numbers <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+numbers <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span>
+numbers <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span>
+</pre></div><p>二维数组。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre>values <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token punctuation">}</span>  
+  
+row1 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span>  
+row2 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">}</span>  
+values <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>values<span class="token punctuation">,</span> row1<span class="token punctuation">)</span>  
+values <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>values<span class="token punctuation">,</span> row2<span class="token punctuation">)</span>
+</pre></div><p>函数参数为数组。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">func</span> <span class="token function">getAverage</span><span class="token punctuation">(</span>arr <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> size <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">float32</span>
+
+<span class="token keyword">func</span> <span class="token function">getArrayPointer</span><span class="token punctuation">(</span>arr <span class="token operator">*</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span> 
+</pre></div><p>指针数组</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token comment">// 长度为 10 的数组，每个元素为 *int 的指针</span>
+<span class="token keyword">var</span> ptr <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token builtin">int</span><span class="token punctuation">;</span>
+</pre></div><div class="divider"></div><h3 id="1006" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>切片<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>切片不需要说明长度。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token comment">// 初始化切片 s，是数组 arr 的引用。</span>
+s <span class="token operator">:=</span> arr<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> 
+s <span class="token operator">:=</span> arr<span class="token punctuation">[</span>startIndex<span class="token punctuation">:</span>endIndex<span class="token punctuation">]</span> 
+</pre></div><p>拓展下标表示。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token comment">/* 打印子切片从索引1(包含) 到索引4(不包含)*/</span>  
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"numbers[1:4] =="</span><span class="token punctuation">,</span> numbers<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  
+  
+<span class="token comment">/* 默认下限为 0*/</span>  
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"numbers[:3] =="</span><span class="token punctuation">,</span> numbers<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  
+  
+<span class="token comment">/* 默认上限为 len(s)*/</span>  
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"numbers[4:] =="</span><span class="token punctuation">,</span> numbers<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre></div><p>动态添加元素。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">var</span> numbers <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span>  
+
+<span class="token comment">/* 向切片添加一个元素 */</span>  
+numbers <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>numbers<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>  
+
+<span class="token comment">/* 同时添加多个元素 */</span>  
+numbers <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>numbers<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>  
+
+<span class="token comment">/* 创建切片 numbers1 是之前切片的两倍容量*/</span>  
+numbers1 <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>numbers<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token function">cap</span><span class="token punctuation">(</span>numbers<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span>  
+  
+<span class="token comment">/* 拷贝 numbers 的内容到 numbers1 */</span>  
+<span class="token function">copy</span><span class="token punctuation">(</span>numbers1<span class="token punctuation">,</span>numbers<span class="token punctuation">)</span>
+</pre></div><div class="divider"></div><h3 id="1007" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>struct 结构<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">type</span> Book <span class="token keyword">struct</span> <span class="token punctuation">{</span>  
+   title <span class="token builtin">string</span>  
+   author <span class="token builtin">string</span>  
+   id <span class="token builtin">int</span>  
+<span class="token punctuation">}</span>
+</pre></div><div class="divider"></div><h3 id="1008" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>for 循坏<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p><span class="inline-code">range</span>便历可以用于数组，字符串，<span class="inline-code">map</span>，<span class="inline-code">channel</span>等。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">for</span> index<span class="token punctuation">,</span> value <span class="token operator">:=</span> <span class="token keyword">range</span> obj <span class="token punctuation">{</span>
+    obj<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> value
+<span class="token punctuation">}</span>
+<span class="token keyword">for</span> index <span class="token operator">:=</span> <span class="token keyword">range</span> obj
+<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> value <span class="token operator">:=</span> <span class="token keyword">range</span> obj
+</pre></div><div class="divider"></div><h3 id="1009" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>map<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>哈希表，存放键值对。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre>m <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 获取键值对</span>
+v1 <span class="token operator">:=</span> m<span class="token punctuation">[</span><span class="token string">"apple"</span><span class="token punctuation">]</span>
+<span class="token comment">// 如果键不存在，ok 为 false，v2 为零值</span>
+v2<span class="token punctuation">,</span> ok <span class="token operator">:=</span> m<span class="token punctuation">[</span><span class="token string">"pear"</span><span class="token punctuation">]</span> 
+
+<span class="token comment">// 删除键值对</span>
+<span class="token function">delete</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token string">"banana"</span><span class="token punctuation">)</span>
+</pre></div><div class="divider"></div><h3 id="1010" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>并发<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><h4 id="1011" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>goroutine<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h4><p>轻量级线程。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">func</span> <span class="token function">say</span><span class="token punctuation">(</span>s <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+        time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token number">100</span> <span class="token operator">*</span> time<span class="token punctuation">.</span>Millisecond<span class="token punctuation">)</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 新线程</span>
+    <span class="token keyword">go</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">)</span>
+    <span class="token function">say</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</pre></div><div class="divider"></div><h4 id="1012" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>channel<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h4><p>通道用于在线程之间传递数据；</p><ul><li>若没有缓冲区，则数据取出之前发送方会阻塞；如果接收操作先执行，接收方的<span class="inline-code">goroutine</span>将阻塞，直到另一个<span class="inline-code">goroutine</span>在该通道上发送一个值。无缓冲通道也被称为同步通道。</li></ul><ul><li>若有缓冲区，则数据放入缓冲区后发送方继续运行，直到缓冲区占满。缓冲通道为空时，尝试接收数据时发生阻塞。</li></ul><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token comment">// 无缓冲区</span>
+ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span>
+<span class="token comment">// 缓冲区大小为 10</span>
+ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int</span> <span class="token number">10</span><span class="token punctuation">)</span>
+</pre></div><p>举例：</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">func</span> <span class="token function">sum</span><span class="token punctuation">(</span>s <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> c <span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    sum <span class="token operator">:=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> v <span class="token operator">:=</span> <span class="token keyword">range</span> s <span class="token punctuation">{</span>
+        sum <span class="token operator">+=</span> v
+    <span class="token punctuation">}</span>
+    c <span class="token operator">&lt;-</span> sum 
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    s <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">}</span>
+    c <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span>
+        
+    <span class="token keyword">go</span> <span class="token function">sum</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token function">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+    <span class="token keyword">go</span> <span class="token function">sum</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token function">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+        
+    x<span class="token punctuation">,</span> y <span class="token operator">:=</span> <span class="token operator">&lt;-</span>c<span class="token punctuation">,</span> <span class="token operator">&lt;-</span>c 
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> x<span class="token operator">+</span>y<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</pre></div><p>通道可以用<span class="inline-code">close</span>主动关闭，被关闭的信道会禁止数据流入, 是只读的。我们仍然可以从关闭的信道中取出数据，但是不能再写入数据了。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre>ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+ch <span class="token operator">&lt;-</span> <span class="token number">1</span>
+ch <span class="token operator">&lt;-</span> <span class="token number">2</span>
+ch <span class="token operator">&lt;-</span> <span class="token number">3</span>
+ 
+<span class="token comment">// 显式地关闭信道</span>
+<span class="token function">close</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span>
+ 
+<span class="token keyword">for</span> v <span class="token operator">:=</span> <span class="token keyword">range</span> ch <span class="token punctuation">{</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</pre></div><p>使用<span class="inline-code">range</span>可以取出通道缓冲区中所有数据，只有通道被关闭时，才不会阻塞。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ch1 <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span>
+    ch2 <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 开启goroutine将0~100的数发送到ch1中</span>
+    <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+            ch1 <span class="token operator">&lt;-</span> i
+        <span class="token punctuation">}</span>
+        <span class="token function">close</span><span class="token punctuation">(</span>ch1<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 开启goroutine从ch1中接收值，并将该值的平方发送到ch2中</span>
+    <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 通道关闭后再取值 ok = false</span>
+            i<span class="token punctuation">,</span> ok <span class="token operator">:=</span> <span class="token operator">&lt;-</span>ch1 
+            <span class="token keyword">if</span> <span class="token operator">!</span>ok <span class="token punctuation">{</span>
+                <span class="token keyword">break</span>
+            <span class="token punctuation">}</span>
+            ch2 <span class="token operator">&lt;-</span> i <span class="token operator">*</span> i
+        <span class="token punctuation">}</span>
+        <span class="token function">close</span><span class="token punctuation">(</span>ch2<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 在主goroutine中从ch2中接收值打印</span>
+    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token keyword">range</span> ch2 <span class="token punctuation">{</span> <span class="token comment">// 通道关闭后会退出 for range 循环</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre></div><p>推荐读取方式：</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre> <span class="token keyword">if</span> i<span class="token punctuation">,</span> ok <span class="token operator">:=</span> <span class="token operator">&lt;-</span> ch <span class="token punctuation">;</span>ok<span class="token punctuation">{</span>
+     <span class="token comment">// 其他</span>
+ <span class="token punctuation">}</span>
+</pre></div><p>声明单向通道：</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token comment">//往通道中写</span>
+<span class="token keyword">func</span> <span class="token function">counter</span><span class="token punctuation">(</span>out <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token builtin">int</span><span class="token punctuation">)</span> 
+
+<span class="token comment">//从通道中读</span>
+<span class="token keyword">func</span> <span class="token function">printer</span><span class="token punctuation">(</span>in <span class="token operator">&lt;-</span><span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</pre></div><div class="divider"></div><h4 id="1013" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>select<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h4><p><span class="inline-code">select</span> 语句使得一个 <span class="inline-code">goroutine</span> 可以等待多个通信操作。<span class="inline-code">select</span> 会阻塞，直到其中的某个 <span class="inline-code">case</span> 可以继续执行。注意，通道关闭后仍然可以被<span class="inline-code">select</span>选中读取，此时为零值。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+   <span class="token string">"log"</span>
+   <span class="token string">"time"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">// 设置log参数</span>
+   log<span class="token punctuation">.</span><span class="token function">SetFlags</span><span class="token punctuation">(</span>log<span class="token punctuation">.</span>Lshortfile <span class="token operator">|</span> log<span class="token punctuation">.</span>LstdFlags<span class="token punctuation">)</span>
+
+   <span class="token keyword">var</span> ch1 <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+   <span class="token keyword">var</span> ch2 <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+
+   <span class="token comment">// 直接写一个匿名函数 向通道中添加数据</span>
+   <span class="token keyword">go</span> <span class="token keyword">func</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">1</span>
+      <span class="token keyword">for</span> <span class="token punctuation">{</span>
+         ch1 <span class="token operator">&lt;-</span> num
+         num <span class="token operator">+=</span> <span class="token number">1</span>
+         time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">*</span> time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+   <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+   <span class="token keyword">go</span> <span class="token keyword">func</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">1</span>
+      <span class="token keyword">for</span> <span class="token punctuation">{</span>
+         ch2 <span class="token operator">&lt;-</span> num
+         num <span class="token operator">+=</span> <span class="token number">1</span>
+         time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">*</span> time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+   <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+   <span class="token keyword">for</span> <span class="token punctuation">{</span>
+	  <span class="token comment">// 读取数据</span>
+      <span class="token keyword">select</span> <span class="token punctuation">{</span>
+      <span class="token keyword">case</span> num <span class="token operator">:=</span> <span class="token operator">&lt;-</span>ch1<span class="token punctuation">:</span>
+         log<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"read ch1 data is  %d\n"</span><span class="token punctuation">,</span> num<span class="token punctuation">)</span>
+
+      <span class="token keyword">case</span> num <span class="token operator">:=</span> <span class="token operator">&lt;-</span>ch2<span class="token punctuation">:</span>
+         log<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"read ch2 data is: %d\n"</span><span class="token punctuation">,</span> num<span class="token punctuation">)</span>
+
+      <span class="token keyword">default</span><span class="token punctuation">:</span>
+         log<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"ch1 and ch2 is empty\n"</span><span class="token punctuation">)</span>
+          <span class="token comment">// 休息 1s 再读</span>
+         time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">*</span> time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</pre></div><div class="divider"></div><h3 id="1014" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>异常<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p><span class="inline-code">error</span>定义</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">type</span> <span class="token builtin">error</span> <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+    <span class="token function">Error</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+</pre></div><p>实现<span class="inline-code">error</span>接口。</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">func</span> <span class="token function">Sqrt</span><span class="token punctuation">(</span>f <span class="token builtin">float64</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">float64</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> f <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">,</span> errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">"math: square root of negative number"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+result<span class="token punctuation">,</span> err<span class="token operator">:=</span> <span class="token function">Sqrt</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+   fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+</pre></div><div class="divider"></div><h2 id="1015" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>模块<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><p>初始化模块，会生成<span class="inline-code">go.mod</span></p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>go mod init example.com/hello
+</pre></div><p>查看所有可下载版本</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>go list <span class="token parameter variable">-m</span> <span class="token parameter variable">-versions</span> rsc.io/sampler
+</pre></div><p>更新到指定版本</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>go get rsc.io/sampler@v1.3.1
+
+go get rsc.io/sampler@latest
+</pre></div><p>查看项目所有依赖</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>go list <span class="token parameter variable">-m</span> all 
+</pre></div><p>整理依赖项</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>go mod tidy
+</pre></div><p>将依赖包复制到项目下的 <span class="inline-code">vendor</span> 目录，方便用户快速使用命令<span class="inline-code">go build -mod=vendor</span>编译。</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre>go mod vendor
+</pre></div><p><span class="inline-code">go.mod</span>示例：</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre>module dialogue<span class="token punctuation">.</span>org<span class="token punctuation">.</span>cn<span class="token operator">/</span>prolist  
+  
+<span class="token keyword">go</span> <span class="token number">1.22</span><span class="token number">.1</span>  
+  
+require <span class="token punctuation">(</span>
+	rsc<span class="token punctuation">.</span>io<span class="token operator">/</span>quote v1<span class="token punctuation">.</span><span class="token number">5.2</span>  
+	mytest v0<span class="token punctuation">.</span><span class="token number">0.0</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">// 非项目直接依赖</span>
+require <span class="token punctuation">(</span>  
+    golang<span class="token punctuation">.</span>org<span class="token operator">/</span>x<span class="token operator">/</span>text v0<span class="token punctuation">.</span><span class="token number">17.0</span> <span class="token comment">// indirect  </span>
+    rsc<span class="token punctuation">.</span>io<span class="token operator">/</span>sampler v1<span class="token punctuation">.</span><span class="token number">3.0</span> <span class="token comment">// indirect  </span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">// 替换为本地依赖</span>
+replace <span class="token punctuation">(</span>
+    mytest v0<span class="token punctuation">.</span><span class="token number">0.0</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span>mytest
+<span class="token punctuation">)</span>
+</pre></div>
