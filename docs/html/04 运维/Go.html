@@ -555,4 +555,155 @@ require <span class="token punctuation">(</span>
 replace <span class="token punctuation">(</span>
     mytest v0<span class="token punctuation">.</span><span class="token number">0.0</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span>mytest
 <span class="token punctuation">)</span>
-</pre></div>
+</pre></div><p>注意必须在根模块下有<span class="inline-code">package main</span>和相应的<span class="inline-code">main</span>函数</p><h2 id="1016" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>标准库<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><h3 id="1017" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>log<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>标准日志有3种类型：</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre>log<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+log<span class="token punctuation">.</span><span class="token function">Panicln</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// recover()</span>
+log<span class="token punctuation">.</span><span class="token function">Fatalln</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// exit(1)</span>
+</pre></div><p>自定义日志输出格式：</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">var</span> <span class="token punctuation">(</span>  
+    Info  <span class="token operator">*</span>log<span class="token punctuation">.</span>Logger  
+    Error <span class="token operator">*</span>log<span class="token punctuation">.</span>Logger  
+<span class="token punctuation">)</span>  
+  
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+	<span class="token comment">// 打开日志文件</span>
+    file<span class="token punctuation">,</span> err <span class="token operator">:=</span> os<span class="token punctuation">.</span><span class="token function">OpenFile</span><span class="token punctuation">(</span><span class="token string">"error.log"</span><span class="token punctuation">,</span> os<span class="token punctuation">.</span>O_CREATE<span class="token operator">|</span>os<span class="token punctuation">.</span>O_WRONLY<span class="token operator">|</span>os<span class="token punctuation">.</span>O_APPEND<span class="token punctuation">,</span> <span class="token number">0666</span><span class="token punctuation">)</span>  
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>  
+       log<span class="token punctuation">.</span><span class="token function">Fatalln</span><span class="token punctuation">(</span><span class="token string">"Failed to open error log file:"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>  
+    <span class="token punctuation">}</span>  
+	<span class="token comment">// 创建 Logger</span>
+    Info <span class="token operator">=</span> log<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>Stdout<span class="token punctuation">,</span> <span class="token string">"INFO: "</span><span class="token punctuation">,</span> log<span class="token punctuation">.</span>Ldate<span class="token operator">|</span>log<span class="token punctuation">.</span>Ltime<span class="token operator">|</span>log<span class="token punctuation">.</span>Lshortfile<span class="token punctuation">)</span>  
+    Error <span class="token operator">=</span> log<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span>io<span class="token punctuation">.</span><span class="token function">MultiWriter</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> os<span class="token punctuation">.</span>Stderr<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"ERROR: "</span><span class="token punctuation">,</span> log<span class="token punctuation">.</span>Ldate<span class="token operator">|</span>log<span class="token punctuation">.</span>Ltime<span class="token operator">|</span>log<span class="token punctuation">.</span>Lshortfile<span class="token punctuation">)</span>  
+	<span class="token comment">// 调用日志</span>
+    Info<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"info66"</span><span class="token punctuation">)</span>  
+    Error<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Error9999"</span><span class="token punctuation">)</span>  
+<span class="token punctuation">}</span>
+</pre></div><p><span class="inline-code">Logger</span>结构：</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">type</span> Logger <span class="token keyword">struct</span> <span class="token punctuation">{</span>  
+    outMu sync<span class="token punctuation">.</span>Mutex  
+    
+    out   io<span class="token punctuation">.</span>Writer <span class="token comment">// destination for output  </span>
+    prefix    atomic<span class="token punctuation">.</span>Pointer<span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span> <span class="token comment">// prefix on each line to identify the logger (but see Lmsgprefix)  </span>
+    flag      atomic<span class="token punctuation">.</span>Int32           <span class="token comment">// properties  </span>
+    isDiscard atomic<span class="token punctuation">.</span>Bool  
+<span class="token punctuation">}</span>  
+  
+<span class="token comment">// New creates a new [Logger]. The out variable sets the  </span>
+<span class="token comment">// destination to which log data will be written.  </span>
+<span class="token comment">// The prefix appears at the beginning of each generated log line, or  </span>
+<span class="token comment">// after the log header if the [Lmsgprefix] flag is provided.  </span>
+<span class="token comment">// The flag argument defines the logging properties.  </span>
+<span class="token keyword">func</span> <span class="token function">New</span><span class="token punctuation">(</span>out io<span class="token punctuation">.</span>Writer<span class="token punctuation">,</span> prefix <span class="token builtin">string</span><span class="token punctuation">,</span> flag <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">*</span>Logger <span class="token punctuation">{</span>  
+    l <span class="token operator">:=</span> <span class="token function">new</span><span class="token punctuation">(</span>Logger<span class="token punctuation">)</span>  
+    l<span class="token punctuation">.</span><span class="token function">SetOutput</span><span class="token punctuation">(</span>out<span class="token punctuation">)</span>  
+    l<span class="token punctuation">.</span><span class="token function">SetPrefix</span><span class="token punctuation">(</span>prefix<span class="token punctuation">)</span>  
+    l<span class="token punctuation">.</span><span class="token function">SetFlags</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>  
+    <span class="token keyword">return</span> l  
+<span class="token punctuation">}</span>
+</pre></div><p>日志格式常量定义：</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">const</span> <span class="token punctuation">(</span>  
+    Ldate         <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token boolean">iota</span>     <span class="token comment">// the date in the local time zone: 2009/01/23  </span>
+    Ltime                         <span class="token comment">// the time in the local time zone: 01:23:23  </span>
+    Lmicroseconds                 <span class="token comment">// microsecond resolution: 01:23:23.123123.  assumes Ltime.  </span>
+    Llongfile                     <span class="token comment">// full file name and line number: /a/b/c/d.go:23  </span>
+    Lshortfile                    <span class="token comment">// final file name element and line number: d.go:23. overrides Llongfile  </span>
+    LUTC                          <span class="token comment">// if Ldate or Ltime is set, use UTC rather than the local time zone    Lmsgprefix                    // move the "prefix" from the beginning of the line to before the message  </span>
+    LstdFlags     <span class="token operator">=</span> Ldate <span class="token operator">|</span> Ltime <span class="token comment">// initial values for the standard logger  </span>
+<span class="token punctuation">)</span>
+</pre></div><div class="divider"></div><h3 id="1018" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>net<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><h4 id="1019" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>http<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h4><p><span class="inline-code">http</span>服务器需要实现<span class="inline-code">ServeHTTP</span>接口：</p><div class="code" language="go">
+              <div class="code-header">go</div>
+              <pre><span class="token keyword">type</span> Engine <span class="token keyword">struct</span><span class="token punctuation">{</span><span class="token punctuation">}</span>  
+
+<span class="token comment">// 必须实现此方法，用于对请求构造响应</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>engine <span class="token operator">*</span>Engine<span class="token punctuation">)</span> <span class="token function">ServeHTTP</span><span class="token punctuation">(</span>w http<span class="token punctuation">.</span>ResponseWriter<span class="token punctuation">,</span> req <span class="token operator">*</span>http<span class="token punctuation">.</span>Request<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+    <span class="token keyword">switch</span> req<span class="token punctuation">.</span>URL<span class="token punctuation">.</span>Path <span class="token punctuation">{</span>  
+    <span class="token keyword">case</span> <span class="token string">"/"</span><span class="token punctuation">:</span>  
+       fmt<span class="token punctuation">.</span><span class="token function">Fprintf</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> <span class="token string">"URL.Path = %q\n"</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span>URL<span class="token punctuation">.</span>Path<span class="token punctuation">)</span>  
+    <span class="token keyword">case</span> <span class="token string">"/hello"</span><span class="token punctuation">:</span>  
+       <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token operator">:=</span> <span class="token keyword">range</span> req<span class="token punctuation">.</span>Header <span class="token punctuation">{</span>  
+          fmt<span class="token punctuation">.</span><span class="token function">Fprintf</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> <span class="token string">"Header[%q] = %q\n"</span><span class="token punctuation">,</span> k<span class="token punctuation">,</span> v<span class="token punctuation">)</span>  
+       <span class="token punctuation">}</span>  
+    <span class="token keyword">default</span><span class="token punctuation">:</span>  
+       fmt<span class="token punctuation">.</span><span class="token function">Fprintf</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> <span class="token string">"404 NOT FOUND: %s\n"</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span>URL<span class="token punctuation">)</span>  
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>  
+  
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+    engine <span class="token operator">:=</span> <span class="token function">new</span><span class="token punctuation">(</span>Engine<span class="token punctuation">)</span>  
+    <span class="token comment">// 端口号</span>
+    http<span class="token punctuation">.</span><span class="token function">ListenAndServe</span><span class="token punctuation">(</span><span class="token string">":9999"</span><span class="token punctuation">,</span> engine<span class="token punctuation">)</span>
+    <span class="token comment">/* 单独写法
+	http.HandleFunc("/", indexHandler)  
+	http.HandleFunc("/hello", helloHandler)
+	*/</span>
+<span class="token punctuation">}</span>
+</pre></div><h4 id="1020" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>rpc<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h4>
