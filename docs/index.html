@@ -164,6 +164,7 @@
         $(".child-list-item").removeClass("child-list-item-active");
         $(this).addClass("child-list-item-active");
         let url = $(this).data("url");
+        url = encodeURIComponent(url);
         $(".site-body-center-content").load(`./html/${url}`);
         $(".local-nav-list").load(`./data/${url}`);
       });
