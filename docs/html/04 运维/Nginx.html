@@ -41,7 +41,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span>conf 配置<span class="title-lock">
+</svg></span>配置 conf<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -275,5 +275,39 @@ stroke-linejoin="round" class="svg-icon lucide-link">
         <span class="token directive"><span class="token keyword">allow</span> 0.0.0.0/0</span><span class="token punctuation">;</span>
         <span class="token directive"><span class="token keyword">deny</span> all</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre></div><h3 id="1008" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>压缩 gzip<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><div class="code" language="nginx">
+              <div class="code-header">nginx</div>
+              <pre><span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">{</span> 
+	<span class="token comment"># 开启 gzip 模块 </span>
+	<span class="token directive"><span class="token keyword">gzip</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span> 
+	
+	<span class="token comment"># 设置 gzip 的压缩级别，范围从 1 到 9，数字越大压缩越强，CPU 使用率也越高 </span>
+	<span class="token directive"><span class="token keyword">gzip_comp_level</span> <span class="token number">6</span></span><span class="token punctuation">;</span> 
+	
+	<span class="token comment"># 启用 gzip 压缩的最小响应数据量 </span>
+	<span class="token directive"><span class="token keyword">gzip_min_length</span> <span class="token number">1k</span></span><span class="token punctuation">;</span> 
+	
+	<span class="token comment"># 允许压缩的 MIME 类型 </span>
+	<span class="token directive"><span class="token keyword">gzip_types</span> text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript</span><span class="token punctuation">;</span> 
+	
+	<span class="token comment"># 不对某些请求头进行压缩 </span>
+	<span class="token directive"><span class="token keyword">gzip_disable</span> <span class="token string">"msie6"</span></span><span class="token punctuation">;</span> 
+	
+	<span class="token comment"># 缓存压缩后的数据 </span>
+	<span class="token directive"><span class="token keyword">gzip_proxied</span> any</span><span class="token punctuation">;</span> 
 <span class="token punctuation">}</span>
 </pre></div>

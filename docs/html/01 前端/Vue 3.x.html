@@ -11,7 +11,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h2><p><span class="inline-code">Vue3</span>是JavaScript框架<span class="inline-code">Vue.js</span>的第三个主要版本，由尤雨溪领导的Vue团队于2020年9月15日发布。相较于Vue 2.x，Vue3进行了深度重构和优化，并引入了一系列新的特性以提升性能、易用性和灵活性。</p><div class="callout" data-callout="abstract">
+</svg></span></h2><p><span class="inline-code">Vue3</span>是JavaScript框架<span class="inline-code">Vue.js</span>的第三个主要版本，由尤雨溪领导的<span class="inline-code">Vue</span>团队于2020年9月15日发布。相较于<span class="inline-code">Vue 2.x</span>，<span class="inline-code">Vue3</span>进行了深度重构和优化，并引入了一系列新的特性以提升性能、易用性和灵活性。</p><div class="callout" data-callout="abstract">
                 <div class="callout-title"><div class="callout-icon">
       <svg xmlns="http://www.w3.org/2000/svg" 
       width="24" height="24" viewBox="0 0 24 24" fill="none" 
@@ -22,7 +22,7 @@ stroke-linejoin="round" class="svg-icon lucide-link">
       <path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path>
       <path d="M8 16h.01"></path>
       </svg></div>
-      <div class="callout-title-inner">Summary</div></div><div>发布时间：2020年9月15日官方文档：<https://cn.vuejs.org/guide/introduction.html>仓库地址：<https://github.com/vuejs/vue-next></div></div><p>以下是<span class="inline-code">Vue3</span>的主要更新点：</p><span class="bold">性能提升</span><ul><li>打包大小显著减少（41%），这有助于提高应用加载速度。</li></ul><ul><li>初次渲染速度加快了约55%，更新渲染速度提高了大约133%。</li></ul><ul><li>内存占用减少了54%，意味着更高效的内存管理和资源利用。</li></ul><span class="bold">新架构与API变化</span><ul><li><span class="inline-code">Composition API</span>：</li></ul><p>引入了全新的<span class="inline-code">Composition API</span>，它允许开发者在一个集中式的逻辑函数<span class="inline-code">setup()</span>中组织组件的状态和行为，相比<span class="inline-code">Options API</span>提供了一种更加灵活且易于重用代码的方式。</p><ul><li>响应式系统改进：</li></ul><p>使用<span class="inline-code">ES6</span>的<span class="inline-code">Proxy</span>代替<span class="inline-code">Object.defineProperty</span>实现更完整的响应式代理，增强了对对象属性添加/删除等操作的监听能力。</p><ul><li>Tree-Shaking支持：</li></ul><p>通过更好的模块化设计，<span class="inline-code">Vue3</span>能够更好地支持<span class="inline-code">treeshaking</span>，从而减小生产环境下的打包体积。</p><p> </p><ul><li>组件生命周期调整:</li></ul><p><span class="inline-code">Vue3</span>移除了部分生命周期钩子如<span class="inline-code">beforeCreate</span>和<span class="inline-code">created</span>，并推荐在<span class="inline-code">setup()</span>中处理相关逻辑。</p><p>引入了一些新的生命周期钩子，例如<span class="inline-code">onMounted</span>、<span class="inline-code">onUpdated</span>、<span class="inline-code">onBeforeUnmount</span>等。</p><ul><li>其他新特性与优化:</li></ul><p><span class="inline-code">ref</span>和<span class="inline-code">reactive</span>等核心API用于管理组件状态。</p><p><span class="inline-code">Suspense</span>组件用于异步内容的延迟加载。</p><p><span class="inline-code">Teleport</span>组件用来将DOM节点“传送”到页面的其他位置。</p><p>支持<span class="inline-code">TypeScript</span>编写，官方提供了丰富的类型定义文件。</p><ul><li>工具链支持:</li></ul><p><span class="inline-code">Vue CLI</span> 和 <span class="inline-code">Vite</span> 的更新，<span class="inline-code">Vite</span> 提供了更快的开发体验，利用原生<span class="inline-code">ES</span>模块实现快速热更新。</p><div class="divider"></div><h2 id="1001" class="title"><span class="title-hide">
+      <div class="callout-title-inner">Summary</div></div><div>发布时间：2020年9月15日官方文档：<https://cn.vuejs.org/guide/introduction.html>仓库地址：<https://github.com/vuejs/vue-next></div></div><p>以下是<span class="inline-code">Vue3</span>的主要更新点：</p><span class="bold">性能提升</span><ul><li>打包大小显著减少（41%），这有助于提高应用加载速度。</li></ul><ul><li>初次渲染速度加快了约55%，更新渲染速度提高了大约133%。</li></ul><ul><li>内存占用减少了54%，意味着更高效的内存管理和资源利用。</li></ul><span class="bold">新架构与API变化</span><ul><li><span class="inline-code">Composition API</span>：</li></ul><p>引入了全新的<span class="inline-code">Composition API</span>，它允许开发者在一个集中式的逻辑函数<span class="inline-code">setup()</span>中组织组件的状态和行为，相比<span class="inline-code">Options API</span>提供了一种更加灵活且易于重用代码的方式。</p><ul><li>响应式系统改进：</li></ul><p>使用<span class="inline-code">ES6</span>的<span class="inline-code">Proxy</span>代替<span class="inline-code">Object.defineProperty</span>实现更完整的响应式代理，增强了对对象属性添加/删除等操作的监听能力。</p><ul><li><span class="inline-code">Tree-Shaking</span>支持：</li></ul><p>通过更好的模块化设计，<span class="inline-code">Vue3</span>能够更好地支持<span class="inline-code">treeshaking</span>，从而减小生产环境下的打包体积。</p><p> </p><ul><li>组件生命周期调整:</li></ul><p><span class="inline-code">Vue3</span>移除了部分生命周期钩子如<span class="inline-code">beforeCreate</span>和<span class="inline-code">created</span>，并推荐在<span class="inline-code">setup()</span>中处理相关逻辑。</p><p>引入了一些新的生命周期钩子，例如<span class="inline-code">onMounted</span>、<span class="inline-code">onUpdated</span>、<span class="inline-code">onBeforeUnmount</span>等。</p><ul><li>其他新特性与优化:</li></ul><p><span class="inline-code">ref</span>和<span class="inline-code">reactive</span>等核心<span class="inline-code">API</span>用于管理组件状态。</p><p><span class="inline-code">Suspense</span>组件用于异步内容的延迟加载。</p><p><span class="inline-code">Teleport</span>组件用来将<span class="inline-code">DOM</span>节点“传送”到页面的其他位置。</p><p>支持<span class="inline-code">TypeScript</span>编写，官方提供了丰富的类型定义文件。</p><ul><li>工具链支持:</li></ul><p><span class="inline-code">Vue CLI</span> 和 <span class="inline-code">Vite</span> 的更新，<span class="inline-code">Vite</span> 提供了更快的开发体验，利用原生<span class="inline-code">ES</span>模块实现快速热更新。</p><div class="divider"></div><h2 id="1001" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -59,6 +59,8 @@ stroke-linejoin="round" class="svg-icon lucide-link">
               <div class="code-header">powershell</div>
               <pre><span class="token comment"># 项目名称</span>
 vue create my-project
+
+<span class="token comment"># 图形化</span>
 vue ui
 </pre></div><div class="divider"></div><h2 id="1003" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
@@ -196,7 +198,7 @@ router<span class="token punctuation">.</span><span class="token function">after
 <span class="token keyword">export</span> <span class="token keyword">default</span> router<span class="token punctuation">;</span> 
 </pre></div><p>页面的跳转：</p><div class="code" language="js">
               <div class="code-header">js</div>
-              <pre><span class="token comment">// 跳转页面</span>
+              <pre><span class="token comment">// 跳转页面，不打开新页面</span>
 proxy<span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"login"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// 打开新页面</span>
@@ -235,7 +237,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><p>npm 安装 <span class="inline-code">mitt</span> 事件总线</p><div class="code" language="powershell">
+</svg></span></h3><p><span class="inline-code">mitt</span>可以用于任意两个组件之间的通信，解决了非父子关系的参数传递：</p><ul><li>安装</li></ul><p>npm 安装 <span class="inline-code">mitt</span> 事件总线</p><div class="code" language="powershell">
               <div class="code-header">powershell</div>
               <pre>npm install mitt
 </pre></div><p>修改 <span class="inline-code">main.js</span> 如下：</p><div class="code" language="javascript">
@@ -248,19 +250,19 @@ stroke-linejoin="round" class="svg-icon lucide-link">
 <span class="token comment">//设置$bus代替mitt</span>
 app<span class="token punctuation">.</span>config<span class="token punctuation">.</span>globalProperties<span class="token punctuation">.</span>$bus <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">mitt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 app<span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-</pre></div><p>发送数据组件:</p><div class="code" language="javascript">
+</pre></div><ul><li>发送数据组件:</li></ul><div class="code" language="javascript">
               <div class="code-header">javascript</div>
               <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> getCurrentInstance <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"vue"</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token punctuation">{</span> proxy <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">getCurrentInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">let</span> param <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 proxy<span class="token punctuation">.</span>$bus<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">"busname"</span><span class="token punctuation">,</span> param<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre></div><p>接受数据组件:</p><div class="code" language="javascript">
+</pre></div><ul><li>接受数据组件:</li></ul><div class="code" language="javascript">
               <div class="code-header">javascript</div>
               <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> getCurrentInstance <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"vue"</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token punctuation">{</span> proxy <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">getCurrentInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment">//必须在加载之前传值</span>
+<span class="token comment">//必须在加载之前传值，使用onMounted</span>
 <span class="token keyword">let</span> curParam <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">onMounted</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   proxy<span class="token punctuation">.</span>$bus<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"busname"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">param</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -273,14 +275,14 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span>父子传参<span class="title-lock">
+</svg></span>父子传参 prop<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><p>父组件：</p><div class="code" language="html">
+</svg></span></h3><p>可以利用组件自定义相应的属性，类似<span class="inline-code">data-id</span>的方法：</p><ul><li>父组件</li></ul><p>假设<span class="inline-code">subcomment</span>为存放评论数据的数组：</p><div class="code" language="html">
               <div class="code-header">html</div>
               <pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>CommentSub</span>
   <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item in subcomment<span class="token punctuation">"</span></span>
@@ -289,7 +291,7 @@ stroke-linejoin="round" class="svg-icon lucide-link">
   <span class="token attr-name">:content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item.content<span class="token punctuation">"</span></span>
   <span class="token attr-name">:gmtCreate</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item.gmtCreate<span class="token punctuation">"</span></span>
 <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>CommentSub</span><span class="token punctuation">></span></span>
-</pre></div><p>子组件：</p><div class="code" language="js">
+</pre></div><ul><li>子组件</li></ul><p>匹配对应的字段：</p><div class="code" language="js">
               <div class="code-header">js</div>
               <pre><span class="token keyword">const</span> props <span class="token operator">=</span> <span class="token function">defineProps</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
   <span class="token string">"id"</span><span class="token punctuation">,</span>
@@ -336,7 +338,23 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><ul><li>定义</li></ul><div class="code" language="js">
+</svg></span></h3><p>官网：<https://pinia.vuejs.org/zh/cookbook/></p><ul><li>安装</li></ul><div class="code" language="powershell">
+              <div class="code-header">powershell</div>
+              <pre>npm install pinia
+</pre></div><ul><li>配置</li></ul><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> createPinia <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"pinia"</span><span class="token punctuation">;</span>
+
+<span class="token comment">//app实例化</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//pinia状态管理持久化</span>
+<span class="token keyword">const</span> pinia <span class="token operator">=</span> <span class="token function">createPinia</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+pinia<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>piniaPersist<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// pinia需要最先应用</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>pinia<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>router<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">"#app"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><ul><li>定义存储库结构</li></ul><div class="code" language="js">
               <div class="code-header">js</div>
               <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> defineStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"pinia"</span><span class="token punctuation">;</span>
 
@@ -353,14 +371,23 @@ stroke-linejoin="round" class="svg-icon lucide-link">
     <span class="token literal-property property">enabled</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre></div><ul><li>使用</li></ul><div class="code" language="js">
+</pre></div><ul><li>使用动态更新</li></ul><div class="code" language="js">
               <div class="code-header">js</div>
               <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> useUserStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@/stores/user"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> storeToRefs <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"pinia"</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> userStore <span class="token operator">=</span> <span class="token function">useUserStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token punctuation">{</span> userInfo <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">storeToRefs</span><span class="token punctuation">(</span>userStore<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre></div><h2 id="1012" class="title"><span class="title-hide">
+</pre></div><ul><li>更新数据</li></ul><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> useUserStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@/stores/user"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> userStore <span class="token operator">=</span> <span class="token function">useUserStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+userStore<span class="token punctuation">.</span><span class="token function">$patch</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+     messageUncheck<span class="token operator">:</span> response<span class="token punctuation">.</span>data<span class="token punctuation">.</span>messageUncheck<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><div class="divider"></div><h2 id="1012" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -373,22 +400,42 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h2><p><span class="inline-code">vue.config.js</span> 配置 <span class="inline-code">webpack</span> 打包压缩：</p><div class="code" language="js">
+</svg></span></h2><h3 id="1013" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>Webpack<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p><span class="inline-code">vue.config.js</span> 配置 <span class="inline-code">webpack</span> 打包，并使用<span class="inline-code">gzip</span>压缩：</p><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token function">npm</span> <span class="token function">install</span> compression-webpack-plugin
+</pre></div><div class="code" language="js">
               <div class="code-header">js</div>
               <pre><span class="token keyword">const</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"@vue/cli-service"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
 <span class="token comment">// 安装压缩</span>
 <span class="token keyword">const</span> CompressionPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'compression-webpack-plugin'</span><span class="token punctuation">)</span>
+
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token literal-property property">lintOnSave</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
   <span class="token literal-property property">transpileDependencies</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
   <span class="token literal-property property">configureWebpack</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+	  <span class="token comment">// 取消警告</span>
       <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DefinePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token literal-property property">__VUE_OPTIONS_API__</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
         <span class="token literal-property property">__VUE_PROD_DEVTOOLS__</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
         <span class="token literal-property property">__VUE_PROD_HYDRATION_MISMATCH_DETAILS__</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token comment">// 压缩配置</span>
       <span class="token keyword">new</span> <span class="token class-name">CompressionPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'[path].gz'</span><span class="token punctuation">,</span>
         <span class="token literal-property property">algorithm</span><span class="token operator">:</span> <span class="token string">'gzip'</span><span class="token punctuation">,</span>
@@ -400,7 +447,20 @@ module<span class="token punctuation">.</span>exports <span class="token operato
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</pre></div><h2 id="1013" class="title"><span class="title-hide">
+</pre></div><h3 id="1014" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>Vite<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><div class="divider"></div><h2 id="1015" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -413,7 +473,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h2><h3 id="1014" class="title"><span class="title-hide">
+</svg></span></h2><h3 id="1016" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -426,7 +486,27 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><h2 id="1015" class="title"><span class="title-hide">
+</svg></span></h3><ul><li>安装</li></ul><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token function">npm</span> <span class="token function">install</span> @element-plus/icons-vue
+<span class="token function">npm</span> <span class="token function">install</span> element-plus
+</pre></div><ul><li>配置</li></ul><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token keyword">import</span> ElementPlus <span class="token keyword">from</span> <span class="token string">"element-plus"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">"element-plus/theme-chalk/index.css"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> locale <span class="token keyword">from</span> <span class="token string">"element-plus/es/locale/lang/zh-cn"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> ElementPlusIconsVue <span class="token keyword">from</span> <span class="token string">"@element-plus/icons-vue"</span><span class="token punctuation">;</span>
+
+<span class="token comment">//app实例化</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//Element图标库引入</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token punctuation">[</span>key<span class="token punctuation">,</span> component<span class="token punctuation">]</span> <span class="token keyword">of</span> Object<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>ElementPlusIconsVue<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  app<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> component<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>router<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>ElementPlus<span class="token punctuation">,</span> <span class="token punctuation">{</span> locale <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">"#app"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><div class="divider"></div><h2 id="1017" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -439,7 +519,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h2><h3 id="1016" class="title"><span class="title-hide">
+</svg></span></h2><h3 id="1018" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -452,7 +532,68 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><h2 id="1017" class="title"><span class="title-hide">
+</svg></span></h3><p><span class="inline-code">Ajax</span>用于异步请求且只针对局部数据：</p><ul><li>配置</li></ul><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">"axios"</span><span class="token punctuation">;</span>
+
+<span class="token comment">//app实例化</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//axios</span>
+app<span class="token punctuation">.</span>config<span class="token punctuation">.</span>globalProperties<span class="token punctuation">.</span>$axios <span class="token operator">=</span> axios<span class="token punctuation">;</span>
+axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>baseURL <span class="token operator">=</span> <span class="token string">"/api"</span><span class="token punctuation">;</span>
+axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">//请求头加入token</span>
+  config<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>token <span class="token operator">=</span> <span class="token function">getCookie</span><span class="token punctuation">(</span><span class="token string">"token"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>token<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> config<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><ul><li><span class="inline-code">GET</span></li></ul><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> getCurrentInstance <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"vue"</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> proxy <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">getCurrentInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> url <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/mail/send?receiver=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>userEmail<span class="token punctuation">.</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+proxy<span class="token punctuation">.</span>$axios
+     <span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span> <span class="token operator">&amp;&amp;</span> response<span class="token punctuation">.</span>data<span class="token punctuation">.</span>code <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            trueVerify <span class="token operator">=</span> response<span class="token punctuation">.</span>data<span class="token punctuation">.</span>data<span class="token punctuation">.</span>code<span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+     <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><ul><li><span class="inline-code">POST</span></li></ul><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> getCurrentInstance <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"vue"</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> proxy <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">getCurrentInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+proxy<span class="token punctuation">.</span>$axios
+     <span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"/user/login"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        loginType<span class="token operator">:</span> <span class="token string">"EMAIL"</span><span class="token punctuation">,</span>
+        userEmail<span class="token operator">:</span> userEmail<span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+        gmtCreate<span class="token operator">:</span> <span class="token function">getDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+     <span class="token punctuation">}</span><span class="token punctuation">)</span>
+     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	    <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span> <span class="token operator">&amp;&amp;</span> response<span class="token punctuation">.</span>data<span class="token punctuation">.</span>code <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            proxy<span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"home"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
+        <span class="token punctuation">}</span> 
+     <span class="token punctuation">}</span><span class="token punctuation">)</span>
+     <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><h3 id="1019" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>fetch<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><div class="divider"></div><h2 id="1020" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -465,7 +606,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h2><h3 id="1018" class="title"><span class="title-hide">
+</svg></span></h2><h3 id="1021" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -478,20 +619,57 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><h2 id="1019" class="title"><span class="title-hide">
+</svg></span></h3><ul><li>安装</li></ul><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token function">npm</span> <span class="token function">install</span> js-cookie
+</pre></div><ul><li>封装</li></ul><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token keyword">import</span> Cookies <span class="token keyword">from</span> <span class="token string">"js-cookie"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">getCookie</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">//字符化</span>
+  <span class="token keyword">let</span> json <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token operator">:</span> Cookies<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//转化为对象</span>
+  <span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> obj<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">setCookie</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">//匹配 \</span>
+  <span class="token keyword">let</span> reg1 <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\\</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">;</span>
+  <span class="token comment">//匹配开始和结束的"</span>
+  <span class="token keyword">var</span> reg2 <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^['|"](.*)['|"]$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">;</span>
+  <span class="token comment">//字符化</span>
+  <span class="token keyword">let</span> json <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  json <span class="token operator">=</span> json<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>reg1<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  json <span class="token operator">=</span> json<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>reg2<span class="token punctuation">,</span> <span class="token string">"$1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  json <span class="token operator">=</span> json<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>reg2<span class="token punctuation">,</span> <span class="token string">"$1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//3天后过期</span>
+  <span class="token keyword">return</span> Cookies<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> json<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">expires</span><span class="token operator">:</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">removeCookie</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> Cookies<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre></div><ul><li>更新</li></ul><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token keyword">import</span> <span class="token punctuation">{</span> setCookie <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@/utils/cookies"</span><span class="token punctuation">;</span>
+
+<span class="token function">setCookie</span><span class="token punctuation">(</span><span class="token string">"idxUser"</span><span class="token punctuation">,</span> response<span class="token punctuation">.</span>data<span class="token punctuation">.</span>idxUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><div class="divider"></div><h2 id="1022" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span>举例<span class="title-lock">
+</svg></span>示例<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h2><h3 id="1020" class="title"><span class="title-hide">
+</svg></span></h2><h3 id="1023" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -504,7 +682,42 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><h3 id="1021" class="title"><span class="title-hide">
+</svg></span></h3><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token function">npm</span> <span class="token function">install</span> tinymce
+<span class="token function">npm</span> <span class="token function">install</span> @tinymce/tinymce-vue
+</pre></div><div class="code" language="html">
+              <div class="code-header">html</div>
+              <pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Editor</span>
+     <span class="token attr-name">api-key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<span class="token punctuation">"</span></span>
+     <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>html-editor<span class="token punctuation">"</span></span>
+     <span class="token attr-name">:init</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>editorinit<span class="token punctuation">"</span></span>
+     <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span>
+  <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> Editor <span class="token keyword">from</span> <span class="token string">"@tinymce/tinymce-vue"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> content <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> editorinit <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  toolbar_mode<span class="token operator">:</span> <span class="token string">"sliding"</span><span class="token punctuation">,</span>
+  toolbar<span class="token operator">:</span>
+    <span class="token string">"undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat"</span><span class="token punctuation">,</span>
+  tinycomments_mode<span class="token operator">:</span> <span class="token string">"embedded"</span><span class="token punctuation">,</span>
+  tinycomments_author<span class="token operator">:</span> <span class="token string">"Author name"</span><span class="token punctuation">,</span>
+  language<span class="token operator">:</span> <span class="token string">"zh_CN"</span><span class="token punctuation">,</span>
+  resize<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  branding<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  height<span class="token operator">:</span> <span class="token string">"100vh"</span><span class="token punctuation">,</span>
+  width<span class="token operator">:</span> <span class="token string">"100%"</span><span class="token punctuation">,</span>
+  mergetags_list<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token string">"First.Name"</span><span class="token punctuation">,</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"First Name"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token string">"Email"</span><span class="token punctuation">,</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"Email"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+</pre></div><div class="divider"></div><h3 id="1024" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -517,7 +730,30 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><h3 id="1022" class="title"><span class="title-hide">
+</svg></span></h3><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token function">npm</span> <span class="token function">install</span> @bytemd/vue-next
+</pre></div><div class="code" language="html">
+              <div class="code-header">html</div>
+              <pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mdEditor</span>
+     <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>md-editor<span class="token punctuation">"</span></span>
+     <span class="token attr-name">:value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span>
+     <span class="token attr-name">:locale</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>zhHans<span class="token punctuation">"</span></span>
+     <span class="token attr-name">@change</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>contentChange<span class="token punctuation">"</span></span>
+  <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> <span class="token string">"bytemd/dist/index.css"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Editor <span class="token keyword">as</span> mdEditor <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@bytemd/vue-next"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> zhHans <span class="token keyword">from</span> <span class="token string">"bytemd/lib/locales/zh_Hans.json"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> content <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">contentChange</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  content<span class="token punctuation">.</span>value <span class="token operator">=</span> e<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+</pre></div><div class="divider"></div><h3 id="1025" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -530,7 +766,34 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><h3 id="1023" class="title"><span class="title-hide">
+</svg></span></h3><h3 id="1026" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>SHA256<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><div class="code" language="shell">
+              <div class="code-header">shell</div>
+              <pre><span class="token function">npm</span> <span class="token function">install</span> crypto-js
+</pre></div><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token comment">//SHA256加密</span>
+<span class="token keyword">import</span> CryptoJS <span class="token keyword">from</span> <span class="token string">'crypto-js'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">SHA256</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">password</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> hash <span class="token operator">=</span> CryptoJS<span class="token punctuation">.</span><span class="token constant">SHA256</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//转为16进制字符串</span>
+  hash <span class="token operator">=</span> hash<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>CryptoJS<span class="token punctuation">.</span>enc<span class="token punctuation">.</span>Hex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> hash<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><div class="divider"></div><h3 id="1027" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -543,7 +806,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><h3 id="1024" class="title"><span class="title-hide">
+</svg></span></h3><h3 id="1028" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -556,4 +819,49 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3>
+</svg></span></h3><div class="divider"></div><h3 id="1029" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>科大讯飞<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><h4 id="1030" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>聊天AI<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h4><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre>
+</pre></div><h4 id="1031" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>文本朗读<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h4><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre>
+</pre></div>
