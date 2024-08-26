@@ -4,20 +4,31 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">概述</span><span class="title-lock">
+</svg></span>概述<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h2><h2 id="1001" class="title"><span class="title-hide">
+</svg></span></h2><div class="callout" data-callout="abstract">
+                <div class="callout-title"><div class="callout-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" 
+      width="24" height="24" viewBox="0 0 24 24" fill="none" 
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+      stroke-linejoin="round" class="svg-icon lucide-clipboard-list">
+      <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+      <path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path>
+      <path d="M8 16h.01"></path>
+      </svg></div>
+      <div class="callout-title-inner">Summary</div></div><div>官网：<http://nginx.org/en/download.html></div></div><h2 id="1001" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">安装</span><span class="title-lock">
+</svg></span>安装<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -30,7 +41,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">配置</span><span class="title-lock">
+</svg></span>conf 配置<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -43,85 +54,86 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">静态服务器</span><span class="title-lock">
+</svg></span>静态服务器<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><div class="code" language="ini">
-              <div class="code-header">ini</div>
-              <pre>server {
-    listen       8080;
-    server_name  localhost;
-    root /home/pro/tour/;
+</svg></span></h3><p>根据特定静态路由配置<span class="inline-code">index</span></p><div class="code" language="nginx">
+              <div class="code-header">nginx</div>
+              <pre><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">8080</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server_name</span>  localhost</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">root</span> /home/pro/tour/</span><span class="token punctuation">;</span>
 
-    location / {
-        index  index.html;
-    }
+    <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">index</span>  index.html</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    location /api {
-        alias /home/pro/tour/api/;
-        index  index.html;
-    }
-}
+    <span class="token directive"><span class="token keyword">location</span> /api</span> <span class="token punctuation">{</span>
+	    <span class="token comment"># 目录重定向</span>
+        <span class="token directive"><span class="token keyword">alias</span> /home/pro/tour/api/</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">index</span>  index.html</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </pre></div><h3 id="1004" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">文件下载</span><span class="title-lock">
+</svg></span>文件下载<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><div class="code" language="ini">
-              <div class="code-header">ini</div>
-              <pre>server {
-    listen       8080;
-    server_name  localhost;
-    charset utf-8;
-    root /home/pro/tour/libs;
+</svg></span></h3><p>作为文件下载服务器，显示可以下载的文件列表</p><div class="code" language="nginx">
+              <div class="code-header">nginx</div>
+              <pre><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">8080</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server_name</span>  localhost</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">charset</span> utf-8</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">root</span> /home/pro/tour/libs</span><span class="token punctuation">;</span>
 
-    location / {
-        autoindex on;
-        autoindex_exact_size on;
-        autoindex_localtime on;
-        tcp_nopush on;
-        sendfile on;
+    <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">autoindex</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">autoindex_exact_size</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">autoindex_localtime</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">tcp_nopush</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">sendfile</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+		<span class="token comment"># 浏览器提示用户下载文件而不是直接打开</span>
+        <span class="token directive"><span class="token keyword">if</span> (<span class="token variable">$request_uri</span> ~* \.(zip|html|rar|gz|bz2|tar|7z|mp3|mp4|png|jpg|js|css)$)</span> <span class="token punctuation">{</span>
+            <span class="token directive"><span class="token keyword">add_header</span> Content-Disposition <span class="token string">'attachment;'</span></span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre></div><p>可以安装 <span class="inline-code">ngx_http_xslt_module</span> 模块美化文件列表</p><div class="code" language="nginx">
+              <div class="code-header">nginx</div>
+              <pre><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">8080</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server_name</span>  localhost</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">charset</span> utf-8</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">root</span> /home/pro/tour/libs</span><span class="token punctuation">;</span>
 
-        if ($request_uri ~* \.(zip|html|rar|gz|bz2|tar|7z|mp3|mp4|png|jpg|js|css)$) {
-            add_header Content-Disposition 'attachment;';
-        }
-    }
-}
-</pre></div><p>可以安装 <span class="inline-code">ngx_http_xslt_module</span> 模块美化文件列表</p><div class="code" language="ini">
-              <div class="code-header">ini</div>
-              <pre>server {
-    listen       8080;
-    server_name  localhost;
-    charset utf-8;
-    root /home/pro/tour/libs;
+    <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">autoindex</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">autoindex_exact_size</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">autoindex_localtime</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">autoindex_format</span> xml</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">autoindex_xslt</span> /home/pro/tour/libs/style.xsl</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">tcp_nopush</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">sendfile</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
 
-    location / {
-        autoindex on;
-        autoindex_exact_size on;
-        autoindex_localtime on;
-        autoindex_format xml;
-        autoindex_xslt /home/pro/tour/libs/style.xsl;
-        tcp_nopush on;
-        sendfile on;
+        <span class="token directive"><span class="token keyword">if</span> (<span class="token variable">$request_uri</span> ~* \.(zip|html|rar|gz|bz2|tar|7z|mp3|mp4|png|jpg|js|css)$)</span> <span class="token punctuation">{</span>
+            <span class="token directive"><span class="token keyword">add_header</span> Content-Disposition <span class="token string">'attachment;'</span></span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        if ($request_uri ~* \.(zip|html|rar|gz|bz2|tar|7z|mp3|mp4|png|jpg|js|css)$) {
-            add_header Content-Disposition 'attachment;';
-        }
-
-    }
-}
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
 </pre></div><h3 id="1005" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
@@ -129,51 +141,51 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">HTTPS</span><span class="title-lock">
+</svg></span>HTTPS<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><div class="code" language="ini">
-              <div class="code-header">ini</div>
-              <pre>server {
-    listen       443 ssl;
-    server_name  localhost;
-    root /home/pro/tour/;
+</svg></span></h3><p>配置<span class="inline-code">https</span>加密</p><div class="code" language="nginx">
+              <div class="code-header">nginx</div>
+              <pre><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">443</span> ssl</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server_name</span>  localhost</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">root</span> /home/pro/tour/</span><span class="token punctuation">;</span>
 
-    ssl_certificate      /home/pro/full_chain.pem;
-    ssl_certificate_key  /home/pro/private.key;
+    <span class="token directive"><span class="token keyword">ssl_certificate</span>      /home/pro/full_chain.pem</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">ssl_certificate_key</span>  /home/pro/private.key</span><span class="token punctuation">;</span>
 
-    ssl_session_cache    shared:SSL:1m;
-    ssl_session_timeout  5m;
+    <span class="token directive"><span class="token keyword">ssl_session_cache</span>    shared:SSL:1m</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">ssl_session_timeout</span>  <span class="token number">5m</span></span><span class="token punctuation">;</span>
 
-    ssl_protocols SSLv3 SSLv2 TLSv1 TLSv1.1 TLSv1.2;
-    ssl_ciphers  HIGH:!aNULL:!MD5;
-    ssl_prefer_server_ciphers  on; 
+    <span class="token directive"><span class="token keyword">ssl_protocols</span> SSLv3 SSLv2 TLSv1 TLSv1.1 TLSv1.2</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">ssl_ciphers</span>  HIGH:!aNULL:!MD5</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">ssl_prefer_server_ciphers</span>  <span class="token boolean">on</span></span><span class="token punctuation">;</span> 
 
-    location / {
-        index  index.html;
-    }
-}
+    <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">index</span>  index.html</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </pre></div><h3 id="1006" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">PHP</span><span class="title-lock">
+</svg></span>PHP<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><p>安装 <span class="inline-code">php-fpm</span></p><div class="code" language="shell">
+</svg></span></h3><p>首先安装 <span class="inline-code">php-fpm</span></p><div class="code" language="shell">
               <div class="code-header">shell</div>
               <pre><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> php-fpm php-mysql php-common php-gd php-mbstring php-curl php-xml php-zip php-cli <span class="token parameter variable">-y</span>
-</pre></div><p>启动 <span class="inline-code">php-fpm</span></p><div class="code" language="shell">
+</pre></div><p>再启动 <span class="inline-code">php-fpm</span></p><div class="code" language="shell">
               <div class="code-header">shell</div>
               <pre><span class="token comment"># 注意版本号，在 /lib/systemd/system 目录下查看</span>
 <span class="token function">sudo</span> systemctl start php8.1-fpm.service
@@ -190,44 +202,78 @@ stroke-linejoin="round" class="svg-icon lucide-link">
 <span class="token key attr-name">listen</span> <span class="token punctuation">=</span> <span class="token value attr-value">/run/php/php8.1-fpm.sock</span>
 <span class="token key attr-name">listen.owner</span> <span class="token punctuation">=</span> <span class="token value attr-value">www-data</span>
 <span class="token key attr-name">listen.group</span> <span class="token punctuation">=</span> <span class="token value attr-value">www-data</span>
-</pre></div><p><span class="inline-code">nginx</span> 配置</p><div class="code" language="ini">
-              <div class="code-header">ini</div>
-              <pre>worker_processes  1;
+</pre></div><p>更改<span class="inline-code">nginx</span> 配置，注意用户</p><div class="code" language="nginx">
+              <div class="code-header">nginx</div>
+              <pre><span class="token directive"><span class="token keyword">worker_processes</span>  <span class="token number">1</span></span><span class="token punctuation">;</span>
 <span class="token comment"># 注意此处需要修改为php-fpm的实际用户</span>
-user www-data;
+<span class="token directive"><span class="token keyword">user</span> www-data</span><span class="token punctuation">;</span>
 
-events {
-    worker_connections  1024;
-}
+<span class="token directive"><span class="token keyword">events</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">worker_connections</span>  <span class="token number">1024</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-http {
-    keepalive_timeout  65;
+<span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">keepalive_timeout</span>  <span class="token number">65</span></span><span class="token punctuation">;</span>
 
-    server {
-        listen       8080;
-        server_name  localhost;
-        root /home/pro/tour/;
-        include fastcgi.conf;
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">8080</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server_name</span>  localhost</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">root</span> /home/pro/tour/</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">include</span> fastcgi.conf</span><span class="token punctuation">;</span>
 
-        location / {
-            index index.php;
-        }
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+            <span class="token directive"><span class="token keyword">index</span> index.php</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        location ~ \.php$ {
+        <span class="token directive"><span class="token keyword">location</span> ~ \.php$</span> <span class="token punctuation">{</span>
             <span class="token comment"># fastcgi监听端口</span>
-            fastcgi_pass  unix:/run/php/php8.1-fpm.sock;
+            <span class="token directive"><span class="token keyword">fastcgi_pass</span>  unix:/run/php/php8.1-fpm.sock</span><span class="token punctuation">;</span>
             <span class="token comment"># fastcgi_pass 127.0.0.1:9000;</span>
-            fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-            include fastcgi.conf;
-            include fastcgi_params;
-        }
-    }
-}
+            <span class="token directive"><span class="token keyword">fastcgi_index</span> index.php</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span></span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">include</span> fastcgi.conf</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">include</span> fastcgi_params</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-</pre></div><p>查看是否为同一用户</p><div class="code" language="shell">
+</pre></div><p>查看是否为同一用户启动：</p><div class="code" language="shell">
               <div class="code-header">shell</div>
               <pre><span class="token function">ps</span> -ef<span class="token operator">|</span><span class="token function">grep</span> nginx
 <span class="token function">ps</span> -ef<span class="token operator">|</span><span class="token function">grep</span> php-fpm
+</pre></div><h3 id="1007" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>状态统计<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><div class="code" language="nginx">
+              <div class="code-header">nginx</div>
+              <pre><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+	<span class="token comment"># ipv4</span>
+    <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">80</span></span><span class="token punctuation">;</span>
+	<span class="token comment"># ipv6</span>
+    <span class="token directive"><span class="token keyword">listen</span>  [::]:80</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server_name</span>  localhost</span><span class="token punctuation">;</span>
 
+    <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">root</span>   /usr/share/nginx/html</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">index</span>  index.html index.htm</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token directive"><span class="token keyword">location</span> /nginx_status</span> <span class="token punctuation">{</span>
+	    <span class="token comment"># 开启状态统计</span>
+        <span class="token directive"><span class="token keyword">stub_status</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">access_log</span> <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">allow</span> 0.0.0.0/0</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">deny</span> all</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </pre></div>

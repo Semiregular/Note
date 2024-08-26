@@ -17,6 +17,19 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
+</svg></span>安装<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><h2 id="1002" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
 </svg></span>命令<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
@@ -24,18 +37,4 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h2><p>镜像拉取，修改名称，删除镜像：</p><div class="code" language="shell">
-              <div class="code-header">shell</div>
-              <pre><span class="token function">docker</span> pull coredns/coredns:1.8.6
-
-<span class="token function">docker</span> tag coredns/coredns:1.8.6   k8s.gcr.io/coredns/coredns:v1.8.6
-
-<span class="token function">docker</span> rmi coredns/coredns:1.8.6
-</pre></div><p>另存镜像，手动上传：</p><div class="code" language="shell">
-              <div class="code-header">shell</div>
-              <pre>// 保存为 <span class="token function">tar</span>
-<span class="token function">docker</span> save <span class="token parameter variable">-o</span> nginx.tar  nginx:latest
-
-// 手动解压
-<span class="token function">docker</span> load <span class="token parameter variable">-i</span> nginx.tar
-</pre></div>
+</svg></span></h2>
