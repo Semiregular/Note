@@ -1269,7 +1269,7 @@ ol > li {
 .inline-code {
   color: var(--code-normal);
   background-color: var(--code-background);
-  border: 0.8px solid var(--color-base-30);
+  border: 0.8px solid var(--color-base-20);
   border-radius: 4px;
   font-family: var(--font-monospace);
   font-size: var(--code-size);
@@ -1281,7 +1281,7 @@ ol > li {
 .code {
   color: var(--code-normal);
   background-color: var(--code-background);
-  border: 0.8px solid var(--color-base-30);
+  border: 0.8px solid var(--color-base-20);
   border-radius: 4px;
   margin-top: var(--size-4-4);
   margin-bottom: var(--size-4-4);
@@ -1310,7 +1310,7 @@ ol > li {
   font-size: 12px;
   color: var(--color-purple);
   background-color: var(--color-base-00);
-  border: 0.8px solid var(--color-base-30);
+  border: 0.8px solid var(--color-base-20);
   font-family: var(--font-monospace);
   line-height: var(--line-height-normal);
   padding: 0.1em 0.25em;
