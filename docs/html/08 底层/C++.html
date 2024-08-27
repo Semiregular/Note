@@ -1,0 +1,49 @@
+<h2 id="1000" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>对象<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><h3 id="1001" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>RVO<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>如果对象在函数中返回，一般情况下会被当做临时数据无法保存；实际上，编译器会自动将其改写为指针的形式，通过拷贝构造函数复制到调用函数的栈帧；或者，通过<span class="inline-code">RVO</span>优化取消临时对象，直接写入调用函数的栈帧，不使用拷贝构造函数。</p><p>在使用 RVO 时，编译器会在函数内直接构造返回对象，而不是先构造一个临时对象然后再将其复制到调用者。这可以减少内存开销和提高效率。</p><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+
+class Example <span class="token punctuation">{</span>
+public<span class="token operator">:</span>
+    <span class="token function">Example</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Example Constructor\n"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token function">Example</span><span class="token punctuation">(</span><span class="token keyword">const</span> Example<span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Example Copy Constructor\n"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    Example<span class="token operator">&amp;</span> operator<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> Example<span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Example Assignment Operator\n"</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token operator">*</span>this<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">~</span><span class="token function">Example</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Example Destructor\n"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 函数返回一个 Example 对象</span>
+Example <span class="token function">createExample</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Example ex<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> ex<span class="token punctuation">;</span> <span class="token comment">// 这里可能会发生 RVO</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Example e <span class="token operator">=</span> <span class="token function">createExample</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 直接在调用者的变量位置构造对象</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div>
