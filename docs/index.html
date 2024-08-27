@@ -115,9 +115,11 @@
   </body>
   <script>
     let isNavLocal = false;
+    let indexURL = "00 前言.html";
+    indexURL = encodeURIComponent(indexURL);
     $(function () {
-      $(".site-body-center-content").load("./html/index.html");
-      $(".local-nav-list").load("./data/index.html");
+      $(".site-body-center-content").load(`./html/${indexURL}`);
+      $(".local-nav-list").load(`./data/${indexURL}`);
       $(".nav-list").load("./data/nav.html");
 
       $(".change-theme-btn").click(function () {

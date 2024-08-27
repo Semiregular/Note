@@ -989,6 +989,7 @@ body {
   mix-blend-mode: var(--callout-blend-mode);
   background-color: rgba(var(--callout-color), 0.1);
   padding: var(--callout-padding);
+  box-shadow: 0 2px 8px var(--background-modifier-box-shadow);
 }
 .callout.is-collapsible .callout-title {
   cursor: var(--cursor);
@@ -1324,6 +1325,7 @@ ol > li {
 .divider {
   border-bottom: 1.6px solid var(--color-base-30);
   margin: 2rem 0;
+  margin-bottom: 5rem;
 }
 
 .bold {
@@ -1541,6 +1543,10 @@ ol > li {
 a {
   text-decoration: none;
   color: var(--text-normal);
+}
+
+.site-body-center a{
+  color: var(--color-orange);
 }
 
 p {
