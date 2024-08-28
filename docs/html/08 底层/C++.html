@@ -24,7 +24,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><p>如果对象在函数中返回，一般情况下会被当做临时数据无法保存；实际上，编译器会自动将其改写为指针的形式，通过拷贝构造函数复制到调用函数的栈帧；或者，通过<span class="inline-code">RVO</span>优化取消临时对象，直接写入调用函数的栈帧，不使用拷贝构造函数。</p><p>在使用 RVO 时，编译器会在函数内直接构造返回对象，而不是先构造一个临时对象然后再将其复制到调用者。这可以减少内存开销和提高效率。</p><div class="code" language="c">
+</svg></span></h3><p>如果对象在函数中返回，一般情况下会被当做临时数据无法保存；实际上，编译器会自动将其改写为指针的形式，通过拷贝构造函数复制到调用函数的栈帧；或者，通过<span class="inline-code">RVO</span>优化取消临时对象，直接写入调用函数的栈帧，不使用拷贝构造函数。</p><p>在使用 RVO 时，编译器会在函数内直接构造返回对象，而不是先构造一个临时对象然后再将其复制到调用者。这可以减少内存开销和提高效率。</p><p>可以理解为将原来的函数变为了内联函数。</p><div class="code" language="c">
               <div class="code-header">c</div>
               <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 
@@ -46,4 +46,192 @@ Example <span class="token function">createExample</span><span class="token punc
     Example e <span class="token operator">=</span> <span class="token function">createExample</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 直接在调用者的变量位置构造对象</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre></div>
+</pre></div><div class="divider"></div><h3 id="1002" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>this<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>调用成员函数时都要首先传入该类的<span class="inline-code">this</span>指针，实际就是该类的地址；或者说每个成员函数都有一个隐藏的默认参数。</p><p>一般位于函数调用前的<span class="inline-code">rdi</span>寄存器中。</p><div class="divider"></div><h3 id="1003" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>虚函数<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>类似<span class="inline-code">Java</span>中<span class="inline-code">@Override</span>重写父类函数，使得子类重写父类的同名函数；可以重写参数和返回类型，但不推荐。</p><p>虚函数的具体实现是相应类添加一个默认变量指向虚函数表的首地址，使用函数指针调用相应类的虚函数。在构造函数时会自动初始化这个变量。</p><p>在调用虚函数时，需要通过<span class="inline-code">rdx</span>寄存器来确定虚函数的入口地址，实现动态绑定。</p><p>一般情况下，禁止在构造函数中调用虚函数，因为虚函数表的地址不确定是父类还是子类的。虚表地址首先指向父类。构造完成后才指向子类。</p><p>虚函数本质上为函数指针。</p><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre>class A<span class="token punctuation">{</span>
+    public<span class="token operator">:</span>
+        <span class="token keyword">int</span> x<span class="token punctuation">;</span>
+        virtual <span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>a<span class="token punctuation">;</span>
+
+class B <span class="token operator">:</span> public A<span class="token punctuation">{</span>
+    public<span class="token operator">:</span>
+	    <span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	        x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>b<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    a<span class="token punctuation">.</span><span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre>A<span class="token operator">::</span><span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        mov     QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> rdi
+        mov     rax<span class="token punctuation">,</span> QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span>
+        mov     DWORD PTR <span class="token punctuation">[</span>rax<span class="token operator">+</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span>
+        nop
+        pop     rbp
+        ret
+
+A<span class="token operator">::</span><span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>base object constructor<span class="token punctuation">]</span><span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        mov     QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> rdi
+        mov     edx<span class="token punctuation">,</span> OFFSET FLAT<span class="token operator">:</span>vtable <span class="token keyword">for</span> A<span class="token operator">+</span><span class="token number">16</span>
+        mov     rax<span class="token punctuation">,</span> QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span>
+        mov     QWORD PTR <span class="token punctuation">[</span>rax<span class="token punctuation">]</span><span class="token punctuation">,</span> rdx
+        mov     rax<span class="token punctuation">,</span> QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span>
+        mov     DWORD PTR <span class="token punctuation">[</span>rax<span class="token operator">+</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">0</span>
+        nop
+        pop     rbp
+        ret
+
+a<span class="token operator">:</span>
+        <span class="token punctuation">.</span>zero   <span class="token number">16</span>
+
+B<span class="token operator">::</span><span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>base object constructor<span class="token punctuation">]</span><span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        sub     rsp<span class="token punctuation">,</span> <span class="token number">16</span>
+        mov     QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> rdi
+        mov     rax<span class="token punctuation">,</span> QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span>
+        mov     rdi<span class="token punctuation">,</span> rax
+        call    A<span class="token operator">::</span><span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>base object constructor<span class="token punctuation">]</span>
+        mov     edx<span class="token punctuation">,</span> OFFSET FLAT<span class="token operator">:</span>vtable <span class="token keyword">for</span> B<span class="token operator">+</span><span class="token number">16</span>
+        mov     rax<span class="token punctuation">,</span> QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span>
+        mov     QWORD PTR <span class="token punctuation">[</span>rax<span class="token punctuation">]</span><span class="token punctuation">,</span> rdx
+        mov     rax<span class="token punctuation">,</span> QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span>
+        mov     DWORD PTR <span class="token punctuation">[</span>rax<span class="token operator">+</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span>
+        nop
+        leave
+        ret
+
+b<span class="token operator">:</span>
+        <span class="token punctuation">.</span>zero   <span class="token number">16</span>
+
+main<span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        mov     edi<span class="token punctuation">,</span> OFFSET FLAT<span class="token operator">:</span>a
+        call    A<span class="token operator">::</span><span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        mov     eax<span class="token punctuation">,</span> <span class="token number">0</span>
+        pop     rbp
+        ret
+
+vtable <span class="token keyword">for</span> B<span class="token operator">:</span>
+        <span class="token punctuation">.</span>quad   <span class="token number">0</span>
+        <span class="token punctuation">.</span>quad   typeinfo <span class="token keyword">for</span> B
+        <span class="token punctuation">.</span>quad   A<span class="token operator">::</span><span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+vtable <span class="token keyword">for</span> A<span class="token operator">:</span>
+        <span class="token punctuation">.</span>quad   <span class="token number">0</span>
+        <span class="token punctuation">.</span>quad   typeinfo <span class="token keyword">for</span> A
+        <span class="token punctuation">.</span>quad   A<span class="token operator">::</span><span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+typeinfo <span class="token keyword">for</span> B<span class="token operator">:</span>
+        <span class="token punctuation">.</span>quad   vtable <span class="token keyword">for</span> __cxxabiv1<span class="token operator">::</span>__si_class_type_info<span class="token operator">+</span><span class="token number">16</span>
+        <span class="token punctuation">.</span>quad   typeinfo name <span class="token keyword">for</span> B
+        <span class="token punctuation">.</span>quad   typeinfo <span class="token keyword">for</span> A
+
+typeinfo name <span class="token keyword">for</span> B<span class="token operator">:</span>
+        <span class="token punctuation">.</span>string <span class="token string">"1B"</span>
+
+typeinfo <span class="token keyword">for</span> A<span class="token operator">:</span>
+        <span class="token punctuation">.</span>quad   vtable <span class="token keyword">for</span> __cxxabiv1<span class="token operator">::</span>__class_type_info<span class="token operator">+</span><span class="token number">16</span>
+        <span class="token punctuation">.</span>quad   typeinfo name <span class="token keyword">for</span> A
+
+typeinfo name <span class="token keyword">for</span> A<span class="token operator">:</span>
+        <span class="token punctuation">.</span>string <span class="token string">"1A"</span>
+
+<span class="token function">__static_initialization_and_destruction_0</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        mov     edi<span class="token punctuation">,</span> OFFSET FLAT<span class="token operator">:</span>a
+        call    A<span class="token operator">::</span><span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>complete object constructor<span class="token punctuation">]</span>
+        mov     edi<span class="token punctuation">,</span> OFFSET FLAT<span class="token operator">:</span>b
+        call    B<span class="token operator">::</span><span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>complete object constructor<span class="token punctuation">]</span>
+        nop
+        pop     rbp
+        ret
+
+_GLOBAL__sub_I_a<span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        call    <span class="token function">__static_initialization_and_destruction_0</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        pop     rbp
+        ret
+</pre></div><div class="divider"></div><h3 id="1004" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>多态<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>子类对象可以被认为是父类对象，因为子类的元素多于父类，不会发生变量越界的现象。即，可以使用父类对象的指针指向子类。</p><div class="divider"></div><h3 id="1005" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>模版<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>编译器自动根据实际类型补写相应的模版代码。</p><div class="divider"></div><h3 id="1006" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>new<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p><span class="inline-code">new</span>包括两个操作：</p><ul><li><span class="inline-code">malloc</span>堆内存</li></ul><ul><li>调用构造函数</li></ul>

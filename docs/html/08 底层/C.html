@@ -4,20 +4,20 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span>声明<span class="title-lock">
+</svg></span>类型声明<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h2><p>螺旋式读法，参考网页 <a href="https://c-faq.com/decl/spiral.anderson.html">https://c-faq.com/decl/spiral.anderson.html</a></p><p>There are three simple steps to follow:</p><p>1. Starting with the unknown element, move in a spiral/clockwise direction; when ecountering the following elements replace them with the corresponding english statements:</p><p>    </p><p>    [X] or []</p><p>    </p><p>    => Array X size of... or Array undefined size of...</p><p>    </p><p>    (type1, type2)</p><p>    </p><p>    => function passing type1 and type2 returning...</p><p>    </p><p>    <span class="italic"></span>    </p><p>    => pointer(s) to...</p><p>    </p><p>2. Keep doing this in a spiral/clockwise direction until all tokens have been covered.</p><p>    </p><p>3. Always resolve anything in parenthesis first!</p><h3 id="1001" class="title"><span class="title-hide">
+</svg></span></h2><p>顺时针螺旋式读法，参考网页 <a href="https://c-faq.com/decl/spiral.anderson.html">https://c-faq.com/decl/spiral.anderson.html</a></p><p>There are three simple steps to follow:</p><p>1. Starting with the unknown element, move in a spiral/clockwise direction; when ecountering the following elements replace them with the corresponding english statements:</p><p>    </p><p>    [X] or []</p><p>    </p><p>    => Array X size of... or Array undefined size of...</p><p>    </p><p>    (type1, type2)</p><p>    </p><p>    => function passing type1 and type2 returning...</p><p>    </p><p>    <span class="italic"></span>    </p><p>    => pointer(s) to...</p><p>    </p><p>2. Keep doing this in a spiral/clockwise direction until all tokens have been covered.</p><p>    </p><p>3. Always resolve anything in parenthesis first!</p><h3 id="1001" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span>Example #1: Simple declaration<span class="title-lock">
+</svg></span>Example 1: 指针数组<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -30,7 +30,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span>Example #2: Pointer to Function declaration<span class="title-lock">
+</svg></span>Example 2: 函数指针<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -43,14 +43,86 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span>Example #3: The <span class="inline-code">Ultimate</span><span class="title-lock">
+</svg></span>Example 3: The <span class="inline-code">Ultimate</span><span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><p>                      +</p><div class="divider"></div><p>                      |                  +</p><div class="divider"></div><p>                      |  +</p><div class="divider"></div><p>                      |  ^   |           |^ ||      |</p><p>                void (<span class="italic">signal(int, void (</span>fp)(int)))(int);</p><p>                 ^    ^      |      ^    ^  ||      |</p><p>                 |    +</p><div class="divider"></div><p>                 |                  +</p><div class="divider"></div><p>                 +</p><div class="divider"></div><p>Question we ask ourselves: What is <span class="inline-code">signal</span>?</p><p>Notice that signal is _inside_ parenthesis, so we must resolve this first!</p><ul><li>Moving in a _clockwise_ direction we see <span class="inline-code">(</span> so we have...</li></ul><p>    </p><p>> <span class="inline-code">signal is a function passing an int and a...</span></p><p>    </p><ul><li>Hmmm, we can use this same rule on <span class="inline-code">fp</span>, so... What is fp? fp is also inside parenthesis so continuing we see an <span class="inline-code"><span class="italic"></span>, so...</span>    </li></ul><p>> <span class="inline-code">fp is a pointer to...</span></p><p>    </p><ul><li>Continue in a spiral clockwise direction and we get to <span class="inline-code">(</span>, so...</li></ul><p>    </p><p>> <span class="inline-code">fp is a pointer to a function passing int returning...</span></p><p>    </p><ul><li>Now we continue out of the function parenthesis and we see void, so...</li></ul><p>    </p><p>> <span class="inline-code">fp is a pointer to a function passing int returning nothing (void)</span></p><p>    </p><ul><li>We have finished with fp so let's catch up with <span class="inline-code">signal</span>, we now have...</li></ul><p>    </p><p>> <span class="inline-code">signal is a function passing an int and a pointer to a function passing an int returning nothing (void) returning...</span></p><p>    </p><ul><li>We are still inside parenthesis so the next character seen is a <span class="inline-code"></span></li></ul><p>, so...</p><p>    </p><p>> <span class="inline-code">signal is a function passing an int and a pointer to a function passing an int returning nothing (void) returning a pointer to...</span></p><p>    </p><ul><li>We have now resolved the items within parenthesis, so continuing clockwise, we then see another <span class="inline-code">(</span>, so...</li></ul><p>    </p><p>> <span class="inline-code">signal is a function passing an int and a pointer to a function passing an int returning nothing (void) returning a pointer to a function passing an int returning...</span></p><p>    </p><ul><li>_Finally_ we continue and the only thing left is the word <span class="inline-code">void</span>, so the final complete definition for signal is:</li></ul><p>    </p><p>> <span class="inline-code">signal is a function passing an int and a pointer to a function passing an int returning nothing (void) returning a pointer to a function passing an int returning nothing (void)</span></p><p>    </p><p>The same rule is applied for const and volatile. For Example:</p><p>	const char <span class="italic">chptr;</span></p><ul><li>Now, what is chptr??</li></ul><p>    </p><p>> <span class="inline-code">chptr is a pointer to a char constant</span></p><p>    </p><p>How about this one:</p><p>	char </p><p> const chptr;</p><ul><li>Now, what is chptr??</li></ul><p>    </p><p>> <span class="inline-code">chptr is a constant pointer to char</span></p><p>    </p><p>Finally:</p><p>	volatile char <span class="italic"> const chptr;</span></p><ul><li>Now, what is chptr??</li></ul><p>    </p><p>> <span class="inline-code">chptr is a constant pointer to a char volatile.</span></p><p>    </p><div class="divider"></div><h2 id="1004" class="title"><span class="title-hide">
+</svg></span></h3><p>                      +</p><div class="divider"></div><p>                      |                  +</p><div class="divider"></div><p>                      |  +</p><div class="divider"></div><p>                      |  ^   |           |^ ||      |</p><p>                void (<span class="italic">signal(int, void (</span>fp)(int)))(int);</p><p>                 ^    ^      |      ^    ^  ||      |</p><p>                 |    +</p><div class="divider"></div><p>                 |                  +</p><div class="divider"></div><p>                 +</p><div class="divider"></div><p>Question we ask ourselves: What is <span class="inline-code">signal</span>?</p><p>Notice that signal is _inside_ parenthesis, so we must resolve this first!</p><ul><li>Moving in a _clockwise_ direction we see <span class="inline-code">(</span> so we have...</li></ul><p>    </p><p>> <span class="inline-code">signal is a function passing an int and a...</span></p><p>    </p><ul><li>Hmmm, we can use this same rule on <span class="inline-code">fp</span>, so... What is fp? fp is also inside parenthesis so continuing we see an <span class="inline-code"><span class="italic"></span>, so...</span>    </li></ul><p>> <span class="inline-code">fp is a pointer to...</span></p><p>    </p><ul><li>Continue in a spiral clockwise direction and we get to <span class="inline-code">(</span>, so...</li></ul><p>    </p><p>> <span class="inline-code">fp is a pointer to a function passing int returning...</span></p><p>    </p><ul><li>Now we continue out of the function parenthesis and we see void, so...</li></ul><p>    </p><p>> <span class="inline-code">fp is a pointer to a function passing int returning nothing (void)</span></p><p>    </p><ul><li>We have finished with fp so let's catch up with <span class="inline-code">signal</span>, we now have...</li></ul><p>    </p><p>> <span class="inline-code">signal is a function passing an int and a pointer to a function passing an int returning nothing (void) returning...</span></p><p>    </p><ul><li>We are still inside parenthesis so the next character seen is a <span class="inline-code"></span></li></ul><p>, so...</p><p>    </p><p>> <span class="inline-code">signal is a function passing an int and a pointer to a function passing an int returning nothing (void) returning a pointer to...</span></p><p>    </p><ul><li>We have now resolved the items within parenthesis, so continuing clockwise, we then see another <span class="inline-code">(</span>, so...</li></ul><p>    </p><p>> <span class="inline-code">signal is a function passing an int and a pointer to a function passing an int returning nothing (void) returning a pointer to a function passing an int returning...</span></p><p>    </p><ul><li>_Finally_ we continue and the only thing left is the word <span class="inline-code">void</span>, so the final complete definition for signal is:</li></ul><p>    </p><p>> <span class="inline-code">signal is a function passing an int and a pointer to a function passing an int returning nothing (void) returning a pointer to a function passing an int returning nothing (void)</span></p><p>    </p><p>The same rule is applied for const and volatile. For Example:</p><p>	const char <span class="italic">chptr;</span></p><ul><li>Now, what is chptr??</li></ul><p>    </p><p>> <span class="inline-code">chptr is a pointer to a char constant</span> 指向一个字符常量的指针</p><p>    </p><p>How about this one:</p><p>	char </p><p> const chptr;</p><ul><li>Now, what is chptr??</li></ul><p>    </p><p>> <span class="inline-code">chptr is a constant pointer to char</span>  常量指针，指向一个字符</p><p>    </p><p>Finally:</p><p>	volatile char <span class="italic"> const chptr;</span></p><ul><li>Now, what is chptr??</li></ul><p>    </p><p>> <span class="inline-code">chptr is a constant pointer to a char volatile.</span> 常量指针，指向一个<span class="inline-code">volatile</span>字符</p><p>    </p><p><span class="inline-code">int (</span>fp)(int)</p><p>  函数指针</p><p><span class="inline-code">int<span class="italic"> fp(int)</span>      函数</span></p><div class="divider"></div><h2 id="1004" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>函数指针<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token comment">// 具体的操作函数</span>
+<span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">subtract</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">-</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 函数返回一个函数指针</span>
+<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token function">getOperation</span><span class="token punctuation">(</span><span class="token keyword">char</span> op<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token char">'+'</span><span class="token punctuation">)</span> <span class="token keyword">return</span> add<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token char">'-'</span><span class="token punctuation">)</span> <span class="token keyword">return</span> subtract<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span> <span class="token comment">// 未知操作符</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>op<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">getOperation</span><span class="token punctuation">(</span><span class="token char">'+'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Result: %d\n"</span><span class="token punctuation">,</span> <span class="token function">op</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出: Result: 8</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</pre></div><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token comment">// 定义函数指针类型</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>Operation<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 具体的操作函数</span>
+<span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">subtract</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">-</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 函数返回一个函数指针</span>
+Operation <span class="token function">getOperation</span><span class="token punctuation">(</span><span class="token keyword">char</span> op<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token char">'+'</span><span class="token punctuation">)</span> <span class="token keyword">return</span> add<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token char">'-'</span><span class="token punctuation">)</span> <span class="token keyword">return</span> subtract<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span> <span class="token comment">// 未知操作符</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Operation op <span class="token operator">=</span> <span class="token function">getOperation</span><span class="token punctuation">(</span><span class="token char">'+'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Result: %d\n"</span><span class="token punctuation">,</span> <span class="token function">op</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出: Result: 8</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</pre></div><div class="divider"></div><h2 id="1005" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -63,7 +135,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h2><h3 id="1005" class="title"><span class="title-hide">
+</svg></span></h2><h3 id="1006" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -76,7 +148,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><p><span class="inline-code">stack</span> 栈，向下延伸                                        <span class="bold">高地址</span></p><p><span class="inline-code">heap</span>   堆，向上延伸，动态分配</p><p><span class="inline-code">.bss</span>   未初始化的全局变量</p><p><span class="inline-code">.data</span> 初始化的全局变量</p><p><span class="inline-code">.text</span> 代码段，<span class="inline-code">rip</span>保存下一条指令地址       <span class="bold">低地址</span></p><h3 id="1006" class="title"><span class="title-hide">
+</svg></span></h3><p><span class="inline-code">stack</span> 栈，向下延伸                                        <span class="bold">高地址</span></p><p><span class="inline-code">heap</span>   堆，向上延伸，动态分配</p><p><span class="inline-code">.bss</span>   未初始化的全局变量</p><p><span class="inline-code">.data</span> 初始化的全局变量</p><p><span class="inline-code">.text</span> 代码段，<span class="inline-code">rip</span>保存下一条指令地址       <span class="bold">低地址</span></p><p>编译的代码中的地址是虚拟地址，<span class="inline-code">CPU</span>只知道虚拟地址，需要经过<span class="inline-code">MMU</span>映射为物理地址。</p><p>不同进程之间的地址是完全隔离的，虽然虚拟地址一样，但实际分配的是不同的物理地址。</p><p>同一进程的各个线程之间共享内存，使用同一个地址空间。</p><h3 id="1007" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -150,7 +222,7 @@ main<span class="token operator">:</span>
 		<span class="token comment">// 退栈，恢复原栈帧</span>
         leave
         ret
-</pre></div><h3 id="1007" class="title"><span class="title-hide">
+</pre></div><h3 id="1008" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -212,4 +284,84 @@ main<span class="token operator">:</span>
         mov     eax<span class="token punctuation">,</span> <span class="token number">0</span>
         leave
         ret
+</pre></div><h3 id="1009" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>volatile<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p><span class="inline-code">volatile</span>可以阻止编译器过度优化变量，使得每次都从内存中读取变量，而不是作为常数优化。</p><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>a <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><ul><li>未使用优化</li></ul><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre>a<span class="token operator">:</span>
+        <span class="token punctuation">.</span>zero   <span class="token number">4</span>
+
+main<span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        nop
+
+<span class="token punctuation">.</span>L2<span class="token operator">:</span>
+        mov     eax<span class="token punctuation">,</span> DWORD PTR a<span class="token punctuation">[</span>rip<span class="token punctuation">]</span>
+        cmp     eax<span class="token punctuation">,</span> <span class="token number">1</span>
+        jg      <span class="token punctuation">.</span>L2
+        mov     eax<span class="token punctuation">,</span> <span class="token number">0</span>
+        pop     rbp
+        ret
+</pre></div><ul><li>使用<span class="inline-code">-O2</span>优化，直接消除<span class="inline-code">while</span>循环</li></ul><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre>a<span class="token operator">:</span>
+        <span class="token punctuation">.</span>zero   <span class="token number">4</span>
+
+main<span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        mov     eax<span class="token punctuation">,</span> <span class="token number">1</span>
+        ret
+</pre></div><p>加入<span class="inline-code">volatile</span>可以避免此类情况：</p><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token keyword">volatile</span> <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>a <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><h3 id="1010" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>const<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>常量的不可修改在于其分配的内存页为只读的，但在函数内部声明的栈常量是可以被修改的。</p><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token keyword">int</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">const</span> <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </pre></div>
