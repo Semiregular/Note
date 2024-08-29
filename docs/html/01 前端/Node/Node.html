@@ -1,0 +1,81 @@
+<h2 id="1000" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>包管理器  npm<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><div class="code" language="sh">
+              <div class="code-header">sh</div>
+              <pre><span class="token comment"># 生产环境</span>
+<span class="token function">npm</span> <span class="token function">install</span> express <span class="token parameter variable">--save</span>
+</pre></div><div class="code" language="sh">
+              <div class="code-header">sh</div>
+              <pre><span class="token comment"># 开发环境</span>
+<span class="token function">npm</span> <span class="token function">install</span> express --save-dev
+<span class="token function">npm</span> <span class="token function">install</span> express <span class="token parameter variable">-D</span>
+</pre></div><div class="code" language="sh">
+              <div class="code-header">sh</div>
+              <pre><span class="token comment"># 全局安装</span>
+<span class="token function">npm</span> <span class="token function">install</span> express <span class="token parameter variable">-g</span>
+</pre></div><div class="code" language="sh">
+              <div class="code-header">sh</div>
+              <pre><span class="token comment"># 临时安装，不添加到package.json</span>
+<span class="token function">npm</span> <span class="token function">install</span> express
+</pre></div><p>如果 <span class="inline-code">package.json</span> 中的依赖项指定了 <span class="inline-code">^1.2.3</span>，<span class="inline-code">npm update</span> 会更新到 <span class="inline-code">1.x.x</span> 的最新版本，但不会更新到 <span class="inline-code">2.0.0</span>。</p><div class="code" language="sh">
+              <div class="code-header">sh</div>
+              <pre><span class="token function">npm</span> update express
+</pre></div><div class="code" language="sh">
+              <div class="code-header">sh</div>
+              <pre><span class="token comment"># 卸载</span>
+<span class="token function">npm</span> uninstall express
+
+<span class="token comment"># 版本</span>
+<span class="token function">npm</span> <span class="token function">install</span> express@1.0.0
+
+<span class="token comment"># 安装所有依赖</span>
+<span class="token function">npm</span> <span class="token function">install</span>
+</pre></div><p><span class="inline-code">npm ci</span> 会完全依照 <span class="inline-code">package-lock.json</span> 文件来安装依赖包，确保安装的版本与锁定文件中完全一致。</p><div class="code" language="sh">
+              <div class="code-header">sh</div>
+              <pre><span class="token comment"># 生产环境安装</span>
+<span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">--production</span>
+<span class="token function">npm</span> ci
+</pre></div><div class="code" language="sh">
+              <div class="code-header">sh</div>
+              <pre><span class="token comment"># scripts 指令</span>
+<span class="token function">npm</span> run start
+</pre></div><p> <span class="inline-code">npx</span>用于临时执行包的命令或本地命令而不需要安装此包：</p><p> </p><div class="code" language="sh">
+              <div class="code-header">sh</div>
+              <pre>npx eslint <span class="token builtin class-name">.</span> <span class="token parameter variable">--ext</span> .ts
+npx create-react-app my-app
+</pre></div><div class="divider"></div><h2 id="1001" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>模块<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><div class="code" language="js">
+              <div class="code-header">js</div>
+              <pre><span class="token keyword">const</span> Stack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./stack"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> genScript <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./genScript"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> genNavLocal <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./genNavLocal"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">genHtml</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span> genHtml <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre></div>

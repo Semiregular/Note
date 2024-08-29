@@ -11,7 +11,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h2><div class="code" language="ts">
+</svg></span></h2><ul><li>变量</li></ul><div class="code" language="ts">
               <div class="code-header">ts</div>
               <pre><span class="token keyword">let</span> name<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'Tom'</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> age<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">;</span>
@@ -26,8 +26,9 @@ stroke-linejoin="round" class="svg-icon lucide-link">
 <span class="token keyword">let</span> arr<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token builtin">number</span><span class="token punctuation">,</span> <span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">boolean</span><span class="token operator">?</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'Tom'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> arr<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token builtin">number</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'Tom'</span><span class="token punctuation">,</span> <span class="token string">'Jerry'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-
-<span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
+</pre></div><ul><li>函数</li></ul><div class="code" language="ts">
+              <div class="code-header">ts</div>
+              <pre><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
@@ -97,7 +98,9 @@ stroke-linejoin="round" class="svg-icon lucide-link">
 
 <span class="token keyword">interface</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">Person</span> <span class="token punctuation">;</span>
 
-
+</pre></div><div class="code" language="ts">
+              <div class="code-header">ts</div>
+              <pre>
 <span class="token comment">// 除基本类型外，其他类型都是 object</span>
 <span class="token keyword">let</span> func<span class="token operator">:</span> <span class="token function-variable function">object</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span class="token keyword">let</span> arr<span class="token operator">:</span> object <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
@@ -163,7 +166,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span>类型<span class="title-lock">
+</svg></span>特殊类型<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -238,7 +241,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span>模块<span class="title-lock">
+</svg></span>模块化<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -273,24 +276,22 @@ tsc a<span class="token punctuation">.</span>tx <span class="token operator">--<
 
 <span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> $ <span class="token keyword">from</span> <span class="token string">'jquery'</span><span class="token punctuation">;</span>
 
-</pre></div><p>模块编译</p><div class="code" language="sh">
+</pre></div><p>模块编译：</p><div class="code" language="sh">
               <div class="code-header">sh</div>
               <pre>tsc a.ts <span class="token parameter variable">--module</span> esnext
 tsc a.ts <span class="token parameter variable">--module</span> umd
 tsc a.ts <span class="token parameter variable">--module</span> amd
 tsc a.ts <span class="token parameter variable">--module</span> commonjs
-
-</pre></div><p>node.js 默认使用 commonjs，要使用 ECMAScript 按如下配置：</p><div class="code" language="html">
+</pre></div><p><span class="inline-code">node.js </span>默认使用 <span class="inline-code">commonjs</span>，要使用 <span class="inline-code">ECMAScript</span> 按如下配置：</p><div class="code" language="json">
+              <div class="code-header">json</div>
+              <pre><span class="token punctuation">{</span>
+    <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
+    <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"module"</span> <span class="token comment">// 默认为 commonjs </span>
+<span class="token punctuation">}</span>
+</pre></div><div class="code" language="html">
               <div class="code-header">html</div>
-              <pre>npm init
-,
-{
-    "main": "index.js",
-    "type": "module" // 默认为 commonjs 
-}
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-</pre></div><p>更改后缀名 a.js -> a.mjs</p><div class="divider"></div><h2 id="1006" class="title"><span class="title-hide">
+              <pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+</pre></div><p>更改后缀名 <span class="inline-code">a.js</span> -> <span class="inline-code">a.mjs</span></p><div class="divider"></div><h2 id="1006" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -331,7 +332,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span>异步<span class="title-lock">
+</svg></span>异步函数<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -359,19 +360,21 @@ stroke-linejoin="round" class="svg-icon lucide-link">
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token comment">// tsc a.ts --target esnext --module commonjs</span>
 
-p<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">err</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><div class="code" language="ts">
+              <div class="code-header">ts</div>
+              <pre>p<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span>err <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'finally'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'finally'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">asyncFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token keyword">await</span> p<span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </pre></div><div class="divider"></div><h2 id="1008" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
@@ -379,7 +382,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span>编译<span class="title-lock">
+</svg></span>编译 tsc<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -408,29 +411,34 @@ esnext为最新版本
 
 <span class="token parameter variable">--alwaysStrict</span> 严格模式
 
-// 初始化 tsconfig.json
+</pre></div><div class="code" language="sh">
+              <div class="code-header">sh</div>
+              <pre>// 初始化 tsconfig.json
 tsc <span class="token parameter variable">--init</span>
-
-<span class="token punctuation">{</span>
-    <span class="token string">"include"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token string">"src"</span><span class="token punctuation">]</span>,
-    <span class="token string">"exclude"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token string">"src/node_modules"</span><span class="token punctuation">]</span>,
-    // 允许被引用
-    <span class="token string">"compilerOptions"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
-        <span class="token string">"composite"</span><span class="token builtin class-name">:</span> true,
-        <span class="token string">"declaration"</span><span class="token builtin class-name">:</span> <span class="token boolean">true</span><span class="token string">" // 生成.d.ts声明文件
-    },
-    // 引用其他 tsconfig.json
-    "</span>reference<span class="token string">": [{
-        "</span>path<span class="token string">": "</span><span class="token punctuation">..</span>/common<span class="token string">"
-    }],
-    "</span>extends<span class="token string">": "</span><span class="token punctuation">..</span>/common/tsconfig.json<span class="token string">"
-}
-
-// 构建依赖并输出日志
-tsc --build a.ts --verbose
-
-// 三斜线引用其他文件,只在顶部生效
-/// &lt;reference path="</span>./a.ts" /<span class="token operator">></span>
+</pre></div><div class="code" language="json">
+              <div class="code-header">json</div>
+              <pre><span class="token punctuation">{</span>
+    <span class="token property">"include"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"src"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"exclude"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"src/node_modules"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// 允许被引用</span>
+    <span class="token property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"composite"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token property">"declaration"</span><span class="token operator">:</span> <span class="token boolean">true</span>" <span class="token comment">// 生成.d.ts声明文件</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 引用其他 tsconfig.json</span>
+    <span class="token property">"reference"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+        <span class="token property">"path"</span><span class="token operator">:</span> <span class="token string">"../common"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"extends"</span><span class="token operator">:</span> <span class="token string">"../common/tsconfig.json"</span>
+<span class="token punctuation">}</span>
+</pre></div><div class="code" language="sh">
+              <div class="code-header">sh</div>
+              <pre>// 构建依赖并输出日志
+tsc <span class="token parameter variable">--build</span> a.ts <span class="token parameter variable">--verbose</span>
+</pre></div><div class="code" language="ts">
+              <div class="code-header">ts</div>
+              <pre><span class="token comment">// 三斜线引用其他文件,只在顶部生效</span>
+<span class="token comment">/// &lt;reference path="./a.ts" /></span>
 
 </pre></div><div class="divider"></div><h2 id="1009" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
@@ -438,7 +446,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span>ESLint<span class="title-lock">
+</svg></span>语法检查 ESLint<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -447,8 +455,9 @@ stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
 </svg></span></h2><div class="code" language="sh">
               <div class="code-header">sh</div>
-              <pre><span class="token function">npm</span> <span class="token function">install</span> eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin --save-dev
-</pre></div><p>.eslintrc</p><div class="code" language="json">
+              <pre><span class="token function">npm</span> <span class="token function">install</span> eslint @typescript-eslint/parser <span class="token punctuation">\</span>
+@typescript-eslint/eslint-plugin --save-dev
+</pre></div><ul><li><span class="inline-code">.eslintrc</span></li></ul><div class="code" language="json">
               <div class="code-header">json</div>
               <pre><span class="token punctuation">{</span>
     <span class="token property">"root"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
@@ -461,26 +470,29 @@ stroke-linejoin="round" class="svg-icon lucide-link">
         <span class="token string">"plugin:@typescript-eslint/recommended"</span>
     <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
-</pre></div><p>.eslintignore</p><div class="code" language="">
+</pre></div><ul><li><span class="inline-code">.eslintignore</span></li></ul><div class="code" language="">
               <div class="code-header"></div>
               <pre></pre></div><div class="code" language="sh">
               <div class="code-header">sh</div>
               <pre><span class="token comment"># 可以直接使用 npx 命令而无需在系统中全局安装相应的包</span>
 npx eslint <span class="token builtin class-name">.</span> <span class="token parameter variable">--ext</span> .ts
-</pre></div><h2 id="1010" class="title"><span class="title-hide">
+</pre></div><div class="divider"></div><h2 id="1010" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span>合并 js<span class="title-lock">
+</svg></span>兼容 js<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h2><p>修改 tsconfig.json, </p><ul><li>"strict": false"</li></ul><ul><li>"allowJs": true"</li></ul><ul><li>编写相应的 lib.d.ts 声明文件</li></ul><ul><li>从 DefinitelyTyped 获取 lib.d.ts 文件</li></ul><p>  npm install @types/jquery </p><div class="code" language="ts">
+</svg></span></h2><p>以下三种选择都可以：</p><p>1. 修改 <span class="inline-code">tsconfig.json</span>：</p><ul><li><span class="inline-code">"strict": false"</span></li></ul><ul><li><span class="inline-code">"allowJs": true"</span></li></ul><p>2. 编写相应的 <span class="inline-code">lib.d.ts</span> 声明文件</p><p>3. 从 <span class="inline-code">DefinitelyTyped</span> 获取 <span class="inline-code">lib.d.ts</span> 文件</p><div class="code" language="sh">
+              <div class="code-header">sh</div>
+              <pre><span class="token function">npm</span> <span class="token function">install</span> @types/jquery 
+</pre></div><div class="code" language="ts">
               <div class="code-header">ts</div>
               <pre><span class="token keyword">export</span> <span class="token keyword">declare</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
     <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
