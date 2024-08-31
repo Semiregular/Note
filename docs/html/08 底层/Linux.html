@@ -66,7 +66,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h2><p>第一个权限字母表示文件类型，第二个权限字母表示文件所有者的权限，第三个权限字母表示文件所在组的权限，第四个权限字母表示其他用户的权限。</p><p>对于目录而言，<span class="inline-code">w</span> 表示可以删除目录下的文件，<span class="inline-code">x</span> 表示可以进入该目录。</p><p>=== "文件类型"</p><p>    第一个字母|文件类型</p><p>    -|-</p><p>    d|目录</p><p>    l|符号链接</p><p>    b|块设备文件</p><p>    c|字符设备文件</p><p>    s|套接字文件</p><p>    p|管道文件</p><p>    -|文件</p><p>=== "权限权值"</p><p>    权限|权值</p><p>    -|-</p><p>    r|4</p><p>    w|2</p><p>    x|1</p><p>=== "常见权限"</p><p>    数字|权限</p><p>    -|-</p><p>    7|rwx</p><p>    6|rw-</p><p>    5|r-x</p><p>    4|r--</p><p>    3|-wx</p><p>    2|-w-</p><p>    1|--x</p><p>    0|</p><div class="divider"></div><div class="code" language="shell">
+</svg></span></h2><p>第一个权限字母表示文件类型，第二个权限字母表示文件所有者的权限，第三个权限字母表示文件所在组的权限，第四个权限字母表示其他用户的权限。</p><p>对于目录而言，<span class="inline-code">w</span> 表示可以删除目录下的文件，<span class="inline-code">x</span> 表示可以进入该目录。</p><ul><li> "文件类型"</li></ul><p>第一个字母|文件类型</p><p>    -|-</p><p>    d|目录</p><p>    l|符号链接</p><p>    b|块设备文件</p><p>    c|字符设备文件</p><p>    s|套接字文件</p><p>    p|管道文件</p><p>    -|文件</p><ul><li> "权限权值"</li></ul><p>权限|权值</p><p>    -|-</p><p>    r|4</p><p>    w|2</p><p>    x|1</p><ul><li> "常见权限"</li></ul><p>数字|权限</p><p>    -|-</p><p>    7|rwx</p><p>    6|rw-</p><p>    5|r-x</p><p>    4|r--</p><p>    3|-wx</p><p>    2|-w-</p><p>    1|--x</p><p>    0|</p><div class="divider"></div><div class="code" language="shell">
               <div class="code-header">shell</div>
               <pre><span class="token comment"># 修改文件用户组</span>
 <span class="token function">chgrp</span> groupname filename
@@ -86,7 +86,16 @@ stroke-linejoin="round" class="svg-icon lucide-link">
 
 <span class="token comment"># 修改目录下所有文件权限</span>
 <span class="token function">chmod</span> <span class="token parameter variable">-R</span> <span class="token number">777</span> filename
-</pre></div><p>!!! note "注意"</p><p>    若目录用户具有权限 <span class="inline-code">rwx</span> , 目录下某个文件用户没有任何权限，则用户无法访问该文件，但可以删除该文件。</p><h2 id="1003" class="title"><span class="title-hide">
+</pre></div><div class="callout" data-callout="note">
+                <div class="callout-title"><div class="callout-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" 
+      width="24" height="24" viewBox="0 0 24 24" fill="none" 
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+      stroke-linejoin="round" class="svg-icon lucide-pencil">
+      <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path>
+      <path d="m15 5 4 4"></path>
+      </svg></div>
+      <div class="callout-title-inner">Note</div></div><div>    若目录用户具有权限 <span class="inline-code">rwx</span> , 目录下某个文件用户没有任何权限，则用户无法访问该文件，但可以删除该文件。</div></div><h2 id="1003" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -105,7 +114,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">ls</span><span class="title-lock">
+</svg></span>ls<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -128,7 +137,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">rm</span><span class="title-lock">
+</svg></span>rm<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -152,7 +161,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">cp</span><span class="title-lock">
+</svg></span>cp<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -168,7 +177,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">mv</span><span class="title-lock">
+</svg></span>mv<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -184,7 +193,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">cat</span><span class="title-lock">
+</svg></span>cat<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -204,7 +213,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">head</span><span class="title-lock">
+</svg></span>head<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -225,7 +234,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">tail</span><span class="title-lock">
+</svg></span>tail<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -245,7 +254,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">more</span><span class="title-lock">
+</svg></span>more<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -262,7 +271,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">file</span><span class="title-lock">
+</svg></span>file<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -278,7 +287,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">cut</span><span class="title-lock">
+</svg></span>cut<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -294,7 +303,7 @@ width="24" height="24" viewBox="0 0 24 24" fill="none"
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
 stroke-linejoin="round" class="svg-icon right-triangle">
 <path d="M3 8L12 17L21 8"></path>
-</svg></span><span class="bold">wc</span><span class="title-lock">
+</svg></span>wc<span class="title-lock">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -307,4 +316,17 @@ stroke-linejoin="round" class="svg-icon lucide-link">
 <span class="token function">wc</span> <span class="token parameter variable">-l</span> <span class="token function">file</span>
 <span class="token function">wc</span> <span class="token parameter variable">-w</span> <span class="token function">file</span>
 <span class="token function">wc</span> <span class="token parameter variable">-c</span> <span class="token function">file</span>
-</pre></div>
+</pre></div><h2 id="1015" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>示例<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2>

@@ -148,7 +148,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><p><span class="inline-code">stack</span> 栈，向下延伸                                        <span class="bold">高地址</span></p><p><span class="inline-code">heap</span>   堆，向上延伸，动态分配</p><p><span class="inline-code">.bss</span>   未初始化的全局变量</p><p><span class="inline-code">.data</span> 初始化的全局变量</p><p><span class="inline-code">.text</span> 代码段，<span class="inline-code">rip</span>保存下一条指令地址       <span class="bold">低地址</span></p><p>编译的代码中的地址是虚拟地址，<span class="inline-code">CPU</span>只知道虚拟地址，需要经过<span class="inline-code">MMU</span>映射为物理地址。</p><p>不同进程之间的地址是完全隔离的，虽然虚拟地址一样，但实际分配的是不同的物理地址。</p><p>同一进程的各个线程之间共享内存，使用同一个地址空间。</p><h3 id="1007" class="title"><span class="title-hide">
+</svg></span></h3><p><span class="inline-code">stack</span> 栈，向下延伸                                        <span class="bold">高地址</span></p><p><span class="inline-code">heap</span>   堆，向上延伸，动态分配</p><p><span class="inline-code">.bss</span>   未初始化的全局变量</p><p><span class="inline-code">.data</span> 初始化的全局变量</p><p><span class="inline-code">.text</span> 代码段，<span class="inline-code">rip</span>保存下一条指令地址       <span class="bold">低地址</span></p><p>编译的代码中的地址是虚拟地址，<span class="inline-code">CPU</span>只知道虚拟地址，需要经过<span class="inline-code">MMU</span>映射为物理地址。</p><p>不同进程之间的地址是完全隔离的，虽然虚拟地址一样，但实际分配的是不同的物理地址。</p><p>同一进程的各个线程之间共享内存，使用同一个地址空间。</p><p>静态变量无论在何处声明，内存分配和全局变量一致。初始化为0的全局变量仍然被认为是未初始化的，保存在<span class="inline-code">.bss</span>区。</p><p>静态变量不会被链接器链接到其他文件，只在当前文件使用。</p><h3 id="1007" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -235,7 +235,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><p>所有传参都是值传递，指针和引用传递地址，都是数据。如果要修改传入的参数，应该传入该参数的内存地址，这样才能修改值；否则，传入的值会保存在新的栈帧中，不是原来的值。</p><div class="code" language="c">
+</svg></span></h3><p>所有传参都是值传递，指针和引用传递地址，都是数据。如果要修改传入的参数，应该传入该参数的内存地址，这样才能修改值；否则，传入的值会保存在新的栈帧中，不是原来的值。</p><p><span class="inline-code">rdi</span>，<span class="inline-code">rsi</span>，<span class="inline-code">rdx</span>，<span class="inline-code">rcx</span>，<span class="inline-code">r8</span>，<span class="inline-code">r9</span></p><p><span class="inline-code">xmm0</span>至<span class="inline-code">xmm7</span>浮点参数</p><div class="code" language="c">
               <div class="code-header">c</div>
               <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
 
@@ -364,4 +364,129 @@ stroke-linejoin="round" class="svg-icon lucide-link">
 	<span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
 	<span class="token keyword">return</span> a<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
+</pre></div><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token keyword">const</span> <span class="token keyword">int</span> tol <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+<span class="token comment">// 错误，常量只是只读的变量，不可以用于数组长度</span>
+<span class="token keyword">int</span> a<span class="token punctuation">[</span>tol<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</pre></div><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">tol</span> <span class="token expression"><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span></span></span>
+<span class="token comment">// 正确，宏会在编译时自动展开</span>
+<span class="token keyword">int</span> a<span class="token punctuation">[</span>tol<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</pre></div><div class="divider"></div><h2 id="1011" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>示例<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><h3 id="1012" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>assert<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>只在表达式为假时阻止程序运行。</p><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;assert.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token function">assert</span><span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token char">'\0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">assert</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><h3 id="1013" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>printf<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p><span class="inline-code">va_arg</span>会将<span class="inline-code">ap</span>自动移动至下一个位置。</p><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdarg.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;assert.h></span></span>
+
+<span class="token keyword">void</span> <span class="token function">tiny_printf</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span> format<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">int</span> i<span class="token punctuation">;</span>
+	va_list ap<span class="token punctuation">;</span>
+
+	<span class="token function">va_start</span><span class="token punctuation">(</span>ap<span class="token punctuation">,</span> format<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> format<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token char">'\0'</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">switch</span><span class="token punctuation">(</span>format<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			<span class="token keyword">case</span> <span class="token char">'s'</span><span class="token operator">:</span>
+				<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> <span class="token function">va_arg</span><span class="token punctuation">(</span>ap<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">break</span><span class="token punctuation">;</span>
+			<span class="token keyword">case</span> <span class="token char">'d'</span><span class="token operator">:</span>
+				<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token function">va_arg</span><span class="token punctuation">(</span>ap<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">break</span><span class="token punctuation">;</span>
+			<span class="token keyword">default</span><span class="token operator">:</span>
+				<span class="token function">assert</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token function">va_end</span><span class="token punctuation">(</span>ap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">putchar</span><span class="token punctuation">(</span><span class="token char">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token function">tiny_printf</span><span class="token punctuation">(</span><span class="token string">"sdd"</span><span class="token punctuation">,</span> <span class="token string">"result.."</span><span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token keyword">void</span> <span class="token function">debug_write</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span> fmt<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	va_list ap<span class="token punctuation">;</span>
+	<span class="token function">va_start</span><span class="token punctuation">(</span>ap<span class="token punctuation">,</span> fmt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">vfprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> fmt<span class="token punctuation">,</span> ap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">va_end</span><span class="token punctuation">(</span>ap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifdef</span> <span class="token expression">DEBUG</span></span>
+	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">DEBUG_WRITE</span><span class="token expression"><span class="token punctuation">(</span>arg<span class="token punctuation">)</span> debug_write arg</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">else</span></span>
+	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">DEBUG_WRITE</span><span class="token expression"><span class="token punctuation">(</span>arg<span class="token punctuation">)</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span>
+
+<span class="token comment">// 使用双括号</span>
+<span class="token function">DEBUG_WRITE</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">"hoge...%d\n"</span><span class="token punctuation">,</span> hoge<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token comment">// C99</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifdef</span> <span class="token expression">DEBUG</span></span>
+	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">DEBUG_WRITE</span><span class="token expression"><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token function">debug_write</span> <span class="token punctuation">(</span>__VA_ARGS__<span class="token punctuation">)</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">else</span></span>
+	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">DEBUG_WRITE</span><span class="token expression"><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span>
+
+<span class="token function">DEBUG_WRITE</span><span class="token punctuation">(</span><span class="token string">"hoge...%d\n"</span><span class="token punctuation">,</span> hoge<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifdef</span> <span class="token expression">DEBUG</span></span>
+	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">DEBUG_WRITE</span><span class="token expression"><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> </span><span class="token punctuation">\</span>
+	<span class="token expression"><span class="token punctuation">(</span><span class="token function">debug_write</span> <span class="token punctuation">(</span></span><span class="token string">"%s:%s:%d"</span><span class="token expression"><span class="token punctuation">,</span> <span class="token constant">__FILE__</span><span class="token punctuation">,</span> <span class="token constant">__func__</span><span class="token punctuation">,</span> <span class="token constant">__LINE__</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span><span class="token punctuation">\</span>
+	<span class="token expression"><span class="token function">debug_write</span> <span class="token punctuation">(</span>__VA_ARGS__<span class="token punctuation">)</span><span class="token punctuation">)</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">else</span></span>
+	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">DEBUG_WRITE</span><span class="token expression"><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span>
 </pre></div>
