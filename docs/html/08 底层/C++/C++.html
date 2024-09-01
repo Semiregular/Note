@@ -1,0 +1,553 @@
+<h2 id="1000" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>多线程<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;thread></span></span>
+</pre></div><div class="code" language="sh">
+              <div class="code-header">sh</div>
+              <pre>g++ <span class="token parameter variable">-o</span> main main.cpp <span class="token parameter variable">-lpthread</span> <span class="token parameter variable">-std</span><span class="token operator">=</span>c++11
+</pre></div><h3 id="1001" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>函数传入多个参数<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span>  </span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;thread></span>  </span>
+
+using namespace std<span class="token punctuation">;</span>  
+
+<span class="token keyword">void</span> <span class="token function">thfunc</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span><span class="token keyword">int</span> m<span class="token punctuation">,</span><span class="token keyword">int</span> <span class="token operator">*</span>k<span class="token punctuation">,</span><span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  
+<span class="token punctuation">{</span>  
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"in thfunc:n="</span> <span class="token operator">&lt;&lt;</span>n<span class="token operator">&lt;&lt;</span><span class="token string">",m="</span><span class="token operator">&lt;&lt;</span>m<span class="token operator">&lt;&lt;</span><span class="token string">",k="</span><span class="token operator">&lt;&lt;</span><span class="token operator">*</span>k<span class="token operator">&lt;&lt;</span><span class="token string">"\nstr="</span><span class="token operator">&lt;&lt;</span>s<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>  
+    <span class="token operator">*</span>k <span class="token operator">=</span> <span class="token number">5000</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>  
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  
+<span class="token punctuation">{</span>  
+    <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">110</span><span class="token punctuation">,</span> m <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">,</span> k <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> str<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"hello world"</span><span class="token punctuation">;</span>
+
+    thread <span class="token function">t</span><span class="token punctuation">(</span>thfunc<span class="token punctuation">,</span> n<span class="token punctuation">,</span>m<span class="token punctuation">,</span><span class="token operator">&amp;</span>k<span class="token punctuation">,</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    t<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"k="</span> <span class="token operator">&lt;&lt;</span> k <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+</pre></div><h3 id="1002" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>分离线程<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p><span class="inline-code">pthread</span>与<span class="inline-code">c++</span>结合使用</p><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span>  </span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;thread></span>  </span>
+
+using namespace std<span class="token punctuation">;</span>  
+
+<span class="token keyword">void</span> <span class="token function">thfunc</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span><span class="token keyword">int</span> m<span class="token punctuation">,</span><span class="token keyword">int</span> <span class="token operator">*</span>k<span class="token punctuation">,</span><span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment">//线程函数</span>
+<span class="token punctuation">{</span>  
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"in thfunc:n="</span> <span class="token operator">&lt;&lt;</span>n<span class="token operator">&lt;&lt;</span><span class="token string">",m="</span><span class="token operator">&lt;&lt;</span>m<span class="token operator">&lt;&lt;</span><span class="token string">",k="</span><span class="token operator">&lt;&lt;</span><span class="token operator">*</span>k<span class="token operator">&lt;&lt;</span><span class="token string">"\nstr="</span><span class="token operator">&lt;&lt;</span>s<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>  
+    <span class="token operator">*</span>k <span class="token operator">=</span> <span class="token number">5000</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>  
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  
+<span class="token punctuation">{</span>  
+    <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">110</span><span class="token punctuation">,</span> m <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">,</span> k <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> str<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"hello world"</span><span class="token punctuation">;</span>
+
+    thread <span class="token function">t</span><span class="token punctuation">(</span>thfunc<span class="token punctuation">,</span> n<span class="token punctuation">,</span>m<span class="token punctuation">,</span><span class="token operator">&amp;</span>k<span class="token punctuation">,</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//定义线程对象</span>
+    t<span class="token punctuation">.</span><span class="token function">detach</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//分离线程</span>
+
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"k="</span> <span class="token operator">&lt;&lt;</span> k <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>  <span class="token comment">//这里输出3</span>
+    <span class="token function">pthread_exit</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// main线程结束，但进程并不会结束，下面一句不会执行</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"this line will not run"</span><span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>  <span class="token comment">//这一句不会执行</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+</pre></div><h3 id="1003" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>this_thread<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre>this_thread<span class="token operator">::</span><span class="token function">get_id</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+this_thread<span class="token operator">::</span><span class="token function">yield</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+this_thread<span class="token operator">::</span><span class="token function">sleep_until</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+this_thread<span class="token operator">::</span><span class="token function">sleep_for</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><ul><li>id</li></ul><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span>       </span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;thread></span>        </span>
+
+using namespace std<span class="token punctuation">;</span>
+
+thread<span class="token operator">::</span>id main_thread_id <span class="token operator">=</span>  this_thread<span class="token operator">::</span><span class="token function">get_id</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//获取主线程id</span>
+
+<span class="token keyword">void</span> <span class="token function">is_main_thread</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>main_thread_id <span class="token operator">==</span> this_thread<span class="token operator">::</span><span class="token function">get_id</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">//判断是否和主线程id相同</span>
+        std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"This is the main thread.\n"</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"This is not the main thread.\n"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">is_main_thread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    thread <span class="token function">th</span><span class="token punctuation">(</span>is_main_thread<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    th<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><ul><li>sleep</li></ul><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span>       <span class="token comment">// std::cout</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;thread></span>         <span class="token comment">// std::this_thread::sleep_until</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;chrono></span>         <span class="token comment">// std::chrono::system_clock</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;ctime></span>          <span class="token comment">// std::time_t, std::tm, std::localtime, std::mktime</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;time.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stddef.h></span></span>
+
+using namespace std<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">getNowTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    timespec time<span class="token punctuation">;</span>
+    <span class="token keyword">struct</span>  <span class="token class-name">tm</span> nowTime<span class="token punctuation">;</span>
+    <span class="token function">clock_gettime</span><span class="token punctuation">(</span>CLOCK_REALTIME<span class="token punctuation">,</span> <span class="token operator">&amp;</span>time<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//获取相对于1970到现在的秒数</span>
+    <span class="token function">localtime_r</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>time<span class="token punctuation">.</span>tv_sec<span class="token punctuation">,</span> <span class="token operator">&amp;</span>nowTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> current<span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span>
+        <span class="token string">"%04d-%02d-%02d %02d:%02d:%02d\n"</span><span class="token punctuation">,</span>
+        nowTime<span class="token punctuation">.</span>tm_year <span class="token operator">+</span> <span class="token number">1900</span><span class="token punctuation">,</span>
+        nowTime<span class="token punctuation">.</span>tm_mon<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>
+        nowTime<span class="token punctuation">.</span>tm_mday<span class="token punctuation">,</span>
+        nowTime<span class="token punctuation">.</span>tm_hour<span class="token punctuation">,</span>
+        nowTime<span class="token punctuation">.</span>tm_min<span class="token punctuation">,</span>
+        nowTime<span class="token punctuation">.</span>tm_sec<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    using std<span class="token operator">::</span>chrono<span class="token operator">::</span>system_clock<span class="token punctuation">;</span>
+    std<span class="token operator">::</span><span class="token class-name">time_t</span> tt <span class="token operator">=</span> system_clock<span class="token operator">::</span><span class="token class-name">to_time_t</span><span class="token punctuation">(</span>system_clock<span class="token operator">::</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> <span class="token class-name">std</span><span class="token operator">::</span>tm <span class="token operator">*</span> ptm <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">localtime</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>tt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">getNowTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Waiting for the next minute to begin...\n"</span><span class="token punctuation">;</span>
+    <span class="token operator">++</span>ptm<span class="token operator">-></span>tm_min<span class="token punctuation">;</span> <span class="token comment">//加一分钟</span>
+    ptm<span class="token operator">-></span>tm_sec <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    this_thread<span class="token operator">::</span><span class="token function">sleep_until</span><span class="token punctuation">(</span>system_clock<span class="token operator">::</span><span class="token class-name">from_time_t</span><span class="token punctuation">(</span><span class="token function">mktime</span><span class="token punctuation">(</span>ptm<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">getNowTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span>       <span class="token comment">// std::cout, std::endl</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;thread></span>         <span class="token comment">// std::this_thread::sleep_for</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;chrono></span>         <span class="token comment">// std::chrono::seconds</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"countdown:\n"</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> i <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> i <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+        std<span class="token operator">::</span>this_thread<span class="token operator">::</span><span class="token function">sleep_for</span><span class="token punctuation">(</span>std<span class="token operator">::</span>chrono<span class="token operator">::</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Lift off!\n"</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><h3 id="1004" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>mutex<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mutex></span></span>
+</pre></div><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre>std<span class="token operator">::</span>mutex mtx<span class="token punctuation">;</span>
+
+mtx<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bool res <span class="token operator">=</span> mtx<span class="token punctuation">.</span><span class="token function">try_lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+mtx<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></div><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span>       </span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;thread></span>       </span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mutex></span>          </span>
+
+<span class="token keyword">volatile</span> <span class="token keyword">int</span> <span class="token function">counter</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 定义一个全局变量，当作计数器用于累加</span>
+std<span class="token operator">::</span>mutex mtx<span class="token punctuation">;</span>              <span class="token comment">// 用于保护counter的互斥锁</span>
+
+<span class="token keyword">void</span> <span class="token function">thrfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10000</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mtx<span class="token punctuation">.</span><span class="token function">try_lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 互斥锁上锁</span>
+        <span class="token punctuation">{</span>
+            <span class="token operator">++</span>counter<span class="token punctuation">;</span>    <span class="token comment">// 计数器累加</span>
+            mtx<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 互斥锁解锁</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"try_lock false\n"</span>  <span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    std<span class="token operator">::</span>thread threads<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        threads<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">thread</span><span class="token punctuation">(</span>thrfunc<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//启动10个线程</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span><span class="token operator">&amp;</span> th <span class="token operator">:</span> threads<span class="token punctuation">)</span> th<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//等待10个线程结束</span>
+    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"count to "</span> <span class="token operator">&lt;&lt;</span> counter <span class="token operator">&lt;&lt;</span> <span class="token string">" successfully \n"</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><h2 id="1005" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>汇编原理<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h2><h3 id="1006" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>RVO<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>如果对象在函数中返回，一般情况下会被当做临时数据无法保存；实际上，编译器会自动将其改写为指针的形式，通过拷贝构造函数复制到调用函数的栈帧；或者，通过<span class="inline-code">RVO</span>优化取消临时对象，直接写入调用函数的栈帧，不使用拷贝构造函数。</p><p>在使用 RVO 时，编译器会在函数内直接构造返回对象，而不是先构造一个临时对象然后再将其复制到调用者。这可以减少内存开销和提高效率。</p><p>可以理解为将原来的函数变为了内联函数。</p><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+
+class Example <span class="token punctuation">{</span>
+public<span class="token operator">:</span>
+    <span class="token function">Example</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Example Constructor\n"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token function">Example</span><span class="token punctuation">(</span><span class="token keyword">const</span> Example<span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Example Copy Constructor\n"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    Example<span class="token operator">&amp;</span> operator<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> Example<span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Example Assignment Operator\n"</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token operator">*</span>this<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">~</span><span class="token function">Example</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Example Destructor\n"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 函数返回一个 Example 对象</span>
+Example <span class="token function">createExample</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Example ex<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> ex<span class="token punctuation">;</span> <span class="token comment">// 这里可能会发生 RVO</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Example e <span class="token operator">=</span> <span class="token function">createExample</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 直接在调用者的变量位置构造对象</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><div class="divider"></div><h3 id="1007" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>this<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>调用成员函数时都要首先传入该类的<span class="inline-code">this</span>指针，实际就是该类的地址；或者说每个成员函数都有一个隐藏的默认参数。</p><p>一般位于函数调用前的<span class="inline-code">rdi</span>寄存器中。</p><div class="divider"></div><h3 id="1008" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>虚函数 virtual<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>类似<span class="inline-code">Java</span>中<span class="inline-code">@Override</span>重写父类函数，使得子类重写父类的同名函数；可以重写参数和返回类型，但不推荐。</p><p>虚函数的具体实现是相应类添加一个默认变量指向虚函数表的首地址，使用函数指针调用相应类的虚函数。在构造函数时会自动初始化这个变量。</p><p>在调用虚函数时，需要通过<span class="inline-code">rdx</span>寄存器来确定虚函数的入口地址，实现动态绑定。</p><p>一般情况下，禁止在构造函数中调用虚函数，因为虚函数表的地址不确定是父类还是子类的。虚表地址首先指向父类。构造完成后才指向子类。</p><p>虚函数本质上为函数指针。</p><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre>class A<span class="token punctuation">{</span>
+    public<span class="token operator">:</span>
+        <span class="token keyword">int</span> x<span class="token punctuation">;</span>
+        virtual <span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>a<span class="token punctuation">;</span>
+
+class B <span class="token operator">:</span> public A<span class="token punctuation">{</span>
+    public<span class="token operator">:</span>
+	    <span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	        x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>b<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    a<span class="token punctuation">.</span><span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre>A<span class="token operator">::</span><span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        mov     QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> rdi
+        mov     rax<span class="token punctuation">,</span> QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span>
+        mov     DWORD PTR <span class="token punctuation">[</span>rax<span class="token operator">+</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span>
+        nop
+        pop     rbp
+        ret
+
+A<span class="token operator">::</span><span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>base object constructor<span class="token punctuation">]</span><span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        mov     QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> rdi
+        mov     edx<span class="token punctuation">,</span> OFFSET FLAT<span class="token operator">:</span>vtable <span class="token keyword">for</span> A<span class="token operator">+</span><span class="token number">16</span>
+        mov     rax<span class="token punctuation">,</span> QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span>
+        mov     QWORD PTR <span class="token punctuation">[</span>rax<span class="token punctuation">]</span><span class="token punctuation">,</span> rdx
+        mov     rax<span class="token punctuation">,</span> QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span>
+        mov     DWORD PTR <span class="token punctuation">[</span>rax<span class="token operator">+</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">0</span>
+        nop
+        pop     rbp
+        ret
+
+a<span class="token operator">:</span>
+        <span class="token punctuation">.</span>zero   <span class="token number">16</span>
+
+B<span class="token operator">::</span><span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>base object constructor<span class="token punctuation">]</span><span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        sub     rsp<span class="token punctuation">,</span> <span class="token number">16</span>
+        mov     QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> rdi
+        mov     rax<span class="token punctuation">,</span> QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span>
+        mov     rdi<span class="token punctuation">,</span> rax
+        call    A<span class="token operator">::</span><span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>base object constructor<span class="token punctuation">]</span>
+        mov     edx<span class="token punctuation">,</span> OFFSET FLAT<span class="token operator">:</span>vtable <span class="token keyword">for</span> B<span class="token operator">+</span><span class="token number">16</span>
+        mov     rax<span class="token punctuation">,</span> QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span>
+        mov     QWORD PTR <span class="token punctuation">[</span>rax<span class="token punctuation">]</span><span class="token punctuation">,</span> rdx
+        mov     rax<span class="token punctuation">,</span> QWORD PTR <span class="token punctuation">[</span>rbp<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">]</span>
+        mov     DWORD PTR <span class="token punctuation">[</span>rax<span class="token operator">+</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span>
+        nop
+        leave
+        ret
+
+b<span class="token operator">:</span>
+        <span class="token punctuation">.</span>zero   <span class="token number">16</span>
+
+main<span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        mov     edi<span class="token punctuation">,</span> OFFSET FLAT<span class="token operator">:</span>a
+        call    A<span class="token operator">::</span><span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        mov     eax<span class="token punctuation">,</span> <span class="token number">0</span>
+        pop     rbp
+        ret
+
+vtable <span class="token keyword">for</span> B<span class="token operator">:</span>
+        <span class="token punctuation">.</span>quad   <span class="token number">0</span>
+        <span class="token punctuation">.</span>quad   typeinfo <span class="token keyword">for</span> B
+        <span class="token punctuation">.</span>quad   A<span class="token operator">::</span><span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+vtable <span class="token keyword">for</span> A<span class="token operator">:</span>
+        <span class="token punctuation">.</span>quad   <span class="token number">0</span>
+        <span class="token punctuation">.</span>quad   typeinfo <span class="token keyword">for</span> A
+        <span class="token punctuation">.</span>quad   A<span class="token operator">::</span><span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+typeinfo <span class="token keyword">for</span> B<span class="token operator">:</span>
+        <span class="token punctuation">.</span>quad   vtable <span class="token keyword">for</span> __cxxabiv1<span class="token operator">::</span>__si_class_type_info<span class="token operator">+</span><span class="token number">16</span>
+        <span class="token punctuation">.</span>quad   typeinfo name <span class="token keyword">for</span> B
+        <span class="token punctuation">.</span>quad   typeinfo <span class="token keyword">for</span> A
+
+typeinfo name <span class="token keyword">for</span> B<span class="token operator">:</span>
+        <span class="token punctuation">.</span>string <span class="token string">"1B"</span>
+
+typeinfo <span class="token keyword">for</span> A<span class="token operator">:</span>
+        <span class="token punctuation">.</span>quad   vtable <span class="token keyword">for</span> __cxxabiv1<span class="token operator">::</span>__class_type_info<span class="token operator">+</span><span class="token number">16</span>
+        <span class="token punctuation">.</span>quad   typeinfo name <span class="token keyword">for</span> A
+
+typeinfo name <span class="token keyword">for</span> A<span class="token operator">:</span>
+        <span class="token punctuation">.</span>string <span class="token string">"1A"</span>
+
+<span class="token function">__static_initialization_and_destruction_0</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        mov     edi<span class="token punctuation">,</span> OFFSET FLAT<span class="token operator">:</span>a
+        call    A<span class="token operator">::</span><span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>complete object constructor<span class="token punctuation">]</span>
+        mov     edi<span class="token punctuation">,</span> OFFSET FLAT<span class="token operator">:</span>b
+        call    B<span class="token operator">::</span><span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>complete object constructor<span class="token punctuation">]</span>
+        nop
+        pop     rbp
+        ret
+
+_GLOBAL__sub_I_a<span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        call    <span class="token function">__static_initialization_and_destruction_0</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        pop     rbp
+        ret
+</pre></div><div class="divider"></div><h3 id="1009" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>多态<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>子类对象可以被认为是父类对象，因为子类的元素多于父类，不会发生变量越界的现象。即，可以使用父类对象的指针指向子类。</p><div class="divider"></div><h3 id="1010" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>模版<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>编译器自动根据实际类型补写相应的模版代码。</p><div class="divider"></div><h3 id="1011" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>new<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p><span class="inline-code">new</span>包括两个操作：</p><ul><li><span class="inline-code">malloc</span>堆内存</li></ul><ul><li>调用构造函数</li></ul><div class="divider"></div><h3 id="1012" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>auto<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>可以自动推断类型，在编译时确定。</p><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token keyword">auto</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">auto</span> x<span class="token punctuation">,</span> <span class="token keyword">auto</span> y<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><div class="divider"></div><h3 id="1013" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>thread_local<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>在线程分配的堆栈之上另外分配空间保存各线程的私有变量，并使用<span class="inline-code">fs</span>寄存器访问。</p><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;thread></span></span>
+
+thread_local <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	thread_local <span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	std<span class="token operator">::</span>thread <span class="token function">t1</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	std<span class="token operator">::</span>thread <span class="token function">t2</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	t1<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	t2<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></div><p>\</p><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre>a<span class="token operator">:</span>
+        <span class="token punctuation">.</span><span class="token keyword">long</span>   <span class="token number">1</span>
+
+<span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">::</span>b<span class="token operator">:</span>
+        <span class="token punctuation">.</span><span class="token keyword">long</span>   <span class="token number">2</span>
+
+<span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>
+        push    rbp
+        mov     rbp<span class="token punctuation">,</span> rsp
+        mov     eax<span class="token punctuation">,</span> DWORD PTR fs<span class="token operator">:</span><span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">::</span>b@tpoff
+        pop     rbp
+        ret
+</pre></div>

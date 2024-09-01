@@ -586,7 +586,23 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h3><div class="code" language="c">
+</svg></span></h3><p>互斥锁一般用于写操作，只允许一个线程访问。</p><ul><li>静态声明，不能对指针声明</li></ul><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token class-name">pthread_mutex_t</span> mutex <span class="token operator">=</span> PTHREAD_MUTEX_INITIALIZER<span class="token punctuation">;</span>
+</pre></div><ul><li>动态声明互斥锁需要手动销毁</li></ul><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token class-name">pthread_mutex_t</span> mutex<span class="token punctuation">;</span>
+<span class="token function">pthread_mutex_init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>mutex<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">pthread_mutex_destroy</span><span class="token punctuation">(</span><span class="token class-name">pthread_mutex_t</span> <span class="token operator">*</span>m<span class="token punctuation">)</span>
+</pre></div><ul><li>获取锁</li></ul><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token comment">// 未获得锁会导致该线程阻塞</span>
+<span class="token keyword">int</span> <span class="token function">pthread_mutex_lock</span><span class="token punctuation">(</span><span class="token class-name">pthread_mutex_t</span> <span class="token operator">*</span>m<span class="token punctuation">)</span>
+
+<span class="token comment">// 未获得锁会返回，以便执行其他重试逻辑</span>
+<span class="token keyword">int</span> <span class="token function">pthread_mutex_trylock</span><span class="token punctuation">(</span><span class="token class-name">pthread_mutex_t</span> <span class="token operator">*</span>m<span class="token punctuation">)</span>
+</pre></div><div class="code" language="c">
               <div class="code-header">c</div>
               <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
@@ -653,7 +669,80 @@ stroke-linejoin="round" class="svg-icon lucide-link">
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-</pre></div><h2 id="1013" class="title"><span class="title-hide">
+</pre></div><h3 id="1013" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>pthread_rwlock_t<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><p>读写锁一般用于只涉及读操作的线程，可以多个线程同时读。</p><p>读写锁单个线程的速度慢于互斥锁，但对于多个线程并发的效果好，每个线程等待时间明显缩短。</p><ul><li>声明</li></ul><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token class-name">pthread_rwlock_t</span> rwlock <span class="token operator">=</span> PTHREAD_RWLOCK_INITIALIZER
+</pre></div><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token class-name">pthread_rwlock_t</span> rwlock<span class="token punctuation">;</span>
+<span class="token function">pthread_rwlock_init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>rwlock<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">pthread_rwlock_destroy</span><span class="token punctuation">(</span><span class="token class-name">pthread_rwlock_t</span> <span class="token operator">*</span>m<span class="token punctuation">)</span>
+</pre></div><ul><li>加锁</li></ul><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token keyword">int</span> <span class="token function">pthread_rwlock_rdlock</span><span class="token punctuation">(</span><span class="token class-name">pthread_rwlock_t</span> <span class="token operator">*</span>l<span class="token punctuation">)</span>
+<span class="token keyword">int</span> <span class="token function">pthread_rwlock_wrlock</span><span class="token punctuation">(</span><span class="token class-name">pthread_rwlock_t</span> <span class="token operator">*</span>l<span class="token punctuation">)</span>
+
+<span class="token keyword">int</span> <span class="token function">pthread_rwlock_tryrdlock</span><span class="token punctuation">(</span><span class="token class-name">pthread_rwlock_t</span> <span class="token operator">*</span>l<span class="token punctuation">)</span>
+<span class="token keyword">int</span> <span class="token function">pthread_rwlock_trywrlock</span><span class="token punctuation">(</span><span class="token class-name">pthread_rwlock_t</span> <span class="token operator">*</span>l<span class="token punctuation">)</span>
+</pre></div><h3 id="1014" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>pthread_cond_t<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><ul><li>声明</li></ul><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token class-name">pthread_cond_t</span> cond <span class="token operator">=</span> PTHREAD_COND_INITIALIZER<span class="token punctuation">;</span>
+
+<span class="token class-name">pthread_cond_t</span> cond<span class="token punctuation">;</span>
+<span class="token function">pthread_cond_init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>cond<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">pthread_cond_destroy</span><span class="token punctuation">(</span><span class="token class-name">pthread_cond_t</span> <span class="token operator">*</span>cv<span class="token punctuation">)</span>
+</pre></div><ul><li>加锁</li></ul><p><span class="inline-code">pthread_cond_wait</span>等待时会解锁，因此调用前该线程必须加锁；</p><p><span class="inline-code">pthread_cond_wait</span>收到信号后会加锁，因此调用后该线程必须解锁。</p><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token keyword">int</span> <span class="token function">pthread_cond_wait</span><span class="token punctuation">(</span><span class="token class-name">pthread_cond_t</span> <span class="token operator">*</span>cv<span class="token punctuation">,</span> <span class="token class-name">pthread_mutex_t</span> <span class="token operator">*</span>external_mutex<span class="token punctuation">)</span>
+<span class="token keyword">int</span> <span class="token function">pthread_cond_timedwait</span><span class="token punctuation">(</span>
+	<span class="token class-name">pthread_cond_t</span> <span class="token operator">*</span>cv<span class="token punctuation">,</span> 
+	<span class="token class-name">pthread_mutex_t</span> <span class="token operator">*</span>external_mutex<span class="token punctuation">,</span> 
+	<span class="token keyword">const</span> <span class="token keyword">struct</span> <span class="token class-name">timespec</span> <span class="token operator">*</span>t
+<span class="token punctuation">)</span>
+</pre></div><ul><li>解锁</li></ul><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token keyword">int</span> <span class="token function">pthread_cond_signal</span><span class="token punctuation">(</span><span class="token class-name">pthread_cond_t</span> <span class="token operator">*</span>cv<span class="token punctuation">)</span>
+<span class="token keyword">int</span> <span class="token function">pthread_cond_broadcast</span><span class="token punctuation">(</span><span class="token class-name">pthread_cond_t</span> <span class="token operator">*</span>cv<span class="token punctuation">)</span>
+</pre></div><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token function">pthread_mutex_lock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>queue<span class="token operator">-></span>count <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">pthread_cond_wait</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>not_empty<span class="token punctuation">,</span> <span class="token operator">&amp;</span>queue<span class="token operator">-></span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">pthread_mutex_unlock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>     
+<span class="token punctuation">}</span>
+</pre></div><h2 id="1015" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -666,7 +755,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round"
 stroke-linejoin="round" class="svg-icon lucide-link">
 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-</svg></span></h2><h3 id="1014" class="title"><span class="title-hide">
+</svg></span></h2><h3 id="1016" class="title"><span class="title-hide">
 <svg xmlns="http://www.w3.org/2000/svg" 
 width="24" height="24" viewBox="0 0 24 24" fill="none" 
 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
@@ -697,4 +786,149 @@ stroke-linejoin="round" class="svg-icon lucide-link">
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-</pre></div>
+</pre></div><h3 id="1017" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>消息队列<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3><div class="code" language="c">
+              <div class="code-header">c</div>
+              <pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;pthread.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAX_QUEUE_SIZE</span> <span class="token expression"><span class="token number">10</span>  </span><span class="token comment">// 定义队列的最大容量</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MSG_SIZE</span> <span class="token expression"><span class="token number">256</span>       </span><span class="token comment">// 定义每个消息的最大长度</span></span>
+
+<span class="token comment">// 定义消息队列结构体</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    <span class="token keyword">char</span> messages<span class="token punctuation">[</span>MAX_QUEUE_SIZE<span class="token punctuation">]</span><span class="token punctuation">[</span>MSG_SIZE<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 消息数组</span>
+    <span class="token keyword">int</span> front<span class="token punctuation">;</span>  <span class="token comment">// 队列前端的索引</span>
+    <span class="token keyword">int</span> rear<span class="token punctuation">;</span>   <span class="token comment">// 队列后端的索引</span>
+    <span class="token keyword">int</span> count<span class="token punctuation">;</span>  <span class="token comment">// 当前队列中的消息数量</span>
+    <span class="token class-name">pthread_mutex_t</span> mutex<span class="token punctuation">;</span>        <span class="token comment">// 互斥锁，用于保护队列的线程安全</span>
+    <span class="token class-name">pthread_cond_t</span> not_full<span class="token punctuation">;</span>      <span class="token comment">// 条件变量，用于队列满时的等待</span>
+    <span class="token class-name">pthread_cond_t</span> not_empty<span class="token punctuation">;</span>     <span class="token comment">// 条件变量，用于队列空时的等待</span>
+<span class="token punctuation">}</span> MessageQueue<span class="token punctuation">;</span>
+
+<span class="token comment">// 初始化消息队列</span>
+<span class="token keyword">void</span> <span class="token function">init_queue</span><span class="token punctuation">(</span>MessageQueue <span class="token operator">*</span>queue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    queue<span class="token operator">-></span>front <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment">// 队列前端初始化为0</span>
+    queue<span class="token operator">-></span>rear <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>   <span class="token comment">// 队列后端初始化为0</span>
+    queue<span class="token operator">-></span>count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment">// 消息计数初始化为0</span>
+    <span class="token function">pthread_mutex_init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>mutex<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 初始化互斥锁</span>
+    <span class="token function">pthread_cond_init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>not_full<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 初始化条件变量（队列满）</span>
+    <span class="token function">pthread_cond_init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>not_empty<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 初始化条件变量（队列空）</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 入队操作</span>
+<span class="token keyword">void</span> <span class="token function">enqueue</span><span class="token punctuation">(</span>MessageQueue <span class="token operator">*</span>queue<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">pthread_mutex_lock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 加锁以确保线程安全</span>
+    
+    <span class="token comment">// 如果队列满，则等待直到有空间</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>queue<span class="token operator">-></span>count <span class="token operator">==</span> MAX_QUEUE_SIZE<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">pthread_cond_wait</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>not_full<span class="token punctuation">,</span> <span class="token operator">&amp;</span>queue<span class="token operator">-></span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 将消息复制到队列的后端</span>
+    <span class="token function">strncpy</span><span class="token punctuation">(</span>queue<span class="token operator">-></span>messages<span class="token punctuation">[</span>queue<span class="token operator">-></span>rear<span class="token punctuation">]</span><span class="token punctuation">,</span> message<span class="token punctuation">,</span> MSG_SIZE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    queue<span class="token operator">-></span>rear <span class="token operator">=</span> <span class="token punctuation">(</span>queue<span class="token operator">-></span>rear <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> MAX_QUEUE_SIZE<span class="token punctuation">;</span> <span class="token comment">// 更新队列后端索引</span>
+    queue<span class="token operator">-></span>count<span class="token operator">++</span><span class="token punctuation">;</span>  <span class="token comment">// 增加消息计数</span>
+
+    <span class="token function">pthread_cond_signal</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>not_empty<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 通知可能在等待队列非空的线程</span>
+    <span class="token function">pthread_mutex_unlock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 解锁</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 出队操作</span>
+<span class="token keyword">void</span> <span class="token function">dequeue</span><span class="token punctuation">(</span>MessageQueue <span class="token operator">*</span>queue<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>buffer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">pthread_mutex_lock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 加锁以确保线程安全</span>
+    
+    <span class="token comment">// 如果队列空，则等待直到有消息</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>queue<span class="token operator">-></span>count <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">pthread_cond_wait</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>not_empty<span class="token punctuation">,</span> <span class="token operator">&amp;</span>queue<span class="token operator">-></span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 从队列前端取出消息</span>
+    <span class="token function">strncpy</span><span class="token punctuation">(</span>buffer<span class="token punctuation">,</span> queue<span class="token operator">-></span>messages<span class="token punctuation">[</span>queue<span class="token operator">-></span>front<span class="token punctuation">]</span><span class="token punctuation">,</span> MSG_SIZE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    queue<span class="token operator">-></span>front <span class="token operator">=</span> <span class="token punctuation">(</span>queue<span class="token operator">-></span>front <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> MAX_QUEUE_SIZE<span class="token punctuation">;</span> <span class="token comment">// 更新队列前端索引</span>
+    queue<span class="token operator">-></span>count<span class="token operator">--</span><span class="token punctuation">;</span>  <span class="token comment">// 减少消息计数</span>
+
+    <span class="token function">pthread_cond_signal</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>not_full<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 通知可能在等待队列满的线程</span>
+    <span class="token function">pthread_mutex_unlock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 解锁</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 销毁消息队列</span>
+<span class="token keyword">void</span> <span class="token function">destroy_queue</span><span class="token punctuation">(</span>MessageQueue <span class="token operator">*</span>queue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">pthread_mutex_destroy</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 销毁互斥锁</span>
+    <span class="token function">pthread_cond_destroy</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>not_full<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 销毁条件变量（队列满）</span>
+    <span class="token function">pthread_cond_destroy</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token operator">-></span>not_empty<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 销毁条件变量（队列空）</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 生产者线程函数</span>
+<span class="token keyword">void</span> <span class="token operator">*</span><span class="token function">producer</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>arg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    MessageQueue <span class="token operator">*</span>queue <span class="token operator">=</span> <span class="token punctuation">(</span>MessageQueue <span class="token operator">*</span><span class="token punctuation">)</span>arg<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">char</span> message<span class="token punctuation">[</span>MSG_SIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token function">snprintf</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> MSG_SIZE<span class="token punctuation">,</span> <span class="token string">"Message %d"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 生成消息</span>
+        <span class="token function">enqueue</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> message<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 将消息入队</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Produced: %s\n"</span><span class="token punctuation">,</span> message<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 打印生产的消息</span>
+        <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 模拟生产时间</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 消费者线程函数</span>
+<span class="token keyword">void</span> <span class="token operator">*</span><span class="token function">consumer</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>arg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    MessageQueue <span class="token operator">*</span>queue <span class="token operator">=</span> <span class="token punctuation">(</span>MessageQueue <span class="token operator">*</span><span class="token punctuation">)</span>arg<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">char</span> buffer<span class="token punctuation">[</span>MSG_SIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token function">dequeue</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 从队列中取出消息</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Consumed: %s\n"</span><span class="token punctuation">,</span> buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 打印消费的消息</span>
+        <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 模拟消费时间</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 主函数</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">pthread_t</span> prod_thread<span class="token punctuation">,</span> cons_thread<span class="token punctuation">;</span>  <span class="token comment">// 线程标识符</span>
+    MessageQueue queue<span class="token punctuation">;</span>  <span class="token comment">// 消息队列实例</span>
+
+    <span class="token function">init_queue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 初始化消息队列</span>
+
+    <span class="token comment">// 创建生产者和消费者线程</span>
+    <span class="token function">pthread_create</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>prod_thread<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> producer<span class="token punctuation">,</span> <span class="token operator">&amp;</span>queue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">pthread_create</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>cons_thread<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> consumer<span class="token punctuation">,</span> <span class="token operator">&amp;</span>queue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 等待两个线程结束</span>
+    <span class="token function">pthread_join</span><span class="token punctuation">(</span>prod_thread<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">pthread_join</span><span class="token punctuation">(</span>cons_thread<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">destroy_queue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>queue<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 销毁消息队列</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</pre></div><div class="divider"></div><h3 id="1018" class="title"><span class="title-hide">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon right-triangle">
+<path d="M3 8L12 17L21 8"></path>
+</svg></span>线程池<span class="title-lock">
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="24" height="24" viewBox="0 0 24 24" fill="none" 
+stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="svg-icon lucide-link">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></span></h3>
